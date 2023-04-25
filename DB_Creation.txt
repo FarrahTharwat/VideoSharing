@@ -1,0 +1,77 @@
+CREATE TABLE `Comment` (
+  `ID` Int,
+  `Date` Date,
+  `Content` nvarchar(100),
+  PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `History` (
+  `UserID` int,
+  `VIdeoID` int ,
+  `WatchDate` Date,
+  PRIMARY KEY (`UserID`, `VIdeoID`)
+);
+
+CREATE TABLE `Lookup` (
+  `UserID` int,
+  `VIdeoID` int ,
+  `ReactType` int,
+  PRIMARY KEY (`UserID`, `VIdeoID`)
+);
+
+CREATE TABLE `User` (
+  `ID` Int,
+  `Email` nvarchar(100),
+  `Name` nvarchar(50),
+  `Password` nvarchar(50),
+  `NumOfVideo` int,
+  `Subscription` Boolean,
+  PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `PlayList` (
+  `ID` Int,
+  `numOfVideos` Int,
+  `name` nvarchar(50),
+  `Description` nvarchar(50),
+  `UserID` Type,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`),
+  KEY `Key` (`UserID`)
+);
+
+CREATE TABLE `Subscribed` (
+  `subscriberID` Int,
+  `channelID` Int,
+  `bell` bool,
+  PRIMARY KEY (`subscriberID`, `channelID`)
+);
+
+CREATE TABLE `Video` (
+  `ID` Int,
+  `Category` nvarchar(50),
+  `ClickBait` nvarchar(50),
+  `Description` nvarchar(50),
+  `ThumbNail` image,
+  `Date` Date,
+  `Status` Type,
+  `Views` Int,
+  `URL` nvarchar(200),
+  `UserID` Int,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`)
+);
+
+CREATE TABLE `VideoPlayList` (
+  `VideoID` int,
+  `PlaylistID` Int,
+  PRIMARY KEY (`VideoID`, `PlaylistID`)
+);
+
+CREATE TABLE `UserComment` (
+  `UserID` int,
+  `VideoID` int,
+  `CommentID` int,
+  PRIMARY KEY (`UserID`, `VideoID`, `CommentID`)
+);
+
