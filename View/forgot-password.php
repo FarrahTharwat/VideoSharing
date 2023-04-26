@@ -31,7 +31,7 @@
                         <h5 class="mt-3 mb-3">Reset Password</h5>
                         <p>It is a long established fact that a reader <br> will be distracted by the readable.</p>
                      </div>
-                     <form action="https://askbootstrap.com/preview/vidoe-v1-1/index.html">
+                     <form action="https://askbootstrap.com/preview/vidoe-v1-1/index.php">
                         <div class="form-group">
                            <label>Enter Email / Mobile number</label>
                            <input type="text" class="form-control" placeholder="Enter Email / Mobile number">
@@ -41,7 +41,7 @@
                         </div>
                      </form>
                      <div class="text-center mt-5">
-                        <p class="light-gray">Don’t have an account? <a href="register.html">Sign Up</a></p>
+                        <p class="light-gray">Don’t have an account? <a href="register.php">Sign Up</a></p>
                      </div>
                   </div>
                </div>

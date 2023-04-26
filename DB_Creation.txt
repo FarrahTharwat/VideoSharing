@@ -1,0 +1,222 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 25, 2023 at 07:36 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `video_sharing`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `ID` int(11) NOT NULL,
+  `Date` date DEFAULT NULL,
+  `Content` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `UserID` int(11) NOT NULL,
+  `VideoID` int(11) NOT NULL,
+  `WatchDate` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lookup`
+--
+
+CREATE TABLE `lookup` (
+  `UserID` int(11) NOT NULL,
+  `VideoID` int(11) NOT NULL,
+  `ReactType` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playlist`
+--
+
+CREATE TABLE `playlist` (
+  `ID` int(11) NOT NULL,
+  `numOfVideos` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `Description` varchar(50) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribed`
+--
+
+CREATE TABLE `subscribed` (
+  `subscriberID` int(11) NOT NULL,
+  `channelID` int(11) NOT NULL,
+  `bell` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `ID` int(11) NOT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `Password` varchar(50) DEFAULT NULL,
+  `NumOfVideo` int(11) DEFAULT NULL,
+  `Subscription` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usercomment`
+--
+
+CREATE TABLE `usercomment` (
+  `UserID` int(11) NOT NULL,
+  `VideoID` int(11) NOT NULL,
+  `CommentID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE `video` (
+  `ID` int(11) NOT NULL,
+  `Category` varchar(50) DEFAULT NULL,
+  `ClickBait` varchar(50) DEFAULT NULL,
+  `Description` varchar(50) DEFAULT NULL,
+  `ThumbNail` longblob DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Status` varchar(50) DEFAULT NULL,
+  `Views` int(11) DEFAULT NULL,
+  `URL` varchar(200) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videoplaylist`
+--
+
+CREATE TABLE `videoplaylist` (
+  `VideoID` int(11) NOT NULL,
+  `PlaylistID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`UserID`,`VideoID`);
+
+--
+-- Indexes for table `lookup`
+--
+ALTER TABLE `lookup`
+  ADD PRIMARY KEY (`UserID`,`VideoID`);
+
+--
+-- Indexes for table `playlist`
+--
+ALTER TABLE `playlist`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `UserID` (`UserID`);
+
+--
+-- Indexes for table `subscribed`
+--
+ALTER TABLE `subscribed`
+  ADD PRIMARY KEY (`subscriberID`,`channelID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `usercomment`
+--
+ALTER TABLE `usercomment`
+  ADD PRIMARY KEY (`UserID`,`VideoID`,`CommentID`);
+
+--
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `UserID` (`UserID`);
+
+--
+-- Indexes for table `videoplaylist`
+--
+ALTER TABLE `videoplaylist`
+  ADD PRIMARY KEY (`VideoID`,`PlaylistID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `playlist`
+--
+ALTER TABLE `playlist`
+  ADD CONSTRAINT `playlist_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
+
+--
+-- Constraints for table `video`
+--
+ALTER TABLE `video`
+  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

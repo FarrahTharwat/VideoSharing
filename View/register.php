@@ -49,7 +49,7 @@
                         </div>
                      </form>
                      <div class="text-center mt-5">
-                        <p class="light-gray">Already have an Account? <a href="login.html">Sign In</a></p>
+                        <p class="light-gray">Already have an Account? <a href="login.php">Sign In</a></p>
                      </div>
                   </div>
                </div>
