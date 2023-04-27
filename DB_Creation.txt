@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 01:36 PM
+-- Generation Time: Apr 27, 2023 at 05:29 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -96,7 +96,8 @@ CREATE TABLE `user` (
   `Name` varchar(50) DEFAULT NULL,
   `Password` varchar(50) DEFAULT NULL,
   `NumOfVideo` int(11) DEFAULT 0,
-  `Subscription` tinyint(1) DEFAULT NULL
+  `Subscription` tinyint(1) DEFAULT NULL,
+  `Country` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
