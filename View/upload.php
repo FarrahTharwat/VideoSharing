@@ -26,7 +26,7 @@
          <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
          <i class="fas fa-bars"></i>
          </button> &nbsp;&nbsp;
-         <a class="navbar-brand mr-1" href="index.php"><img class="img-fluid" alt="" src="img/logo.png"></a>
+         <a class="navbar-brand mr-1" href="index.html"><img class="img-fluid" alt="" src="img/logo.png"></a>
          <!-- Navbar Search -->
          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
             <div class="input-group">
@@ -41,7 +41,7 @@
          <!-- Navbar -->
          <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <li class="nav-item mx-1">
-               <a class="nav-link" href="upload.php">
+               <a class="nav-link" href="upload.html">
                <i class="fas fa-plus-circle fa-fw"></i>
                Upload Video
                </a>
@@ -76,9 +76,9 @@
                Osahan 
                </a>
                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="account.php"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
-                  <a class="dropdown-item" href="subscriptions.php"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
-                  <a class="dropdown-item" href="settings.php"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+                  <a class="dropdown-item" href="account.html"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+                  <a class="dropdown-item" href="subscriptions.html"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
+                  <a class="dropdown-item" href="settings.html"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
                </div>
@@ -89,31 +89,31 @@
          <!-- Sidebar -->
          <ul class="sidebar navbar-nav">
             <li class="nav-item active">
-               <a class="nav-link" href="index.php">
+               <a class="nav-link" href="index.html">
                <i class="fas fa-fw fa-home"></i>
                <span>Home</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="channels.php">
+               <a class="nav-link" href="channels.html">
                <i class="fas fa-fw fa-users"></i>
                <span>Channels</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="single-channel.php">
+               <a class="nav-link" href="single-channel.html">
                <i class="fas fa-fw fa-user-alt"></i>
                <span>Single Channel</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="video-page.php">
+               <a class="nav-link" href="video-page.html">
                <i class="fas fa-fw fa-video"></i>
                <span>Video Page</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="upload-video.php">
+               <a class="nav-link" href="upload-video.html">
                <i class="fas fa-fw fa-cloud-upload-alt"></i>
                <span>Upload Video</span>
                </a>
@@ -125,47 +125,47 @@
                </a>
                <div class="dropdown-menu">
                   <h6 class="dropdown-header">Login Screens:</h6>
-                  <a class="dropdown-item" href="login.php">Login</a>
-                  <a class="dropdown-item" href="register.php">Register</a>
-                  <a class="dropdown-item" href="forgot-password.php">Forgot Password</a>
+                  <a class="dropdown-item" href="login.html">Login</a>
+                  <a class="dropdown-item" href="register.html">Register</a>
+                  <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
                   <div class="dropdown-divider"></div>
                   <h6 class="dropdown-header">Other Pages:</h6>
-                  <a class="dropdown-item" href="404.php">404 Page</a>
-                  <a class="dropdown-item" href="blank.php">Blank Page</a>
+                  <a class="dropdown-item" href="404.html">404 Page</a>
+                  <a class="dropdown-item" href="blank.html">Blank Page</a>
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="history-page.php">
+               <a class="nav-link" href="history-page.html">
                <i class="fas fa-fw fa-history"></i>
                <span>History Page</span>
                </a>
             </li>
             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="categories.php" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <a class="nav-link dropdown-toggle" href="categories.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-fw fa-list-alt"></i>
                <span>Categories</span>
                </a>
                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="categories.php">Movie</a>
-                  <a class="dropdown-item" href="categories.php">Music</a>
-                  <a class="dropdown-item" href="categories.php">Television</a>
+                  <a class="dropdown-item" href="categories.html">Movie</a>
+                  <a class="dropdown-item" href="categories.html">Music</a>
+                  <a class="dropdown-item" href="categories.html">Television</a>
                </div>
             </li>
             <li class="nav-item channel-sidebar-list">
                <h6>SUBSCRIPTIONS</h6>
                <ul>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s1.png"> Your Life 
                      </a>
                   </li>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s2.png"> Unboxing  <span class="badge badge-warning">2</span>
                      </a>
                   </li>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s3.png"> Product / Service  
                      </a>
                   </li>
@@ -178,10 +178,18 @@
                   <div class="col-md-8 mx-auto text-center upload-video pt-5 pb-5">
                      <h1><i class="fas fa-file-upload text-primary"></i></h1>
                      <h4 class="mt-5">Select Video files to upload</h4>
-                     <p class="land">or drag and drop video files</p>
-                     <div class="mt-4">
-                        <a class="btn btn-outline-primary" href="upload-video.php">Upload Video</a>
-                     </div>
+                     <section class="upload">
+                        <h2 class="section-title">Upload Video</h2>
+                        <form class="upload-form" enctype="multipart/form-data">
+                           <label for="video-file" class="upload-label">Choose a video to upload:</label>
+                           <input type="file" id="video-file" class="upload-input" name="video-file">
+                           <div class="mt-4">
+                              <a class="btn btn-outline-primary" href="upload-video.html">Upload Video</a>
+                           </div>
+                        </form>
+                     </section>
+
+
                   </div>
                </div>
             </div>
@@ -226,7 +234,7 @@
                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" href="login.php">Logout</a>
+                  <a class="btn btn-primary" href="login.html">Logout</a>
                </div>
             </div>
          </div>
