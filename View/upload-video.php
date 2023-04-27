@@ -255,7 +255,7 @@
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="customCheck1">
-                              <label class="custom-control-label" for="customCheck1">News</label>
+                              <label class="custom-control-label" for="customCheck1">Podcast</label>
                            </div>
                            <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="customCheck2">
@@ -267,7 +267,7 @@
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="zcustomCheck1">
-                              <label class="custom-control-label" for="zcustomCheck1">Music</label>
+                              <label class="custom-control-label" for="zcustomCheck1">Sounds</label>
                            </div>
                            <div class="custom-control custom-checkbox">
                               <input type="checkbox" class="custom-control-input" id="zcustomCheck2">
@@ -289,7 +289,7 @@
                      </div>
                   </div>
                   <div class="osahan-area text-center mt-3">
-                     <button class="btn btn-outline-primary">Save Changes</button>
+                     <button class="btn btn-outline-primary">Upload</button>
                   </div>
                   <hr>
                   <div class="terms text-center">
