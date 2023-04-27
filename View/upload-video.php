@@ -26,7 +26,7 @@
          <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
          <i class="fas fa-bars"></i>
          </button> &nbsp;&nbsp;
-         <a class="navbar-brand mr-1" href="index.php"><img class="img-fluid" alt="" src="img/logo.png"></a>
+         <a class="navbar-brand mr-1" href="index.html"><img class="img-fluid" alt="" src="img/logo.png"></a>
          <!-- Navbar Search -->
          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
             <div class="input-group">
@@ -41,7 +41,7 @@
          <!-- Navbar -->
          <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <li class="nav-item mx-1">
-               <a class="nav-link" href="upload.php">
+               <a class="nav-link" href="upload.html">
                <i class="fas fa-plus-circle fa-fw"></i>
                Upload Video
                </a>
@@ -76,9 +76,9 @@
                Osahan 
                </a>
                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="account.php"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
-                  <a class="dropdown-item" href="subscriptions.php"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
-                  <a class="dropdown-item" href="settings.php"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+                  <a class="dropdown-item" href="account.html"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+                  <a class="dropdown-item" href="subscriptions.html"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
+                  <a class="dropdown-item" href="settings.html"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
                </div>
@@ -89,31 +89,31 @@
          <!-- Sidebar -->
          <ul class="sidebar navbar-nav">
             <li class="nav-item active">
-               <a class="nav-link" href="index.php">
+               <a class="nav-link" href="index.html">
                <i class="fas fa-fw fa-home"></i>
                <span>Home</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="channels.php">
+               <a class="nav-link" href="channels.html">
                <i class="fas fa-fw fa-users"></i>
                <span>Channels</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="single-channel.php">
+               <a class="nav-link" href="single-channel.html">
                <i class="fas fa-fw fa-user-alt"></i>
                <span>Single Channel</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="video-page.php">
+               <a class="nav-link" href="video-page.html">
                <i class="fas fa-fw fa-video"></i>
                <span>Video Page</span>
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="upload-video.php">
+               <a class="nav-link" href="upload-video.html">
                <i class="fas fa-fw fa-cloud-upload-alt"></i>
                <span>Upload Video</span>
                </a>
@@ -125,47 +125,47 @@
                </a>
                <div class="dropdown-menu">
                   <h6 class="dropdown-header">Login Screens:</h6>
-                  <a class="dropdown-item" href="login.php">Login</a>
-                  <a class="dropdown-item" href="register.php">Register</a>
-                  <a class="dropdown-item" href="forgot-password.php">Forgot Password</a>
+                  <a class="dropdown-item" href="login.html">Login</a>
+                  <a class="dropdown-item" href="register.html">Register</a>
+                  <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
                   <div class="dropdown-divider"></div>
                   <h6 class="dropdown-header">Other Pages:</h6>
-                  <a class="dropdown-item" href="404.php">404 Page</a>
-                  <a class="dropdown-item" href="blank.php">Blank Page</a>
+                  <a class="dropdown-item" href="404.html">404 Page</a>
+                  <a class="dropdown-item" href="blank.html">Blank Page</a>
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="history-page.php">
+               <a class="nav-link" href="history-page.html">
                <i class="fas fa-fw fa-history"></i>
                <span>History Page</span>
                </a>
             </li>
             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="categories.php" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <a class="nav-link dropdown-toggle" href="categories.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-fw fa-list-alt"></i>
                <span>Categories</span>
                </a>
                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="categories.php">Movie</a>
-                  <a class="dropdown-item" href="categories.php">Music</a>
-                  <a class="dropdown-item" href="categories.php">Television</a>
+                  <a class="dropdown-item" href="categories.html">Movie</a>
+                  <a class="dropdown-item" href="categories.html">Music</a>
+                  <a class="dropdown-item" href="categories.html">Television</a>
                </div>
             </li>
             <li class="nav-item channel-sidebar-list">
                <h6>SUBSCRIPTIONS</h6>
                <ul>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s1.png"> Your Life 
                      </a>
                   </li>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s2.png"> Unboxing  <span class="badge badge-warning">2</span>
                      </a>
                   </li>
                   <li>
-                     <a href="subscriptions.php">
+                     <a href="subscriptions.html">
                      <img class="img-fluid" alt="" src="img/s3.png"> Product / Service  
                      </a>
                   </li>
@@ -215,56 +215,7 @@
                               </div>
                            </div>
                         </div>
-                        <div class="row">
-                           <div class="col-lg-3">
-                              <div class="form-group">
-                                 <label for="e3">Orientation</label>
-                                 <select id="e3" class="custom-select">
-                                    <option>Straight</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="col-lg-3">
-                              <div class="form-group">
-                                 <label for="e4">Privacy Settings</label>
-                                 <select id="e4" class="custom-select">
-                                    <option>Public</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="col-lg-3">
-                              <div class="form-group">
-                                 <label for="e5">Monetize</label>
-                                 <select id="e5" class="custom-select">
-                                    <option>Yes</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="col-lg-3">
-                              <div class="form-group">
-                                 <label for="e6">License</label>
-                                 <select id="e6" class="custom-select">
-                                    <option>Standard</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                 </select>
-                              </div>
-                           </div>
-                        </div>
+
                         <div class="row">
                            <div class="col-lg-5">
                               <div class="form-group">
@@ -274,13 +225,13 @@
                            </div>
                            <div class="col-lg-4">
                               <div class="form-group">
-                                 <label for="e8">Cast (Optional)</label>
-                                 <input type="text" placeholder="Nathan Drake," id="e8" class="form-control">
+                                 <label for="thumbnail">Thumbnail:</label>
+                                 <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
                               </div>
                            </div>
                            <div class="col-lg-3">
                               <div class="form-group">
-                                 <label for="e9">Language in Video (Optional)</label>
+                                 <label for="e9">Language in Video </label>
                                  <select id="e9" class="custom-select">
                                     <option>English</option>
                                     <option>2</option>
@@ -294,7 +245,7 @@
                         <div class="row ">
                            <div class="col-lg-12">
                               <div class="main-title">
-                                 <h6>Category ( you can select upto 6 categories )</h6>
+                                 <h6>Category ( you can select upto 1 categories )</h6>
                               </div>
                            </div>
                         </div>
@@ -303,140 +254,37 @@
                            <div class="col-lg-2 col-xs-6 col-4">
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                 <label class="custom-control-label" for="customCheck1">Abaft</label>
+                                 <label class="custom-control-label" for="customCheck1">News</label>
                               </div>
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                 <label class="custom-control-label" for="customCheck2">Brick</label>
+                                 <label class="custom-control-label" for="customCheck2">Education</label>
                               </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                 <label class="custom-control-label" for="customCheck3">Purpose</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                 <label class="custom-control-label" for="customCheck4">Shallow</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                 <label class="custom-control-label" for="customCheck5">Spray</label>
-                              </div>
+
                            </div>
                            <!-- checkbox 2col -->
                            <div class="col-lg-2 col-xs-6 col-4">
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="zcustomCheck1">
-                                 <label class="custom-control-label" for="zcustomCheck1">Cemetery</label>
+                                 <label class="custom-control-label" for="zcustomCheck1">Music</label>
                               </div>
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="zcustomCheck2">
-                                 <label class="custom-control-label" for="zcustomCheck2">Trouble</label>
+                                 <label class="custom-control-label" for="zcustomCheck2">Sport</label>
                               </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck3">
-                                 <label class="custom-control-label" for="zcustomCheck3">Pin</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck4">
-                                 <label class="custom-control-label" for="zcustomCheck4">Fall</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck5">
-                                 <label class="custom-control-label" for="zcustomCheck5">Leg</label>
-                              </div>
+
                            </div>
                            <!-- checkbox 3col -->
                            <div class="col-lg-2 col-xs-6 col-4">
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="czcustomCheck1">
-                                 <label class="custom-control-label" for="czcustomCheck1">Scissors</label>
+                                 <label class="custom-control-label" for="czcustomCheck1">Gaming</label>
                               </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck2">
-                                 <label class="custom-control-label" for="czcustomCheck2">Stitch</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck3">
-                                 <label class="custom-control-label" for="czcustomCheck3">Agonizing</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck4">
-                                 <label class="custom-control-label" for="czcustomCheck4">Rescue</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck5">
-                                 <label class="custom-control-label" for="czcustomCheck5">Quiet</label>
-                              </div>
-                           </div>
-                           <!-- checkbox 1col -->
-                           <div class="col-lg-2 col-xs-6 col-4">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                 <label class="custom-control-label" for="customCheck1">Abaft</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                 <label class="custom-control-label" for="customCheck2">Brick</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                 <label class="custom-control-label" for="customCheck3">Purpose</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                 <label class="custom-control-label" for="customCheck4">Shallow</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                 <label class="custom-control-label" for="customCheck5">Spray</label>
-                              </div>
-                           </div>
-                           <!-- checkbox 2col -->
-                           <div class="col-lg-2 col-xs-6 col-4">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck1">
-                                 <label class="custom-control-label" for="zcustomCheck1">Cemetery</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck2">
-                                 <label class="custom-control-label" for="zcustomCheck2">Trouble</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck3">
-                                 <label class="custom-control-label" for="zcustomCheck3">Pin</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck4">
-                                 <label class="custom-control-label" for="zcustomCheck4">Fall</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="zcustomCheck5">
-                                 <label class="custom-control-label" for="zcustomCheck5">Leg</label>
-                              </div>
-                           </div>
+                             </div>
+
+
                            <!-- checkbox 3col -->
-                           <div class="col-lg-2 col-xs-6 col-4">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck1">
-                                 <label class="custom-control-label" for="czcustomCheck1">Vessel</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck2">
-                                 <label class="custom-control-label" for="czcustomCheck2">Stitch</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck3">
-                                 <label class="custom-control-label" for="czcustomCheck3">Agonizing</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck4">
-                                 <label class="custom-control-label" for="czcustomCheck4">Rescue</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="czcustomCheck5">
-                                 <label class="custom-control-label" for="czcustomCheck5">Quiet</label>
-                              </div>
-                           </div>
+
                         </div>
                      </div>
                      <div class="osahan-area text-center mt-3">
@@ -491,7 +339,7 @@
                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" href="login.php">Logout</a>
+                  <a class="btn btn-primary" href="login.html">Logout</a>
                </div>
             </div>
          </div>
