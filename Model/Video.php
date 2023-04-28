@@ -1,7 +1,7 @@
 <?php
 class Video {
     private  $id;
-    private $category;
+    private Category $category;
     private $description;
     private $thumbnail;
     private $date;
@@ -9,6 +9,32 @@ class Video {
     private $views;
     private $url;
     private $userID;
+
+    /**
+     * @param $id
+     * @param Category $category
+     * @param $description
+     * @param $thumbnail
+     * @param $date
+     * @param $state
+     * @param $views
+     * @param $url
+     * @param $userID
+     */
+    public function __construct($id, Category $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
+    {
+        $this->id = $id;
+        $this->category = $category;
+        $this->description = $description;
+        $this->thumbnail = $thumbnail;
+        $this->date = $date;
+        $this->state = $state;
+        $this->views = $views;
+        $this->url = $url;
+        $this->userID = $userID;
+    }
+
+
 
     /**
      * @param $id
@@ -21,18 +47,7 @@ class Video {
      * @param $url
      * @param $userID
      */
-    public function __construct($id, $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
-    {
-        $this->id = $id;
-        $this->category = $category;
-        $this->description = $description;
-        $this->thumbnail = $thumbnail;
-        $this->date = $date;
-        $this->state = $state;
-        $this->views = $views;
-        $this->url = $url;
-        $this->userID = $userID;
-    }
+
 
 
     public function getId()
@@ -47,17 +62,25 @@ class Video {
         return $this;
     }
 
-    public function getCategory()
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
     {
         return $this->category;
     }
 
-
-    public function setCategory($category)
+    /**
+     * @param Category $category
+     * @return Video
+     */
+    public function setCategory(Category $category): Video
     {
         $this->category = $category;
         return $this;
     }
+
+
 
 
     public function getDescription()
@@ -154,5 +177,13 @@ class Video {
 
 
 
+
+}
+enum Category {
+    case SPORT;
+    case SOUND;
+    case PODCAST;
+    case EDUCATION;
+    case GAMING;
 
 }
