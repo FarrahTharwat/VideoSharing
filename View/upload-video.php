@@ -77,19 +77,9 @@ include 'nav.php';
                      <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <label for="thumbnail" class="file-upload-label">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <span>Upload a thumbnail image</span>
-                                </label>
-                                <div class="file-upload-wrapper">
-                                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
-                                    <div class="file-upload-preview">
-                                        <img src="#" alt="Thumbnail preview">
-                                        <div class="remove-preview">
-                                            <i class="fas fa-times-circle"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                <label for="thumbnail">Thumbnail:</label>
+                                <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
+                                <div class="file-upload-preview"></div>
                             </div>
 
 
@@ -184,28 +174,23 @@ include 'nav.php';
       </div>
    </div>
           <script>
-              const thumbnailInput = document.getElementById('thumbnail');
-              const preview = document.querySelector('.file-upload-preview img');
-              const removePreviewBtn = document.querySelector('.remove-preview');
+              const fileInput = document.getElementById('thumbnail');
+              const preview = document.querySelector('.file-upload-preview');
 
-              thumbnailInput.addEventListener('change', function() {
+              fileInput.addEventListener('change', function() {
                   const file = this.files[0];
                   if (file) {
                       const reader = new FileReader();
                       reader.onload = function() {
-                          preview.src = reader.result;
-                          preview.parentElement.style.display = 'block';
+                          preview.style.backgroundImage = `url(${reader.result})`;
                       }
                       reader.readAsDataURL(file);
+                  } else {
+                      preview.style.backgroundImage = null;
                   }
               });
-
-              removePreviewBtn.addEventListener('click', function() {
-                  preview.src = '#';
-                  preview.parentElement.style.display = 'none';
-                  thumbnailInput.value = null;
-              });
           </script>
+
 
           <!-- Bootstrap core JavaScript-->
    <script src="vendor/jquery/jquery.min.js"></script>
