@@ -1,11 +1,12 @@
 <?php
 include 'CRUD.php';
+include '../Model/Database.php';
 class ManageVideo implements CRUD
 {
 
     public function create($entity)
-    {
-        // TODO: Implement create() method.
+    { $conn = connection();
+
     }
 
     public function delete($id)
