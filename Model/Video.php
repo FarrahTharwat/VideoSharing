@@ -34,6 +34,19 @@ class Video {
         $this->userID = $userID;
     }
 
+    /**
+     * @param $id
+     * @param $category
+     * @param $description
+     * @param $thumbnail
+     * @param $date
+     * @param $state
+     * @param $views
+     * @param $url
+     * @param $userID
+     */
+
+
 
 
     /**
@@ -79,6 +92,8 @@ class Video {
         $this->category = $category;
         return $this;
     }
+
+
 
 
 
@@ -177,13 +192,5 @@ class Video {
 
 
 
-
-}
-enum Category {
-    case SPORT;
-    case SOUND;
-    case PODCAST;
-    case EDUCATION;
-    case GAMING;
 
 }
