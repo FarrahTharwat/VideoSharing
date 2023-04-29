@@ -1,7 +1,8 @@
 <?php
 class Video {
     private  $id;
-    private Category $category;
+    private $title;
+    private $category;
     private $description;
     private $thumbnail;
     private $date;
@@ -12,7 +13,8 @@ class Video {
 
     /**
      * @param $id
-     * @param Category $category
+     * @param $title
+     * @param $category
      * @param $description
      * @param $thumbnail
      * @param $date
@@ -21,9 +23,10 @@ class Video {
      * @param $url
      * @param $userID
      */
-    public function __construct($id, Category $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
+    public function __construct($id, $title, $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
     {
         $this->id = $id;
+        $this->title = $title;
         $this->category = $category;
         $this->description = $description;
         $this->thumbnail = $thumbnail;
@@ -33,6 +36,18 @@ class Video {
         $this->url = $url;
         $this->userID = $userID;
     }
+
+    /**
+     * @param $id
+     * @param  $category
+     * @param $description
+     * @param $thumbnail
+     * @param $date
+     * @param $state
+     * @param $views
+     * @param $url
+     * @param $userID
+     */
 
     /**
      * @param $id
@@ -76,22 +91,43 @@ class Video {
     }
 
     /**
-     * @return Category
+     * @return mixed
      */
-    public function getCategory(): Category
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     * @return Video
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
     {
         return $this->category;
     }
 
     /**
-     * @param Category $category
+     * @param mixed $category
      * @return Video
      */
-    public function setCategory(Category $category): Video
+    public function setCategory($category)
     {
         $this->category = $category;
         return $this;
     }
+
+
 
 
 
