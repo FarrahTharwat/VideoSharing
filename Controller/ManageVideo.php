@@ -49,10 +49,40 @@ class ManageVideo implements CRUD
         }
     }
 
-    public function retrive($id)
+    public function retrive($userId)
     {
-        // TODO: Implement retrive() method.
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $query = "SELECT ID, Category, Title, Description, Thumbnail, Date, Status, Views, Url 
+              FROM video 
+              WHERE UserID = '$userId'";
+
+        $result = $conn->query($query);
+
+        $videos = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $video = array(
+                    'id' => $row['ID'],
+                    'category' => $row['Category'],
+                    'title' => $row['Title'],
+                    'description' => $row['Description'],
+                    'thumbnail' => $row['Thumbnail'],
+                    'date' => $row['Date'],
+                    'status' => $row['Status'],
+                    'views' => $row['Views'],
+                    'url' => $row['Url']
+                );
+
+                $videos[] = $video;
+            }
+        }
+
+        return $videos;
     }
+
 
     public function update($video)
     {   $database = new Database();
@@ -89,5 +119,17 @@ class ManageVideo implements CRUD
     }
 }
  $manage = new ManageVideo();
-$vide = new Video(0,"greatt","podcast","okay","haha","2020-1-2",0,0,"wow",1);
- $manage->update($vide);
+$videos = $manage->retrive(1);
+
+// Loop through the videos and display their information
+foreach ($videos as $video) {
+    echo "ID: " . $video['id'] . "<br>";
+    echo "Category: " . $video['category'] . "<br>";
+    echo "Title: " . $video['title'] . "<br>";
+    echo "Description: " . $video['description'] . "<br>";
+    echo "Thumbnail: " . $video['thumbnail'] . "<br>";
+    echo "Date: " . $video['date'] . "<br>";
+    echo "Status: " . $video['status'] . "<br>";
+    echo "Views: " . $video['views'] . "<br>";
+    echo "URL: " . $video['url'] . "<br><br>";
+}
