@@ -54,7 +54,7 @@ class ManageVideo implements CRUD
         $database = new Database();
         $conn = $database->getConn();
 
-        $query = "SELECT ID, Category, Title, Description, Thumbnail, Date, Status, Views, Url 
+        $query = "SELECT ID, Category, Title, Description, Thumbnail, Date, Status, Views, Url
               FROM video 
               WHERE UserID = '$userId'";
 
@@ -64,16 +64,18 @@ class ManageVideo implements CRUD
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $video = array(
-                    'id' => $row['ID'],
-                    'category' => $row['Category'],
-                    'title' => $row['Title'],
-                    'description' => $row['Description'],
-                    'thumbnail' => $row['Thumbnail'],
-                    'date' => $row['Date'],
-                    'status' => $row['Status'],
-                    'views' => $row['Views'],
-                    'url' => $row['Url']
+                $video = new Video(
+                    $row['ID'],
+                    $row['Title'],
+                    $row['Category'],
+                    $row['Description'],
+                    $row['Thumbnail'],
+                    $row['Date'],
+                    $row['Status'],
+                    $row['Views'],
+                    $row['Url'],
+                    $userId
+
                 );
 
                 $videos[] = $video;
@@ -123,13 +125,13 @@ $videos = $manage->retrive(1);
 
 // Loop through the videos and display their information
 foreach ($videos as $video) {
-    echo "ID: " . $video['id'] . "<br>";
-    echo "Category: " . $video['category'] . "<br>";
-    echo "Title: " . $video['title'] . "<br>";
-    echo "Description: " . $video['description'] . "<br>";
-    echo "Thumbnail: " . $video['thumbnail'] . "<br>";
-    echo "Date: " . $video['date'] . "<br>";
-    echo "Status: " . $video['status'] . "<br>";
-    echo "Views: " . $video['views'] . "<br>";
-    echo "URL: " . $video['url'] . "<br><br>";
+    echo "ID: " . $video->getId() . "<br>";
+    echo "Category: " . $video->getCategory() . "<br>";
+    echo "Title: " . $video->getTitle() . "<br>";
+    echo "Description: " . $video->getDescription() . "<br>";
+    echo "Thumbnail: " . $video->getThumbnail() . "<br>";
+    echo "Date: " . $video->getDate() . "<br>";
+    echo "Status: " . $video->getState() . "<br>";
+    echo "Views: " . $video->getViews() . "<br>";
+    echo "URL: " . $video->getUrl() . "<br><br>";
 }
