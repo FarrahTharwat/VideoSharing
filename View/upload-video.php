@@ -78,8 +78,11 @@ include 'nav.php';
                      <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <label for="thumbnail">Thumbnail:</label>
-                                <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
+                                <label for="thumbnail" class="file-upload-label">
+                                    <span> Thumbnail:Choose a image</span>
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                                <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
                                 <div class="file-upload-preview"></div>
                             </div>
 
@@ -175,22 +178,20 @@ include 'nav.php';
       </div>
    </div>
           <script>
-              const fileInput = document.getElementById('thumbnail');
-              const preview = document.querySelector('.file-upload-preview');
+              // Get the input element and button element
+              const inputElement = document.getElementById('thumbnail');
+              const buttonElement = document.querySelector('.file-upload-label');
 
-              fileInput.addEventListener('change', function() {
-                  const file = this.files[0];
-                  if (file) {
-                      const reader = new FileReader();
-                      reader.onload = function() {
-                          preview.style.backgroundImage = `url(${reader.result})`;
-                      }
-                      reader.readAsDataURL(file);
-                  } else {
-                      preview.style.backgroundImage = null;
-                  }
+              // Add event listener to input element to detect file selection
+              inputElement.addEventListener('change', () => {
+                  // Get the file name
+                  const fileName = inputElement.files[0].name;
+
+                  // Set the file name as the text of the button
+                  buttonElement.textContent = `Thumbnail: ${fileName}`;
               });
           </script>
+
 
 
           <!-- Bootstrap core JavaScript-->
