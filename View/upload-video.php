@@ -77,12 +77,19 @@ include 'nav.php';
                      <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                              <label for="thumbnail" class="file-upload-label">
-                                <span> Thumbnail:Choose a image</span>
-                                <i class="fas fa-upload"></i>
-                              </label>
-                              <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
-                              <div class="file-upload-preview"></div>
+                                <label for="thumbnail" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Upload a thumbnail image</span>
+                                </label>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
+                                    <div class="file-upload-preview">
+                                        <img src="#" alt="Thumbnail preview">
+                                        <div class="remove-preview">
+                                            <i class="fas fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -177,18 +184,30 @@ include 'nav.php';
       </div>
    </div>
           <script>
-              const fileUpload = document.querySelector('.file-upload-input');
-              const uploadLabel = document.querySelector('.file-upload-label span');
+              const thumbnailInput = document.getElementById('thumbnail');
+              const preview = document.querySelector('.file-upload-preview img');
+              const removePreviewBtn = document.querySelector('.remove-preview');
 
-              fileUpload.addEventListener('change', function() {
-                  if (fileUpload.value) {
-                      uploadLabel.innerHTML = fileUpload.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-                  } else {
-                      uploadLabel.innerHTML = 'Choose a file';
+              thumbnailInput.addEventListener('change', function() {
+                  const file = this.files[0];
+                  if (file) {
+                      const reader = new FileReader();
+                      reader.onload = function() {
+                          preview.src = reader.result;
+                          preview.parentElement.style.display = 'block';
+                      }
+                      reader.readAsDataURL(file);
                   }
               });
+
+              removePreviewBtn.addEventListener('click', function() {
+                  preview.src = '#';
+                  preview.parentElement.style.display = 'none';
+                  thumbnailInput.value = null;
+              });
           </script>
-   <!-- Bootstrap core JavaScript-->
+
+          <!-- Bootstrap core JavaScript-->
    <script src="vendor/jquery/jquery.min.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <!-- Core plugin JavaScript-->
