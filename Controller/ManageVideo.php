@@ -6,7 +6,20 @@ include'../Model/Video.php';
 
 class ManageVideo implements CRUD
 {
+    private static $instance = null;
+    private function __construct()
+    {
+    }
 
+    /**
+     * @return null
+     */
+    public static function getInstance()
+    {       if(self::$instance==null) {
+        self::$instance = new ManageVideo();
+    }
+        return self::$instance;
+    }
     public function create($video)
     {    //Get database connection
         $database = new Database();
@@ -158,7 +171,7 @@ class ManageVideo implements CRUD
 
 
 
-$manageVideo = new ManageVideo();
+$manageVideo = ManageVideo::getInstance();
 $outputDir = 'F:\XAMPP\htdocs\VideoSharing\Controller';
 $inputFile = 'F:\XAMPP\htdocs\VideoSharing\Controller\Sample.mp4';
 $manageVideo.divide_video_quality($inputFile,$outputDir);
