@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="857910d7-dceb-4430-bdcd-28c992f24905" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/View/css/osahan.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/css/osahan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/ManageVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ManageVideo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +57,9 @@
       <option name="presentableId" value="Default" />
       <updated>1682757833961</updated>
       <workItem from="1682757835536" duration="11574000" />
+      <workItem from="1682875268043" duration="269000" />
+      <workItem from="1682875643852" duration="1625000" />
+      <workItem from="1682877451087" duration="39000" />
     </task>
     <servers />
   </component>
