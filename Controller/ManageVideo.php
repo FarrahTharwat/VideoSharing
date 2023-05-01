@@ -162,7 +162,7 @@ class ManageVideo implements CRUD
         }
 
 
-        echo'wow';
+       // echo'wow';
 
     }
 }
@@ -171,7 +171,7 @@ class ManageVideo implements CRUD
 
 
 
-$manageVideo = ManageVideo::getInstance();
-$outputDir = 'F:\XAMPP\htdocs\VideoSharing\Controller';
-$inputFile = 'F:\XAMPP\htdocs\VideoSharing\Controller\Sample.mp4';
-$manageVideo.divide_video_quality($inputFile,$outputDir);
+//$manageVideo = ManageVideo::getInstance();
+//$outputDir = 'F:\XAMPP\htdocs\VideoSharing\Controller';
+//$inputFile = 'F:\XAMPP\htdocs\VideoSharing\Controller\Sample.mp4';
+//$manageVideo.divide_video_quality($inputFile,$outputDir);

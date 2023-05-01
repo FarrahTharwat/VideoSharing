@@ -1,5 +1,10 @@
 <?php
-include '../Controller/ManageVideo.php';
+
+include_once '../Controller/ManageVideo.php';
+
+?>
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,25 +54,7 @@ include 'nav.php';
                         <div class="mt-4">
                            <!-- <a class="btn btn-outline-primary" href="upload-video.php"></a> -->
                            <button class="btn btn-outline-primary">Upload Video</button>
-<?php
-                            if (isset($_FILES["video-file"]) && $_FILES["video-file"]["error"] === UPLOAD_ERR_OK) {
-                                $tempPath = $_FILES["video-file"]["tmp_name"];
-                                $extenstion = pathinfo($_FILES["video-file"]["name"], PATHINFO_EXTENSION);
-                                $uploadDir = "F:/XAMPP/htdocs/VideoSharing/View/Videos/";
-                                $uploadPath = $uploadDir . $_FILES['video-file']['name'];
-                                $_POST['url'] = $uploadPath;
-                                $check = new ManageVideo();
-                                if ($check->checkExtension($extenstion)) {
-                                    echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
-                                    exit;
-                                }
-                                else
-                                    echo '<script>
-                              alert("Enter valid type(mp4,avi,wmv)");
-                              </script>';
 
-                            }
-                            ?>
 
 
 

@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+include_once '../Controller/ManageVideo.php';
+include_once '../Model/Video.php';
+
+session_start();
+?>
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="Askbootstrap">
    <meta name="author" content="Askbootstrap">
-   <title>VIDOE - Video Streaming Website HTML Template</title>
+   <title>VIDEO - Video Streaming Website HTML Template</title>
    <!-- Favicon Icon -->
    <link rel="icon" type="image/png" href="img/favicon.png">
    <!-- Bootstrap core CSS-->
@@ -15,6 +21,8 @@
    <!-- Custom fonts for this template-->
    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="css/uploadVideoButtonVideo.css">
+    <
     <link rel="stylesheet" type="text/css" href="css/upload%20video.css">
    <link href="css/osahan.css" rel="stylesheet">
    <!-- Owl Carousel -->
@@ -24,6 +32,7 @@
 
 <body id="page-top">
 <!--header-->
+
 <?php
 include 'header.php';
 ?>
@@ -57,20 +66,23 @@ include 'nav.php';
                </div>
             </div>
             <hr>
+
+             <form action="upload-video.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                <div class="col-lg-12">
                   <div class="osahan-form">
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="e1">Video Title</label>
-                              <input type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="e1" class="form-control">
+                              <label  for="title">Video Title</label>
+                              <input name="title"   type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="title" class="form-control">
                            </div>
                         </div>
+
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="e2">About</label>
-                              <textarea rows="3" id="e2" name="e2" class="form-control">Description</textarea>
+                              <label for="description">About</label>
+                              <textarea rows="3" id="description" name="description" class="form-control" placeholder="write description"></textarea>
                            </div>
                         </div>
                      </div>
@@ -82,15 +94,24 @@ include 'nav.php';
                                     <span> Thumbnail:Choose a image</span>
                                     <i class="fas fa-upload"></i>
                                 </label>
-                                <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
+                                <input  type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
                                 <div class="file-upload-preview"></div>
                             </div>
 
 
                         </div>
                         <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="video" class="file-upload-label-video">
+                                    <span>Video: Choose a file</span>
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                                <input type="file" id="video" name="video" accept="video/*" class="file-upload-input-video">
+                                <div class="file-upload-preview"></div>
+                            </div>
                         </div>
                         <div class="col-lg-3">
+
                         </div>
                      </div>
                      <div class="row ">
@@ -104,32 +125,32 @@ include 'nav.php';
                         <!-- checkbox 1col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category"  class="custom-control-input" id="customCheck1">
-                              <label class="custom-control-label" for="customCheck1">Podcast</label>
+                              <input type="radio" name="category"  class="custom-control-input" id="category">
+                              <label class="custom-control-label" for="category">Podcast</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="customCheck2">
-                              <label class="custom-control-label" for="customCheck2">Education</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category2">
+                              <label class="custom-control-label" for="category2">Education</label>
                            </div>
 
                         </div>
                         <!-- checkbox 2col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="zcustomCheck1">
-                              <label class="custom-control-label" for="zcustomCheck1">Sounds</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category3">
+                              <label class="custom-control-label" for="category3">Sounds</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="zcustomCheck2">
-                              <label class="custom-control-label" for="zcustomCheck2">Sport</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category4">
+                              <label class="custom-control-label" for="category4">Sport</label>
                            </div>
 
                         </div>
                         <!-- checkbox 3col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="czcustomCheck1">
-                              <label class="custom-control-label" for="czcustomCheck1">Gaming</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category5">
+                              <label class="custom-control-label" for="category5">Gaming</label>
                            </div>
                         </div>
 
@@ -140,6 +161,53 @@ include 'nav.php';
                   </div>
                   <div class="osahan-area text-center mt-3">
                      <button class="btn btn-outline-primary">Upload</button>
+
+                      <?php
+
+                      //echo $_FILES['video-file']['name'];
+                      if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+                              $title = $_POST['title'];
+
+
+                              $description = $_POST["description"];
+
+                          $thumbnail = $_POST['thumbnail'];
+
+                              $category = $_POST["category"];
+
+                          $errors = [];
+                          if (empty($title)) {
+                              $errors[] = "Title is required";
+                          }
+                          if (empty($description)) {
+                              $errors[] = "Description is required";
+                          }
+                          if (empty($category)) {
+                              $errors[] = "Category is required";
+                          }
+                          if ($_FILES["thumbnail"]["error"] !== UPLOAD_ERR_OK) {
+                              $errors[] = "Thumbnail upload error";
+                          }
+
+                          if (count($errors) === 0) {
+                              // Save the thumbnail to a directory on the server
+                              $thumbnailDir = "F:/XAMPP/htdocs/VideoSharing/View/Thumbnails/";
+                              $thumbnailName = uniqid() . '_' . basename($_FILES["thumbnail"]["name"]);
+                              $thumbnailPath = $thumbnailDir . $thumbnailName;
+                              move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $thumbnailPath);
+
+//                              $video_path = $_SESSION['video_path'];
+//                              $videoName = basename($video_path);
+
+                              $video = new Video(25, $title, $category, $description, $thumbnailPath, "2023-05-01", "published", 100,"url", 22);
+                              $upload_insert =  ManageVideo::getInstance();
+                              $upload_insert->create($video);
+                              echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
+                              exit;
+                          }
+                      }
+                      ?>
                   </div>
                   <hr>
                   <div class="terms text-center">
@@ -148,6 +216,7 @@ include 'nav.php';
                   </div>
                </div>
             </div>
+             </form>
          </div>
          <!-- /.container-fluid -->
          <!-- Sticky Footer -->
@@ -179,6 +248,20 @@ include 'nav.php';
    </div>
           <script>
               // Get the input element and button element
+              const inputElement = document.getElementById('video');
+              const buttonElement = document.querySelector('.file-upload-label-video');
+
+              // Add event listener to input element to detect file selection
+              inputElement.addEventListener('change', () => {
+                  // Get the file name
+                  const fileName = inputElement.files[0].name;
+
+                  // Set the file name as the text of the button
+                  buttonElement.textContent = `Video: ${fileName}`;
+              });
+          </script>
+          <script>
+              // Get the input element and button element
               const inputElement = document.getElementById('thumbnail');
               const buttonElement = document.querySelector('.file-upload-label');
 
@@ -191,6 +274,28 @@ include 'nav.php';
                   buttonElement.textContent = `Thumbnail: ${fileName}`;
               });
           </script>
+<!--title constraints-->
+          <script>
+              const titleInput = document.getElementById("title");
+
+              titleInput.addEventListener("input", function(event) {
+                  const titleValue = event.target.value;
+
+                  // Check if the title is too long (more than 50 characters)
+                  if (titleValue.length > 50) {
+                      event.target.setCustomValidity("Title is too long. Maximum length is 50 characters.");
+                  }
+                  // Check if the title is empty
+                  else if (!titleValue.trim()) {
+                      event.target.setCustomValidity("Please enter a title.");
+                  }
+                  else {
+                      event.target.setCustomValidity("");
+                  }
+              });
+          </script>
+
+          <!-- desciption constraints-->
 
 
 
