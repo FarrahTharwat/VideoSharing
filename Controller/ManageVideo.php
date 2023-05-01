@@ -132,7 +132,42 @@ class ManageVideo implements CRUD
             return false;
 
     }
-    function divide_video_quality($input_file, $output_path) {
+    function divide_video_quality($videoName)
+    {   $dirName = pathinfo($videoName,PATHINFO_FILENAME);
+        $dirName=basename($dirName);
+        $input_file='../View/Videos/'.$dirName.'/'.$videoName;
+        $output_path='../View/Videos/'.$dirName;
+        // Define the quality versions and their parameters
+        $qualities = [
+            [
+                'width' => 640,
+                'height' => 360,
+                'bitrate' => '800k',
+            ],
+            [
+                'width' => 256,
+                'height' => 144,
+                'bitrate' => '200k',
+            ],
+            [
+                'width' => 426,
+                'height' => 240,
+                'bitrate' => '400k',
+            ],
+        ];
+
+        // Loop through the quality versions and generate the output files
+        foreach ($qualities as $quality) {
+            $output_file = $output_path . '/' . $dirName .  '_' .$quality['height'] .  '.mp4';
+
+            $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
+
+            exec($cmd);
+
+        }
+    }
+  /*  function divide_video_quality($input_file, $output_path)
+    {
         // Define the quality versions and their parameters
         $qualities = [
             [
@@ -160,18 +195,20 @@ class ManageVideo implements CRUD
 
             exec($cmd);
         }
-
-
-       // echo'wow';
-
     }
+    */
+
+
+
 }
 
 
 
 
 
-//$manageVideo = ManageVideo::getInstance();
-//$outputDir = 'F:\XAMPP\htdocs\VideoSharing\Controller';
-//$inputFile = 'F:\XAMPP\htdocs\VideoSharing\Controller\Sample.mp4';
-//$manageVideo.divide_video_quality($inputFile,$outputDir);
+
+/*$manageVideo = ManageVideo::getInstance();
+$outputDir = 'F:\XAMPP\htdocs\VideoSharing\View\Videos';
+$inputFile = 'F:\XAMPP\htdocs\VideoSharing/View\Videos\Sample.mp4';
+$manageVideo->divide_video_quality($inputFile,$outputDir);
+*/

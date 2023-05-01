@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="857910d7-dceb-4430-bdcd-28c992f24905" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Controller/Sample.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Videos/Sample.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Videos/Sample/Sample_144.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Videos/Sample/Sample_240.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Videos/Sample/Sample_360.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Videos/Sample/first page background.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/ManageVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ManageVideo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/upload-video.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/upload-video.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +68,7 @@
       <workItem from="1682875268043" duration="269000" />
       <workItem from="1682875643852" duration="1625000" />
       <workItem from="1682877451087" duration="811000" />
+      <workItem from="1682974043390" duration="4309000" />
     </task>
     <servers />
   </component>
