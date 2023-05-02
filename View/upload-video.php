@@ -166,17 +166,16 @@ include 'nav.php';
 
                       //echo $_FILES['video-file']['name'];
                       if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+                          $manage =  ManageVideo::getInstance();
                               $title = $_POST['title'];
 
-
                               $description = $_POST["description"];
-
-                          $thumbnail = $_POST['thumbnail'];
-
                               $category = $_POST["category"];
 
-                          $errors = [];
+                              //get filename
+
+
+                              $errors = [];
                           if (empty($title)) {
                               $errors[] = "Title is required";
                           }
@@ -190,19 +189,39 @@ include 'nav.php';
                               $errors[] = "Thumbnail upload error";
                           }
 
+
+
                           if (count($errors) === 0) {
                               // Save the thumbnail to a directory on the server
-                              $thumbnailDir = "F:/XAMPP/htdocs/VideoSharing/View/Thumbnails/";
-                              $thumbnailName = uniqid() . '_' . basename($_FILES["thumbnail"]["name"]);
-                              $thumbnailPath = $thumbnailDir . $thumbnailName;
-                              move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $thumbnailPath);
 
-//                              $video_path = $_SESSION['video_path'];
-//                              $videoName = basename($video_path);
+                              $videoName = pathinfo($_FILES['video']['name'],PATHINFO_FILENAME);
+                              $videoName = basename($videoName);
 
-                              $video = new Video(25, $title, $category, $description, $thumbnailPath, "2023-05-01", "published", 100,"url", 22);
-                              $upload_insert =  ManageVideo::getInstance();
-                              $upload_insert->create($video);
+                              //create new directory with video name
+                              $uploadDir = '../View/Videos/'.$videoName;
+                              mkdir($uploadDir);
+
+                              //move video to the directory
+                              $uploadVideoPath = $uploadDir .'/'. $_FILES['video']['name'];
+                              move_uploaded_file($_FILES['video']['tmp_name'],$uploadVideoPath);
+
+                              //divide video into qualities
+                              $manage->divide_video_quality($_FILES['video']['name']);
+
+                              //remove the video and keep qualities only
+                              unlink($uploadVideoPath);
+
+                              // move the thumbnail into the video directory
+                              $uploadThumbnailPath=$uploadDir.'/'.$_FILES['thumbnail']['name'];
+                              move_uploaded_file($_FILES['thumbnail']['tmp_name'],$uploadThumbnailPath);
+
+
+
+
+
+                              $video = new Video(25, $title, $category, $description, $uploadThumbnailPath, "2023-05-01", "published", 100,$uploadVideoPath, 1);
+
+                              $manage->create($video);
                               echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
                               exit;
                           }
