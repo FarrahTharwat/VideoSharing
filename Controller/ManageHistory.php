@@ -3,7 +3,7 @@ include 'CRUD.php';
 include 'Database.php';
 include'../Model/Playlist.php';
 include'../Model/Video.php';
-include'../Model/user.php';
+include'../Model/User.php';
 include'../Model/History.php';
 
 /**
@@ -18,33 +18,53 @@ class ManageHistory implements CRUD{
     //Till we finish the front, dont forget the add and remove (can implement the function multiple times?)
     function create($History){
         //Get database connection
-        $database = new Database();
-        $conn = $database->getConn();
-        
+        //theres no creation of history
     }
     /**
      * Summary of delete
-     * @param mixed $id
+     * @param mixed $userID
      * @return void
      */
-    public function delete($id){
+    public function delete($userID){
      // TODO: Implement delete() method.
-    }
+     // delete -> deletes all history
+         $database = new Database();
+         $conn = $database->getConn();
+ 
+         $query="DELETE FROM History where UserID = '$userID'";
+ 
+         if ($conn->query($query) === TRUE) {
+             echo "History Deleted successfully";
+         } else {
+             echo "Error: " . $query . "<br>" . $conn->error;
+         }
+     }
     /**
      * Summary of retrive
      * @param mixed $id
      * @return void
      */
-    public function retrive($id)
-    {
+    public function retrive($id){
      // TODO: Implement retrive() method.
+         
+
     }
     /**
      * Summary of update
-     * @param mixed $Playlist
+     * @param mixed $videoID
      * @return void
      */
     public function update($History){
      // TODO: Implement update() method. 
+         $database = new Database();
+         $conn = $database->getConn();
+         $userID = $History->getUserID();
+         $videoID = $History->getVideoID();
+         $query= "DELETE FROM History where VideoID  = '$videoID' and UserID = '$userID'";
+         if ($conn->query($query) === TRUE) {
+            echo "Video Deleted successfully";
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
     }
 }

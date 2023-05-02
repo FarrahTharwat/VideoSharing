@@ -45,6 +45,17 @@ class ManagePlaylist implements CRUD{
      */
     public function delete($id){
      // TODO: Implement delete() method.
+     $database = new Database();
+     $conn = $database->getConn();
+
+     $query="DELETE FROM playlist where ID = '$id'";
+     $query1 = "DELETE FROM videoplaylist where PlaylistID = '$id'";
+
+     if ($conn->query($query) === TRUE || $conn->query($query1) === TRUE) {
+         echo "Playlist Deleted successfully";
+     } else {
+         echo "Error: " . $query . "<br>" . $conn->error;
+     }
     }
     /**
      * Summary of retrive
