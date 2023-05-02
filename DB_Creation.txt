@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 04:47 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost
+-- Generation Time: May 02, 2023 at 09:24 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comment` (
-  `ID` int(11) NOT NULL DEFAULT 1,
+  `ID` int(11) NOT NULL,
   `Date` date DEFAULT NULL,
   `Content` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,8 +53,8 @@ CREATE TABLE `history` (
 --
 
 CREATE TABLE `lookup` (
-  `UserID` int(11) NOT NULL,
   `VideoID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
   `ReactType` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,10 +66,10 @@ CREATE TABLE `lookup` (
 
 CREATE TABLE `playlist` (
   `ID` int(11) NOT NULL,
-  `numOfVideos` int(11) DEFAULT 0,
+  `numOfVideos` int(11) DEFAULT 1,
   `name` varchar(50) DEFAULT NULL,
   `Description` varchar(50) DEFAULT NULL,
-  `UserID` int(11) DEFAULT NULL
+  `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91,7 +91,7 @@ CREATE TABLE `subscribed` (
 --
 
 CREATE TABLE `user` (
-  `ID` int(11) NOT NULL DEFAULT 0,
+  `ID` int(11) NOT NULL,
   `Email` varchar(100) DEFAULT NULL,
   `Name` varchar(50) DEFAULT NULL,
   `Password` varchar(50) DEFAULT NULL,
@@ -156,13 +156,15 @@ ALTER TABLE `comment`
 -- Indexes for table `history`
 --
 ALTER TABLE `history`
-  ADD PRIMARY KEY (`UserID`,`VideoID`);
+  ADD PRIMARY KEY (`UserID`,`VideoID`),
+  ADD KEY `VideoID` (`VideoID`,`UserID`) USING BTREE;
 
 --
 -- Indexes for table `lookup`
 --
 ALTER TABLE `lookup`
-  ADD PRIMARY KEY (`UserID`,`VideoID`);
+  ADD PRIMARY KEY (`UserID`,`VideoID`) USING BTREE,
+  ADD KEY `VideoID` (`VideoID`,`UserID`) USING BTREE;
 
 --
 -- Indexes for table `playlist`
@@ -187,7 +189,9 @@ ALTER TABLE `user`
 -- Indexes for table `usercomment`
 --
 ALTER TABLE `usercomment`
-  ADD PRIMARY KEY (`UserID`,`VideoID`,`CommentID`);
+  ADD PRIMARY KEY (`UserID`,`VideoID`,`CommentID`),
+  ADD KEY `CommentID` (`CommentID`),
+  ADD KEY `VideoID` (`VideoID`);
 
 --
 -- Indexes for table `video`
@@ -200,23 +204,81 @@ ALTER TABLE `video`
 -- Indexes for table `videoplaylist`
 --
 ALTER TABLE `videoplaylist`
-  ADD PRIMARY KEY (`VideoID`,`PlaylistID`);
+  ADD PRIMARY KEY (`VideoID`,`PlaylistID`),
+  ADD KEY `PlaylistID` (`PlaylistID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `playlist`
+--
+ALTER TABLE `playlist`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `history`
+--
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`VideoID`) REFERENCES `video` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `history_ibfk_3` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `lookup`
+--
+ALTER TABLE `lookup`
+  ADD CONSTRAINT `lookup_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lookup_ibfk_2` FOREIGN KEY (`VideoID`) REFERENCES `video` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `playlist`
 --
 ALTER TABLE `playlist`
-  ADD CONSTRAINT `playlist_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
+  ADD CONSTRAINT `playlist_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `usercomment`
+--
+ALTER TABLE `usercomment`
+  ADD CONSTRAINT `usercomment_ibfk_1` FOREIGN KEY (`CommentID`) REFERENCES `comment` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usercomment_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usercomment_ibfk_3` FOREIGN KEY (`VideoID`) REFERENCES `video` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `video`
 --
 ALTER TABLE `video`
-  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
+  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `videoplaylist`
+--
+ALTER TABLE `videoplaylist`
+  ADD CONSTRAINT `videoplaylist_ibfk_1` FOREIGN KEY (`PlaylistID`) REFERENCES `playlist` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `videoplaylist_ibfk_2` FOREIGN KEY (`VideoID`) REFERENCES `video` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
