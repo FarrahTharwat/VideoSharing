@@ -1,6 +1,54 @@
+<?php
+
+require_once '../Model/User.php';
+require_once '../Controller/AuthController.php';
+
+session_start();
+
+$errMsg = "";
+
+if(isset($_POST['email']) && isset($_POST['password']))
+{
+   if(!empty($_POST['email']) && !empty($_POST['password']))
+   {
+      $user = new User();
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      
+      $user->setEmail($email);
+      $user->setPassword($password);
+
+      $auth = new AuthController();
+      $loginResult = $auth->login($user);
+
+      if(!$loginResult)
+      {         
+         $errMsg = $_SESSION["errMsg"];
+      }
+      else
+      {         
+         $_SESSION["userID"] = $loginResult["ID"];
+         $_SESSION["userEmail"] = $loginResult["Email"];
+         $_SESSION["userName"] = $loginResult["Name"];
+         $errMsg = "No Error";
+         header("location: index.php");
+      }
+   }
+   
+   else
+   {
+      $errMsg = "Please fill all the fields";
+   }
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-   
+
 <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,16 +77,44 @@
                      <div class="text-center mb-5 login-main-left-header pt-4">
                         <img src="img/favicon.png" class="img-fluid" alt="LOGO">
                         <h5 class="mt-3 mb-3">Welcome to Vidoe</h5>
-                        <p>It is a long established fact that a reader <br> will be distracted by the readable.</p>
                      </div>
-                     <form action="https://askbootstrap.com/preview/vidoe-v1-1/index.php">
+
+                     <?php
+                        if($errMsg!="")
+                        {
+                           ?>
+                           <div class="alert alert-danger" role="alert">
+                              <?php echo $errMsg ?>
+                           </div>
+                           <?php
+
+                        }
+                     ?>
+                     <form action="login.php" method="POST">
                         <div class="form-group">
-                           <label>Mobile number</label>
-                           <input type="text" class="form-control" placeholder="Enter mobile number">
+                           <label>Email</label>
+                           <div class="login-icons">
+                              <i class="fas fa-regular fa-envelope login-icon"></i>
+                              <input type="text" name="email" class="form-control login-form" placeholder="Enter your email">
+                           </div>
                         </div>
+
+                        <!-- <div class="input-group">
+                           <div class="input-group-append">
+                              <button class="btn btn-light" type="button">
+                              <i class="fas fa-solid fa-lock login-icon"></i>
+                              </button>
+                           </div>
+                           <input type="password" class="form-control" placeholder="Enter your password">
+                        </div>
+ -->
+
                         <div class="form-group">
                            <label>Password</label>
-                           <input type="password" class="form-control" placeholder="Password">
+                           <div class="login-icons">
+                              <i class="fas fa-solid fa-lock login-icon"></i>
+                              <input type="password" name="password" class="form-control login-form" placeholder="Enter your password">
+                           </div>
                         </div>
                         <div class="mt-4">
                            <div class="row">

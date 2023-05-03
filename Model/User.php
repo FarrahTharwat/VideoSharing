@@ -2,91 +2,86 @@
 
 class User
 {
-private $UserID;
-private $UserName;
-private $numOfVideoUser;
-private $account;
+    public $UserID;
+    public $email;
+    public $password;
+    public $country;
+    public $Name;
+    public $numOfVideoUser;
 
-
-    public function __construct($UserID, $UserName, $numOfVideoUser, $account)
+    public function __construct($UserID = null, $Name = null, $email = null, $password = null, $country = null)
     {
         $this->UserID = $UserID;
-        $this->UserName = $UserName;
-        $this->numOfVideoUser = $numOfVideoUser;
-        $this->account = $account;
+        $this->Name = $Name;
+        $this->email = $email;
+        $this->password = $password;
+        $this->country = $country;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUserID()
     {
         return $this->UserID;
     }
 
-    /**
-     * @param mixed $UserID
-     * @return User
-     */
     public function setUserID($UserID)
     {
         $this->UserID = $UserID;
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUserName()
+    public function getEmail()
     {
-        return $this->UserName;
+        return $this->email;
     }
 
-    /**
-     * @param mixed $UserName
-     * @return User
-     */
-    public function setUserName($UserName)
+    public function setEmail($email)
     {
-        $this->UserName = $UserName;
+        $this->email = $email;
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    public function setCountry($country)
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+    public function getUserName()
+    {
+        return $this->Name;
+    }
+
+    public function setUserName($UserName)
+    {
+        $this->Name = $UserName;
+        return $this;
+    }
+
     public function getNumOfVideoUser()
     {
         return $this->numOfVideoUser;
     }
 
-    /**
-     * @param mixed $numOfVideoUser
-     * @return User
-     */
     public function setNumOfVideoUser($numOfVideoUser)
     {
         $this->numOfVideoUser = $numOfVideoUser;
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getAccount()
-    {
-        return $this->account;
-    }
-
-    /**
-     * @param mixed $account
-     * @return User
-     */
-    public function setAccount($account)
-    {
-        $this->account = $account;
-        return $this;
-    }
-
 }
-
+ ?>

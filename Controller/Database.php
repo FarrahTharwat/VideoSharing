@@ -30,5 +30,47 @@ class Database
     public  function getConn(): mysqli
     {
         return $this->conn;
+    
     }
+    public function closeConnection()
+    {
+        if ($this->conn !== null) {
+            $this->conn->close();
+            $this->conn = null;
+        }
+    }
+     
+    public function insert($qry)
+    {
+        $result=$this->conn->query($qry);
+        if(!$result)
+        {
+            echo "Error ".mysqli_error($this->conn);
+            return false;
+        }
+        else 
+        {
+           return $this->conn->insert_id;
+        }
+
+    }
+    public function select($qry)
+    {
+        $result = $this->conn->query($qry);
+        if(!$result)
+        {
+            echo "Error : ".mysqli_error($this->conn);
+            return false ;
+        }
+        else
+        {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+    
+    }
+
+
+
+
+
 }
