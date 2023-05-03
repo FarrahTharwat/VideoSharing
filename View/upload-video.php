@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+//include_once '../Controller/ManageVideo.php';
+//include_once '../Model/Video.php';
+include_once '../Controller/VideoUploaderFacade.php';
+
+session_start();
+?>
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="Askbootstrap">
    <meta name="author" content="Askbootstrap">
-   <title>VIDOE - Video Streaming Website HTML Template</title>
+   <title>VIDEO - Video Streaming Website HTML Template</title>
    <!-- Favicon Icon -->
    <link rel="icon" type="image/png" href="img/favicon.png">
    <!-- Bootstrap core CSS-->
@@ -15,6 +22,9 @@
    <!-- Custom fonts for this template-->
    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="css/uploadVideoButtonVideo.css">
+    <
+    <link rel="stylesheet" type="text/css" href="css/upload%20video.css">
    <link href="css/osahan.css" rel="stylesheet">
    <!-- Owl Carousel -->
    <link rel="stylesheet" href="vendor/owl-carousel/owl.carousel.css">
@@ -23,6 +33,7 @@
 
 <body id="page-top">
 <!--header-->
+
 <?php
 include 'header.php';
 ?>
@@ -56,20 +67,23 @@ include 'nav.php';
                </div>
             </div>
             <hr>
+
+             <form action="upload-video.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                <div class="col-lg-12">
                   <div class="osahan-form">
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="e1">Video Title</label>
-                              <input type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="e1" class="form-control">
+                              <label  for="title">Video Title</label>
+                              <input name="title"   type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="title" class="form-control">
                            </div>
                         </div>
+
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="e2">About</label>
-                              <textarea rows="3" id="e2" name="e2" class="form-control">Description</textarea>
+                              <label for="description">About</label>
+                              <textarea rows="3" id="description" name="description" class="form-control" placeholder="write description"></textarea>
                            </div>
                         </div>
                      </div>
@@ -77,16 +91,28 @@ include 'nav.php';
                      <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <label for="thumbnail">Thumbnail:</label>
-                                <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
+                                <label for="thumbnail" class="file-upload-label">
+                                    <span> Thumbnail:Choose a image</span>
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                                <input  type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
                                 <div class="file-upload-preview"></div>
                             </div>
 
 
                         </div>
                         <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="video" class="file-upload-label-video">
+                                    <span>Video: Choose a file</span>
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                                <input type="file" id="video" name="video" accept="video/*" class="file-upload-input-video">
+                                <div class="file-upload-preview"></div>
+                            </div>
                         </div>
                         <div class="col-lg-3">
+
                         </div>
                      </div>
                      <div class="row ">
@@ -100,32 +126,32 @@ include 'nav.php';
                         <!-- checkbox 1col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category"  class="custom-control-input" id="customCheck1">
-                              <label class="custom-control-label" for="customCheck1">Podcast</label>
+                              <input type="radio" name="category"  class="custom-control-input" id="category" value="Podcast">
+                              <label class="custom-control-label" for="category">Podcast</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="customCheck2">
-                              <label class="custom-control-label" for="customCheck2">Education</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category2" value="Education">
+                              <label class="custom-control-label" for="category2">Education</label>
                            </div>
 
                         </div>
                         <!-- checkbox 2col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="zcustomCheck1">
-                              <label class="custom-control-label" for="zcustomCheck1">Sounds</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category3" value="Sounds" >
+                              <label class="custom-control-label" for="category3">Sounds</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="zcustomCheck2">
-                              <label class="custom-control-label" for="zcustomCheck2">Sport</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category4" value="Sport">
+                              <label class="custom-control-label" for="category4">Sport</label>
                            </div>
 
                         </div>
                         <!-- checkbox 3col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="czcustomCheck1">
-                              <label class="custom-control-label" for="czcustomCheck1">Gaming</label>
+                              <input type="radio" name="category" class="custom-control-input" id="category5" value="Gaming">
+                              <label class="custom-control-label" for="category5">Gaming</label>
                            </div>
                         </div>
 
@@ -136,6 +162,22 @@ include 'nav.php';
                   </div>
                   <div class="osahan-area text-center mt-3">
                      <button class="btn btn-outline-primary">Upload</button>
+
+                      <?php
+
+                      //echo $_FILES['video-file']['name'];
+                      if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                          $facade = new VideoUploaderFacade();
+                          $result = $facade->uploadVideo($_POST['title'], $_POST['description'], $_POST['category'], $_FILES['thumbnail'], $_FILES['video']);
+
+                          if ($result === true) {
+                              echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
+                              exit;
+                          } else {
+
+                          }
+                      }
+                      ?>
                   </div>
                   <hr>
                   <div class="terms text-center">
@@ -144,6 +186,7 @@ include 'nav.php';
                   </div>
                </div>
             </div>
+             </form>
          </div>
          <!-- /.container-fluid -->
          <!-- Sticky Footer -->
@@ -174,22 +217,58 @@ include 'nav.php';
       </div>
    </div>
           <script>
-              const fileInput = document.getElementById('thumbnail');
-              const preview = document.querySelector('.file-upload-preview');
+              // Get the input element and button element
 
-              fileInput.addEventListener('change', function() {
-                  const file = this.files[0];
-                  if (file) {
-                      const reader = new FileReader();
-                      reader.onload = function() {
-                          preview.style.backgroundImage = `url(${reader.result})`;
-                      }
-                      reader.readAsDataURL(file);
-                  } else {
-                      preview.style.backgroundImage = null;
+              const inputElementVideo = document.getElementById('video');
+              const buttonElementVideo = document.querySelector('.file-upload-label-video');
+
+              // Add event listener to input element to detect file selection
+              inputElementVideo.addEventListener('change', () => {
+                  // Get the file name
+                  const fileName = inputElementVideo.files[0].name;
+
+                  // Set the file name as the text of the button
+                  buttonElementVideo.textContent = `Video: ${fileName}`;
+
+              });
+          </script>
+          <script>
+              // Get the input element and button element
+              const inputElementThumbnail = document.getElementById('thumbnail');
+              const buttonElementThumbnail = document.querySelector('.file-upload-label');
+
+              // Add event listener to input element to detect file selection
+              inputElementThumbnail.addEventListener('change', () => {
+                  // Get the file name
+                  const fileName = inputElementThumbnail.files[0].name;
+
+                  // Set the file name as the text of the button
+                  buttonElementThumbnail.textContent = `Thumbnail: ${fileName}`;
+              });
+          </script>
+<!--title constraints-->
+          <script>
+              const titleInput = document.getElementById("title");
+
+              titleInput.addEventListener("input", function(event) {
+                  const titleValue = event.target.value;
+
+                  // Check if the title is too long (more than 50 characters)
+                  if (titleValue.length > 50) {
+                      event.target.setCustomValidity("Title is too long. Maximum length is 50 characters.");
+                  }
+                  // Check if the title is empty
+                  else if (!titleValue.trim()) {
+                      event.target.setCustomValidity("Please enter a title.");
+                  }
+                  else {
+                      event.target.setCustomValidity("");
                   }
               });
           </script>
+
+          <!-- desciption constraints-->
+
 
 
           <!-- Bootstrap core JavaScript-->
@@ -202,5 +281,6 @@ include 'nav.php';
    <!-- Custom scripts for all pages-->
    <script src="js/custom.js"></script>
 </body>
+
 
 </html>

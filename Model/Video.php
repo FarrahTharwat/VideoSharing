@@ -1,5 +1,6 @@
 <?php
-class Video {
+class Video
+{
     private  $id;
     private $title;
     private $category;
@@ -36,6 +37,7 @@ class Video {
         $this->url = $url;
         $this->userID = $userID;
     }
+
 
     /**
      * @param $id
@@ -223,10 +225,4 @@ class Video {
         $this->userID = $userID;
         return $this;
     }
-
-
-
-
-
-
 }

@@ -6,7 +6,6 @@ class Playlist
     private $numOfVideosPlaylist;
     private $PlaylistName;
     private $description;
-    private $userID;
     private $privacy;
 
     /**
@@ -17,13 +16,12 @@ class Playlist
      * @param $userID
      * @param $privacy
      */
-    public function __construct($PlaylistID, $numOfVideosPlaylist, $PlaylistName, $description, $userID, $privacy)
+    public function __construct($PlaylistID, $numOfVideosPlaylist, $PlaylistName, $description, $privacy)
     {
         $this->PlaylistID = $PlaylistID;
         $this->numOfVideosPlaylist = $numOfVideosPlaylist;
         $this->PlaylistName = $PlaylistName;
         $this->description = $description;
-        $this->userID = $userID;
         $this->privacy = $privacy;
     }
 
@@ -39,11 +37,7 @@ class Playlist
      * @param mixed $PlaylistID
      * @return Playlist
      */
-    public function setPlaylistID($PlaylistID)
-    {
-        $this->PlaylistID = $PlaylistID;
-        return $this;
-    }
+   
 
     /**
      * @return mixed
@@ -57,11 +51,7 @@ class Playlist
      * @param mixed $numOfVideosPlaylist
      * @return Playlist
      */
-    public function setNumOfVideosPlaylist($numOfVideosPlaylist)
-    {
-        $this->numOfVideosPlaylist = $numOfVideosPlaylist;
-        return $this;
-    }
+    
 
     /**
      * @return mixed
@@ -102,21 +92,13 @@ class Playlist
     /**
      * @return mixed
      */
-    public function getUserID()
-    {
-        return $this->userID;
-    }
+    
 
     /**
      * @param mixed $userID
      * @return Playlist
      */
-    public function setUserID($userID)
-    {
-        $this->userID = $userID;
-        return $this;
-    }
-
+   
     /**
      * @return mixed
      */

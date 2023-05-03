@@ -6,7 +6,20 @@ include'../Model/Video.php';
 
 class ManageVideo implements CRUD
 {
+    private static $instance = null;
+    private function __construct()
+    {
+    }
 
+    /**
+     * @return null
+     */
+    public static function getInstance()
+    {       if(self::$instance==null) {
+        self::$instance = new ManageVideo();
+    }
+        return self::$instance;
+    }
     public function create($video)
     {    //Get database connection
         $database = new Database();
@@ -49,10 +62,42 @@ class ManageVideo implements CRUD
         }
     }
 
-    public function retrive($id)
+    public function retrive($userId)
     {
-        // TODO: Implement retrive() method.
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $query = "SELECT ID, Category, Title, Description, Thumbnail, Date, Status, Views, Url
+              FROM video 
+              WHERE UserID = '$userId'";
+
+        $result = $conn->query($query);
+
+        $videos = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $video = new Video(
+                    $row['ID'],
+                    $row['Title'],
+                    $row['Category'],
+                    $row['Description'],
+                    $row['Thumbnail'],
+                    $row['Date'],
+                    $row['Status'],
+                    $row['Views'],
+                    $row['Url'],
+                    $userId
+
+                );
+
+                $videos[] = $video;
+            }
+        }
+
+        return $videos;
     }
+
 
     public function update($video)
     {   $database = new Database();
@@ -87,7 +132,83 @@ class ManageVideo implements CRUD
             return false;
 
     }
+    function divide_video_quality($videoName)
+    {   $dirName = pathinfo($videoName,PATHINFO_FILENAME);
+        $dirName=basename($dirName);
+        $input_file='../View/Videos/'.$dirName.'/'.$videoName;
+        $output_path='../View/Videos/'.$dirName;
+        // Define the quality versions and their parameters
+        $qualities = [
+            [
+                'width' => 640,
+                'height' => 360,
+                'bitrate' => '800k',
+            ],
+            [
+                'width' => 256,
+                'height' => 144,
+                'bitrate' => '200k',
+            ],
+            [
+                'width' => 426,
+                'height' => 240,
+                'bitrate' => '400k',
+            ],
+        ];
+
+        // Loop through the quality versions and generate the output files
+        foreach ($qualities as $quality) {
+            $output_file = $output_path . '/' . $dirName .  '_' .$quality['height'] .  '.mp4';
+
+            $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
+
+            exec($cmd);
+
+        }
+    }
+  /*  function divide_video_quality($input_file, $output_path)
+    {
+        // Define the quality versions and their parameters
+        $qualities = [
+            [
+                'width' => 640,
+                'height' => 360,
+                'bitrate' => '500k',
+            ],
+            [
+                'width' => 256,
+                'height' => 144,
+                'bitrate' => '100k',
+            ],
+            [
+                'width' => 426,
+                'height' => 240,
+                'bitrate' => '250k',
+            ],
+        ];
+
+        // Loop through the quality versions and generate the output files
+        foreach ($qualities as $quality) {
+            $output_file = $output_path . '/' . 'output_' . $quality['width'] . 'x' . $quality['height'] . '_' . $quality['bitrate'] . '.mp4';
+
+            $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
+
+            exec($cmd);
+        }
+    }
+    */
+
+
+
 }
- $manage = new ManageVideo();
-$vide = new Video(0,"greatt","podcast","okay","haha","2020-1-2",0,0,"wow",1);
- $manage->update($vide);
+
+
+
+
+
+
+/*$manageVideo = ManageVideo::getInstance();
+$outputDir = 'F:\XAMPP\htdocs\VideoSharing\View\Videos';
+$inputFile = 'F:\XAMPP\htdocs\VideoSharing/View\Videos\Sample.mp4';
+$manageVideo->divide_video_quality($inputFile,$outputDir);
+*/
