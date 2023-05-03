@@ -30,11 +30,11 @@ class History{
      * @param mixed $watchDate
      * @return History
      */
-    // public function setwatchDate($watchDate)
-    // {
-    //     $this->watchDate = $watchDate;
-    //     return $this;
-    // }
+    public function setwatchDate($watchDate)
+    {
+        $this->watchDate = $watchDate;
+        return $this;
+    }
 
     /**
      * Summary of getelapsedTime
@@ -49,11 +49,11 @@ class History{
      * @param mixed $elapsedTime
      * @return History
      */
-    // public function setelapsedTime($elapsedTime)
-    // {
-    //     $this->elapsedTime = $elapsedTime;
-    //     return $this;
-    // }
+    public function setelapsedTime($elapsedTime)
+    {
+        $this->elapsedTime = $elapsedTime;
+        return $this;
+    }
 
 	/**
 	 * @return mixed
@@ -66,8 +66,8 @@ class History{
 	 * @param mixed $UserID 
 	 * @return self
 	 */
-// 	public function setUserID($UserID): self {
-// 		$this->UserID = $UserID;
-// 		return $this;
-// 	}
+	public function setUserID($UserID): self {
+		$this->userID = $UserID;
+		return $this;
+	}
 }

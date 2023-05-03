@@ -44,9 +44,45 @@ class ManageHistory implements CRUD{
      * @param mixed $id
      * @return void
      */
-    public function retrive($id){
+    public function retrive($UserID){
      // TODO: Implement retrive() method.
-         
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $query = "SELECT*
+        FROM video
+        inner join history
+        on video.ID = history.VideoID
+        where history.UserID = '$UserID'";
+        $result = $conn->query($query);
+        $videos = array()();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $video = new Video(
+                    $row['ID'],
+                    $row['Title'],
+                    $row['Category'],
+                    $row['Description'],
+                    $row['Thumbnail'],
+                    $row['Date'],
+                    $row['Status'],
+                    $row['Views'],
+                    $row['Url'],
+                    $UserID
+
+                );
+                $history = new History(
+                    $row['WatchDate'],
+                    $row['ElapsedTime'],
+                    $UserID
+                );
+
+                $videos[] = [$video,$history];
+            }
+        }
+
+        return $videos;
 
     }
     /**

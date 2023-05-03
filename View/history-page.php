@@ -205,7 +205,7 @@ include '/Applications/XAMPP/xamppfiles/htdocs/VideoSharing/Controller/Database.
 
 
          <?php 
-           $sql = 'SELECT * from history ';
+           $sql = 'SELECT * from history';
            $conn = new Database;
            $result = mysqli_query($conn->getConn(), $sql);
            $historyVideos = mysqli_fetch_all($result, MYSQLI_ASSOC);

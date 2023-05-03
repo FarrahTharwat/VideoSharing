@@ -44,7 +44,6 @@ class ManagePlaylist implements CRUD{
      * @return void
      */
     public function delete($id){
-     // TODO: Implement delete() method.
      $database = new Database();
      $conn = $database->getConn();
 
@@ -64,14 +63,30 @@ class ManagePlaylist implements CRUD{
      */
     public function retrive($id)
     {
-     // TODO: Implement retrive() method.
+        $database = new Database();
+        $conn = $database->getConn();
     }
     /**
      * Summary of update
      * @param mixed $Playlist
      * @return void
      */
-    public function update($Playlist){
+     public function update($Playlist){
      // TODO: Implement update() method. 
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $PlaylistID = $Playlist->getPlaylistID();
+        $numOfVideosPlaylist = $Playlist->getNumOfVideosPlaylist();
+        $PlaylistName = $Playlist->getPlaylistName();
+        $description = $Playlist->getDescription();
+        $userID = $Playlist->getUserID();
+
+        $query = "UPDATE Playlist SET numOfVideos='$numOfVideosPlaylist', Description='$description', name='$PlaylistName',UserID='$userID' WHERE ID='$PlaylistID'";
+        if ($conn->query($query) === TRUE) {
+            echo "Updated successfully";
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
     }
 }
