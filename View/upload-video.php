@@ -2,8 +2,9 @@
 <html lang="en">
 <?php
 
-include_once '../Controller/ManageVideo.php';
-include_once '../Model/Video.php';
+//include_once '../Controller/ManageVideo.php';
+//include_once '../Model/Video.php';
+include_once '../Controller/VideoUploaderFacade.php';
 
 session_start();
 ?>
@@ -125,11 +126,11 @@ include 'nav.php';
                         <!-- checkbox 1col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category"  class="custom-control-input" id="category">
+                              <input type="radio" name="category"  class="custom-control-input" id="category" value="Podcast">
                               <label class="custom-control-label" for="category">Podcast</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="category2">
+                              <input type="radio" name="category" class="custom-control-input" id="category2" value="Education">
                               <label class="custom-control-label" for="category2">Education</label>
                            </div>
 
@@ -137,11 +138,11 @@ include 'nav.php';
                         <!-- checkbox 2col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="category3">
+                              <input type="radio" name="category" class="custom-control-input" id="category3" value="Sounds" >
                               <label class="custom-control-label" for="category3">Sounds</label>
                            </div>
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="category4">
+                              <input type="radio" name="category" class="custom-control-input" id="category4" value="Sport">
                               <label class="custom-control-label" for="category4">Sport</label>
                            </div>
 
@@ -149,7 +150,7 @@ include 'nav.php';
                         <!-- checkbox 3col -->
                         <div class="col-lg-2 col-xs-6 col-4">
                            <div class="custom-control custom-checkbox">
-                              <input type="radio" name="category" class="custom-control-input" id="category5">
+                              <input type="radio" name="category" class="custom-control-input" id="category5" value="Gaming">
                               <label class="custom-control-label" for="category5">Gaming</label>
                            </div>
                         </div>
@@ -166,64 +167,14 @@ include 'nav.php';
 
                       //echo $_FILES['video-file']['name'];
                       if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                          $manage =  ManageVideo::getInstance();
-                              $title = $_POST['title'];
+                          $facade = new VideoUploaderFacade();
+                          $result = $facade->uploadVideo($_POST['title'], $_POST['description'], $_POST['category'], $_FILES['thumbnail'], $_FILES['video']);
 
-                              $description = $_POST["description"];
-                              $category = $_POST["category"];
-
-                              //get filename
-
-
-                              $errors = [];
-                          if (empty($title)) {
-                              $errors[] = "Title is required";
-                          }
-                          if (empty($description)) {
-                              $errors[] = "Description is required";
-                          }
-                          if (empty($category)) {
-                              $errors[] = "Category is required";
-                          }
-                          if ($_FILES["thumbnail"]["error"] !== UPLOAD_ERR_OK) {
-                              $errors[] = "Thumbnail upload error";
-                          }
-
-
-
-                          if (count($errors) === 0) {
-                              // Save the thumbnail to a directory on the server
-
-                              $videoName = pathinfo($_FILES['video']['name'],PATHINFO_FILENAME);
-                              $videoName = basename($videoName);
-
-                              //create new directory with video name
-                              $uploadDir = '../View/Videos/'.$videoName;
-                              mkdir($uploadDir);
-
-                              //move video to the directory
-                              $uploadVideoPath = $uploadDir .'/'. $_FILES['video']['name'];
-                              move_uploaded_file($_FILES['video']['tmp_name'],$uploadVideoPath);
-
-                              //divide video into qualities
-                              $manage->divide_video_quality($_FILES['video']['name']);
-
-                              //remove the video and keep qualities only
-                              unlink($uploadVideoPath);
-
-                              // move the thumbnail into the video directory
-                              $uploadThumbnailPath=$uploadDir.'/'.$_FILES['thumbnail']['name'];
-                              move_uploaded_file($_FILES['thumbnail']['tmp_name'],$uploadThumbnailPath);
-
-
-
-
-
-                              $video = new Video(25, $title, $category, $description, $uploadThumbnailPath, "2023-05-01", "published", 100,$uploadVideoPath, 1);
-
-                              $manage->create($video);
+                          if ($result === true) {
                               echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
                               exit;
+                          } else {
+
                           }
                       }
                       ?>
@@ -267,30 +218,32 @@ include 'nav.php';
    </div>
           <script>
               // Get the input element and button element
-              const inputElement = document.getElementById('video');
-              const buttonElement = document.querySelector('.file-upload-label-video');
+
+              const inputElementVideo = document.getElementById('video');
+              const buttonElementVideo = document.querySelector('.file-upload-label-video');
 
               // Add event listener to input element to detect file selection
-              inputElement.addEventListener('change', () => {
+              inputElementVideo.addEventListener('change', () => {
                   // Get the file name
-                  const fileName = inputElement.files[0].name;
+                  const fileName = inputElementVideo.files[0].name;
 
                   // Set the file name as the text of the button
-                  buttonElement.textContent = `Video: ${fileName}`;
+                  buttonElementVideo.textContent = `Video: ${fileName}`;
+
               });
           </script>
           <script>
               // Get the input element and button element
-              const inputElement = document.getElementById('thumbnail');
-              const buttonElement = document.querySelector('.file-upload-label');
+              const inputElementThumbnail = document.getElementById('thumbnail');
+              const buttonElementThumbnail = document.querySelector('.file-upload-label');
 
               // Add event listener to input element to detect file selection
-              inputElement.addEventListener('change', () => {
+              inputElementThumbnail.addEventListener('change', () => {
                   // Get the file name
-                  const fileName = inputElement.files[0].name;
+                  const fileName = inputElementThumbnail.files[0].name;
 
                   // Set the file name as the text of the button
-                  buttonElement.textContent = `Thumbnail: ${fileName}`;
+                  buttonElementThumbnail.textContent = `Thumbnail: ${fileName}`;
               });
           </script>
 <!--title constraints-->
