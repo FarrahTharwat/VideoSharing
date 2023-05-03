@@ -76,14 +76,14 @@ include 'nav.php';
                         <div class="col-lg-12">
                            <div class="form-group">
                               <label  for="title">Video Title</label>
-                              <input name="title"   type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="title" class="form-control">
+                              <input name="title"   type="text" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="title" class="form-control" required >
                            </div>
                         </div>
 
                         <div class="col-lg-12">
                            <div class="form-group">
                               <label for="description">About</label>
-                              <textarea rows="3" id="description" name="description" class="form-control" placeholder="write description"></textarea>
+                              <textarea rows="3" id="description" name="description" class="form-control" placeholder="write description" required></textarea>
                            </div>
                         </div>
                      </div>
@@ -95,7 +95,7 @@ include 'nav.php';
                                     <span> Thumbnail:Choose a image</span>
                                     <i class="fas fa-upload"></i>
                                 </label>
-                                <input  type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input">
+                                <input  type="file" id="thumbnail" name="thumbnail" accept="image/*" class="file-upload-input" required>
                                 <div class="file-upload-preview"></div>
                             </div>
 
@@ -107,7 +107,7 @@ include 'nav.php';
                                     <span>Video: Choose a file</span>
                                     <i class="fas fa-upload"></i>
                                 </label>
-                                <input type="file" id="video" name="video" accept="video/*" class="file-upload-input-video">
+                                <input type="file" id="video" name="video" accept="video/*" class="file-upload-input-video" required>
                                 <div class="file-upload-preview"></div>
                             </div>
                         </div>
