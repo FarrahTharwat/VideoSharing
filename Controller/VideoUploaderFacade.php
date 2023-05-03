@@ -11,7 +11,7 @@ class VideoUploaderFacade
         $this->manage = ManageVideo::getInstance();
     }
 
-    public function uploadVideo($title, $description, $category, $thumbnailFile, $videoFile)
+    public function uploadVideo($title, $description, $category, $thumbnailFile, $videoFile,$userID)
     {
         $thumbnailExtension = strtolower(pathinfo($thumbnailFile["name"], PATHINFO_EXTENSION));
         $videoExtension = strtolower(pathinfo($videoFile["name"], PATHINFO_EXTENSION));
@@ -91,7 +91,7 @@ class VideoUploaderFacade
             move_uploaded_file($_FILES['thumbnail']['tmp_name'], $uploadThumbnailPath);
 
 
-            $videoObj = new Video(25, $title, $category, $description, $uploadThumbnailPath, "2023-05-01", "published", 100, $uploadVideoPath, 1);
+            $videoObj = new Video(25, $title, $category, $description, $uploadThumbnailPath, "2023-05-01", "published", 100, $uploadVideoPath, $userID);
 
             $this->ManageVideo = ManageVideo::getInstance();
             $this->ManageVideo->create($videoObj);

@@ -168,7 +168,7 @@ include 'nav.php';
                       //echo $_FILES['video-file']['name'];
                       if ($_SERVER["REQUEST_METHOD"] === "POST") {
                           $facade = new VideoUploaderFacade();
-                          $result = $facade->uploadVideo($_POST['title'], $_POST['description'], $_POST['category'], $_FILES['thumbnail'], $_FILES['video']);
+                          $result = $facade->uploadVideo($_POST['title'], $_POST['description'], $_POST['category'], $_FILES['thumbnail'], $_FILES['video'],$_SESSION['userID']);
 
                           if ($result === true) {
                               echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
