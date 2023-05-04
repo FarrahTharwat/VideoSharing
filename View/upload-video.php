@@ -171,7 +171,7 @@ include 'nav.php';
                           $result = $facade->uploadVideo($_POST['title'], $_POST['description'], $_POST['category'], $_FILES['thumbnail'], $_FILES['video'],$_SESSION['userID']);
 
                           if ($result === true) {
-                              echo "<script>window.location.replace('http://localhost/VideoSharing/View/upload-video.php');</script>";
+                              echo "<script>window.location.replace('http://localhost/VideoSharing/View/index.php');</script>";
                               exit;
                           } else {
 
