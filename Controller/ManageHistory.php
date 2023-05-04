@@ -5,7 +5,7 @@ include '../Model/Playlist.php';
 include '../Model/Video.php';
 include '../Model/User.php';
 include '../Model/History.php';
-
+include '../Controller/AuthController.php';
 /**
  * Summary of ManageHistory
  */

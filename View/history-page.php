@@ -7,7 +7,7 @@ include ('../Controller/ManageHistory.php');
 ?>
 <?php 
     session_start(); 
-    $result = $_SESSION['User_ID'];
+    $result = $_SESSION["userID"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -211,7 +211,7 @@ include ('../Controller/ManageHistory.php');
          <?php
           $h = new ManageHistory();
           $h -> retrive($result);
-           ?>
+         ?>
          
       
       </div>

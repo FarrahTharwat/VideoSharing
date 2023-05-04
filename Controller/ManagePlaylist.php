@@ -1,10 +1,10 @@
 <?php
 include 'CRUD.php';
 include 'Database.php';
-include'../Model/Playlist.php';
-include'../Model/user.php';
-include'../Model/Video.php';
-
+include '../Model/Playlist.php';
+include '../Model/user.php';
+include '../Model/Video.php';
+include '../Controller/AuthController.php';
 /**
  * Summary of ManagePlaylist
  */
