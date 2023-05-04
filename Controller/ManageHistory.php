@@ -81,21 +81,20 @@ class ManageHistory implements CRUD{
                 echo '<div class="col-xl-3 col-sm-6 mb-3">
                 <div class="video-card history-video">
                    <div class="video-card-image">
-                      <a class="video-close" href="#"><i class="fas fa-times-circle"></i></a>
                       <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
                       <a href="#"><img class="img-fluid" src="'.$Thumbnail.'" alt=""></a>
-                      <div class="time">'.$ElapsedTime.'</div>
+                      <div class="time">videoTime</div>
                    </div>
                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">1:40</div>
+                      <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'.$ElapsedTime.'</div>
                    </div>
                    <div class="video-card-body">
                       <div class="video-title">
                          <a href="#">'.$Title.'</a>
                       </div>
-                      <div class="video-page text-danger">'.$Category.' <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                      <div class="video-page text-danger">'.$Category.'
                       </div>
-                      <div class="video-view">'.$Views.'<i class="fas fa-calendar-alt"></i> '.$WatchDate.'
+                      <div class="video-view">'.$Views.'<br><i class="fas fa-calendar-alt"></i> ' .$WatchDate. '
                       </div>
                    </div>
                 </div>

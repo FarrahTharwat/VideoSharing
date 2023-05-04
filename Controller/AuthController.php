@@ -28,7 +28,7 @@ class AuthController
       }
 
           $query = "INSERT INTO user (Email, Name, Password, NumOfVideo, Subscription, Country) VALUES 
-          ('$user->email', '$user->Name', '$user->password', '', '1', '$user->country')";
+          ('$user->email', '$user->Name', '$user->password', '0', '1', '$user->country')";
 
           $result=$this->db->insert($query);
               if ($result!=false)

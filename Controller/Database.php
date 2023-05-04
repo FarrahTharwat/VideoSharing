@@ -30,6 +30,7 @@ class Database
     public  function getConn(): mysqli
     {
         return $this->conn;
+        
     
     }
     public function closeConnection()
