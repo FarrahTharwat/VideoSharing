@@ -1,10 +1,10 @@
 <?php
 include 'CRUD.php';
 include 'Database.php';
-include'../Model/Playlist.php';
-include'../Model/Video.php';
-include'../Model/User.php';
-include'../Model/History.php';
+include '../Model/Playlist.php';
+include '../Model/Video.php';
+include '../Model/User.php';
+include '../Model/History.php';
 
 /**
  * Summary of ManageHistory
@@ -55,34 +55,68 @@ class ManageHistory implements CRUD{
         on video.ID = history.VideoID
         where history.UserID = '$UserID'";
         $result = $conn->query($query);
-        $videos = array()();
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $video = new Video(
-                    $row['ID'],
-                    $row['Title'],
-                    $row['Category'],
-                    $row['Description'],
-                    $row['Thumbnail'],
-                    $row['Date'],
-                    $row['Status'],
-                    $row['Views'],
-                    $row['Url'],
-                    $UserID
+                   $ID =  $row['ID'],
+                   $Title= $row['Title'],
+                   $Category= $row['Category'],
+                   $Description = $row['Description'],
+                   $Thumbnail = $row['Thumbnail'],
+                   $Date = $row['Date'],
+                   $Status = $row['Status'],
+                   $Views = $row['Views'],
+                   $Url = $row['Url'],
+                   $USERID = $UserID
 
                 );
+
                 $history = new History(
-                    $row['WatchDate'],
-                    $row['ElapsedTime'],
-                    $UserID
+                    $WatchDate = $row['WatchDate'],
+                    $ElapsedTime = $row['ElapsedTime'],
+                    $USERID = $UserID
                 );
 
-                $videos[] = [$video,$history];
+                echo '<div class="col-xl-3 col-sm-6 mb-3">
+                <div class="video-card history-video">
+                   <div class="video-card-image">
+                      <a class="video-close" href="#"><i class="fas fa-times-circle"></i></a>
+                      <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                      <a href="#"><img class="img-fluid" src="'.$Thumbnail.'" alt=""></a>
+                      <div class="time">'.$ElapsedTime.'</div>
+                   </div>
+                   <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">1:40</div>
+                   </div>
+                   <div class="video-card-body">
+                      <div class="video-title">
+                         <a href="#">'.$Title.'</a>
+                      </div>
+                      <div class="video-page text-danger">'.$Category.' <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                      </div>
+                      <div class="video-view">'.$Views.'<i class="fas fa-calendar-alt"></i> '.$WatchDate.'
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>';
+
             }
         }
-
-        return $videos;
+        else {
+            echo'<div id="content-wrapper">
+                <div class="container-fluid">
+                   <div class="row">
+                      <div class="col-md-8 mx-auto text-center  pt-4 pb-5">
+                         <h1>Your History is empty.</h1>
+                         <div class="mt-5">
+                            <a class="btn btn-outline-primary" href="index.php"><i class="mdi mdi-home"></i> GO TO HOME PAGE</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>';
+        }
 
     }
     /**

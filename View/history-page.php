@@ -1,9 +1,13 @@
 <?php
-include '/Applications/XAMPP/xamppfiles/htdocs/VideoSharing/Controller/Database.php';
-// include '../Model/Video.php';
+//include '/Applications/XAMPP/xamppfiles/htdocs/web/VideoSharing/Controller/Database.php';
+//include '/Applications/XAMPP/xamppfiles/htdocs/web/VideoSharing/Model/Video.php';
 // include '../Model/User.php';
 // include '../Model/History.php';
-// include '../Controller/ManageVideo.php';
+include ('../Controller/ManageHistory.php');
+?>
+<?php 
+    session_start(); 
+    $result = $_SESSION['User_ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -204,52 +208,12 @@ include '/Applications/XAMPP/xamppfiles/htdocs/VideoSharing/Controller/Database.
             </div>
 
 
-         <?php 
-           $sql = 'SELECT * from history';
-           $conn = new Database;
-           $result = mysqli_query($conn->getConn(), $sql);
-           $historyVideos = mysqli_fetch_all($result, MYSQLI_ASSOC);
-         ?>
-         <?php if(empty($historyVideos)):?>
-            <div id="content-wrapper">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-md-8 mx-auto text-center  pt-4 pb-5">
-                     <h1>Your History is empty.</h1>
-                     <div class="mt-5">
-                        <a class="btn btn-outline-primary" href="index.php"><i class="mdi mdi-home"></i> GO TO HOME PAGE</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         <?php endif; ?>
-      <?php foreach($historyVideos as $item): ?>
-            <div class="col-xl-3 col-sm-6 mb-3">
-               <div class="video-card history-video">
-                  <div class="video-card-image">
-                     <a class="video-close" href="#"><i class="fas fa-times-circle"></i></a>
-                     <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
-                     <a href="#"><img class="img-fluid" src="img/v6.png" alt=""></a>
-                     <div class="time">3:50</div>
-                  </div>
-                  <div class="progress">
-                     <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">1:40</div>
-                  </div>
-                  <div class="video-card-body">
-                     <div class="video-title">
-                        <a href="#">There are many variations of passages of Lorem</a>
-                     </div>
-                     <div class="video-page text-danger">
-                        Education <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
-                     </div>
-                     <div class="video-view">
-                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      <?php endforeach;  ?>
+         <?php
+          $h = new ManageHistory();
+          $h -> retrive($result);
+           ?>
+         
+      
       </div>
 <nav aria-label="Page navigation example">
                      <ul class="pagination justify-content-center pagination-sm mb-0">
@@ -288,7 +252,6 @@ include '/Applications/XAMPP/xamppfiles/htdocs/VideoSharing/Controller/Database.
             </footer>
          </div>
          <!-- /.content-wrapper -->
-      </div>
       <!-- /#wrapper -->
       <!-- Scroll to Top Button-->
       <a class="scroll-to-top rounded" href="#page-top">
