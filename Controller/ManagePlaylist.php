@@ -4,6 +4,7 @@ include 'Database.php';
 include '../Model/Playlist.php';
 include '../Model/user.php';
 include '../Model/Video.php';
+include '../Model/VideoPlaylist.php';
 include '../Controller/AuthController.php';
 /**
  * Summary of ManagePlaylist
@@ -48,30 +49,79 @@ class ManagePlaylist implements CRUD{
      $conn = $database->getConn();
 
      $query="DELETE FROM playlist where ID = '$id'";
-     $query1 = "DELETE FROM videoplaylist where PlaylistID = '$id'";
+    // $query1 = "DELETE FROM videoplaylist where PlaylistID = '$id'";
 
-     if ($conn->query($query) === TRUE || $conn->query($query1) === TRUE) {
+     if ($conn->query($query) === TRUE) {
          echo "Playlist Deleted successfully";
      } else {
          echo "Error: " . $query . "<br>" . $conn->error;
      }
+     $conn->close();
     }
     /**
      * Summary of retrive
      * @param mixed $id
      * @return void
      */
-    public function retrive($id)
-    {
+    public function retrive($PlaylistID){
         $database = new Database();
         $conn = $database->getConn();
+        $query = "SELECT*
+        FROM playlist
+        inner join videoplaylist
+        on playlist.ID = videoplaylist.PlaylistID
+        inner join video 
+        on videoplaylist.VideoID = video.ID
+        where playlist.ID = '$PlaylistID'";
+        $result = $conn->query($query);
+        $thePlaylist = array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $video = new Video(
+                   $row['ID'],
+                   $row['Title'],
+                   $row['Category'],
+                   $row['Description'],
+                   $row['ThumbNail'],
+                   $row['Date'],
+                   $row['Status'],
+                   $row['Views'],
+                   $row['URL'],
+                   $row['ID']
+                );
+
+                $playlist = new Playlist(
+                    $row['ID'],
+                   $row['numOfVideos'],
+                   $row['name'],
+                   $row['UserID'],
+                );
+
+                $videoPlaylist = new VideoPlaylist(
+                   $row['VideoID'],
+                   $row['PlaylistID']
+                );
+                
+                $arr = array(
+                    'playlist' => $playlist,
+                    'videoplaylist' => $videoPlaylist,
+                    'video' => $video
+                );
+
+                array_push($thePlaylist,$arr);
     }
+}
+
+    $conn->close();
+    return $thePlaylist;
+
+}  
     /**
      * Summary of update
      * @param mixed $Playlist
      * @return void
      */
-     public function update($Playlist){
+    public function update($Playlist){
      // TODO: Implement update() method. 
         $database = new Database();
         $conn = $database->getConn();
@@ -88,5 +138,19 @@ class ManagePlaylist implements CRUD{
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
+        $conn->close();
     }
+    
+public function remove($playlistID,$videoID){
+    $database = new Database();
+    $conn = $database->getConn();
+    $query = "Delete FROM videoplaylist where VideoID = '$videoID' and PlaylistID='$playlistID'";
+    if ($conn->query($query) === TRUE) {
+        echo "Video removed!";
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
+    $conn->close();
+}
+
 }

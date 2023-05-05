@@ -154,4 +154,15 @@ class ManageHistory implements CRUD{
             echo "Error: " . $query . "<br>" . $conn->error;
         }
     }
+    public function remove($userID,$videoID){
+        $database = new Database();
+        $conn = $database->getConn();
+        $query = "Delete FROM history where VideoID = '$videoID' and UserID='$userID'";
+        if ($conn->query($query) === TRUE) {
+            echo "Video removed!";
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
+        $conn->close();
+    }
 }
