@@ -63,11 +63,11 @@ class ManageHistory implements CRUD{
                    $Title= $row['Title'],
                    $Category= $row['Category'],
                    $Description = $row['Description'],
-                   $Thumbnail = $row['Thumbnail'],
+                   $Thumbnail = $row['ThumbNail'],
                    $Date = $row['Date'],
                    $Status = $row['Status'],
                    $Views = $row['Views'],
-                   $Url = $row['Url'],
+                   $Url = $row['URL'],
                    $USERID = $UserID
 
                 );
