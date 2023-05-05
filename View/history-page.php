@@ -206,15 +206,14 @@ include ('../Controller/ManageHistory.php');
                   <h6>Watch History</h6>
                </div>
             </div>
-
+         </div>
 
          <?php
           $h = new ManageHistory();
           $h -> retrive($result);
          ?>
          
-      
-      </div>
+<div>    
 <nav aria-label="Page navigation example">
                      <ul class="pagination justify-content-center pagination-sm mb-0">
                         <li class="page-item disabled">
@@ -231,6 +230,7 @@ include ('../Controller/ManageHistory.php');
                </div>
             </div>
             <!-- /.container-fluid -->
+
             <!-- Sticky Footer -->
             <footer class="sticky-footer">
                <div class="container">
