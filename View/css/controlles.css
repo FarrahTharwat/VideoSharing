@@ -35,3 +35,14 @@
     background-color: #fff;
     border: none;
 }
+
+
+/**FARRAH**/
+
+button.btn.btn-outline-secondary {
+    /* width: min-content; */
+    display: inherit;
+    /* position: initial; */
+    margin: -9% 4% -2% 89%;
+    padding: revert;
+}
