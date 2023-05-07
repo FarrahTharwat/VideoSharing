@@ -610,6 +610,15 @@
          </div>
       </div>
    </div>
+   <?php
+   // Retrieve the video ID and user ID from the URL query parameters
+   $videoId = $_GET['video_id'];
+   $userId = $_GET['user_id'];
+   ?>
+
+   <!-- Display the video and user IDs on the page -->
+   <h1> <?php echo $videoId; ?> <h1>
+
    <!-- Bootstrap core JavaScript-->
    <script src="vendor/jquery/jquery.min.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
