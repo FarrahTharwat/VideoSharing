@@ -1383,23 +1383,12 @@ h6 {
 
 /* Video Page */
 
-.boxx{
+.box {
     padding: 15px;
-    margin-left: 1%;
     background: #fff none repeat scroll 0 0;
     border-radius: 2px;
     box-shadow: 0 0 11px #ececec;
     transition-duration: 0.4s;
-
-}
-.box{
-   padding: 5px;
-   width: 68% ;
-   margin-left: 1%;
-   background: #fff none repeat scroll 0 0;
-   border-radius: 2px;
-   box-shadow: 0 0 11px #ececec;
-   transition-duration: 0.4s;
 }
 
 .single-video-title h2 {

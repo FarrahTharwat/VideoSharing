@@ -145,8 +145,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v1.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v1.php"><img class="img-fluid" src="img/v1.png" alt=""></a>
+                           <a class="play-icon" href="v1.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v1.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -173,8 +173,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v2.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v2.php"><img class="img-fluid" src="img/v2.png" alt=""></a>
+                           <a class="play-icon" href="v2.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v2.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -201,8 +201,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v3.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v3.php"><img class="img-fluid" src="img/v3.png" alt=""></a>
+                           <a class="play-icon" href="v3.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v3.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -229,8 +229,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v4.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v4.php"><img class="img-fluid" src="img/v4.png" alt=""></a>
+                           <a class="play-icon" href="v4.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v4.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -257,8 +257,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v5.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v5.php"><img class="img-fluid" src="img/v5.png" alt=""></a>
+                           <a class="play-icon" href="v5.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v5.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -285,8 +285,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v6.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v6.php"><img class="img-fluid" src="img/v6.png" alt=""></a>
+                           <a class="play-icon" href="v6.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v6.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -313,8 +313,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v7.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v7.php"><img class="img-fluid" src="img/v7.png" alt=""></a>
+                           <a class="play-icon" href="v7.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v7.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
@@ -341,8 +341,8 @@ include 'nav.php';
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v8.php"><i class="fas fa-play-circle"></i></a>
-                           <a href="v8.php"><img class="img-fluid" src="img/v8.png" alt=""></a>
+                           <a class="play-icon" href="v8.html"><i class="fas fa-play-circle"></i></a>
+                           <a href="#"><img class="img-fluid" src="img/v8.png" alt=""></a>
                            <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
