@@ -1,7 +1,7 @@
 <?php
-include 'CRUD.php';
-include 'Database.php';
-include'../Model/Video.php';
+require_once 'CRUD.php';
+require_once 'Database.php';
+require_once '../Model/Video.php';
 
 
 class ManageVideo implements CRUD

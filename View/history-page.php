@@ -229,13 +229,6 @@ include ('../Controller/ManageHistory.php');
           <?php endif ?>
          <!-- Loop through the videos and generate HTML markup -->
          <?php foreach ($theHistory as $a): ?>
-            <style>button.btn.btn-outline-secondary {
-                  /* width: min-content; */
-                  display: inherit;
-                  /* position: initial; */
-                  margin: -9% 4% -2% 89%;
-                  padding: revert;
-                    }</style>
              <div class="col-xl-3 col-sm-6 mb-3">
                  <div class="video-card history-video" onclick="goToVideoPage('<?= $a['video']->getID(); ?>', '<?php echo $a['video']->getUserID(); ?>')">
                      <div class="video-card-image">
@@ -256,7 +249,7 @@ include ('../Controller/ManageHistory.php');
 
                          </div>
                          <div class="video-view">
-                             <?php echo $a['video']->getViews(); ?> views &nbsp;<i class="fas fa-calendar-alt"></i> <?php echo $a['video']->getdate(); ?>
+                             <?php echo $a['video']->getViews(); ?> views &nbsp;<i class="fas fa-calendar-alt"></i> <?php echo $a['history']->getwatchDate(); ?>
                          </div>
                      </div>
                  </div>

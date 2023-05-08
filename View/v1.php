@@ -8,22 +8,7 @@ include_once '../Controller/ManageVideo.php';
 <?php
 session_start();
 ?>
-<?php
-// Retrieve the video ID and user ID from the URL query parameters
-$videoId = $_GET['video_id'];
-$userId = $_GET['user_id'];
-$video = ManageVideo::getInstance();
-$VideoAttribute = $video->RetriveForVideoPage($videoId, $userId);
-//$title= $VideoAttribute->getTitle();
-//$description=$VideoAttribute->getDescription();
-//$date=$VideoAttribute->getDate();
-//$view=$VideoAttribute->getViews();
-//$category=$VideoAttribute->getCategory();
-$video1 = $VideoAttribute->getUrl();
-$video1 = pathinfo($video1, PATHINFO_FILENAME);
-$video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
-echo $video1;
-?>
+
 
 <head>
    <meta charset="utf-8">

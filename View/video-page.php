@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php
-
 include_once '../Controller/ManageVideo.php';
-
+include_once '../Controller/ManageHistory.php';
 ?>
 <?php
 session_start();
+
 ?>
 <?php
 // Retrieve the video ID and user ID from the URL query parameters
@@ -23,6 +24,8 @@ $video1 = $VideoAttribute->getUrl();
 $video1 = pathinfo($video1, PATHINFO_FILENAME);
 $video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
 echo $video1;
+$h = new ManageHistory();
+$h->updateH($videoId,$userId);
 ?>
 
 <head>
