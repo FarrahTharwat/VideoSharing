@@ -1,11 +1,9 @@
 <?php
-include 'CRUD.php';
-include 'Database.php';
-include '../Model/Playlist.php';
-include '../Model/Video.php';
-include '../Model/User.php';
-include '../Model/History.php';
-include '../Controller/AuthController.php'; 
+require_once 'CRUD.php';
+require_once 'Database.php';
+require_once '../Model/Video.php';
+require_once '../Model/User.php';
+require_once '../Model/History.php';
 
 /**
  * Summary of ManageHistory
@@ -20,6 +18,9 @@ class ManageHistory implements CRUD{
     function create($History){
         //Get database connection
         //theres no creation of history
+    }
+    function update($History){
+
     }
     /**
      * Summary of delete
@@ -43,7 +44,7 @@ class ManageHistory implements CRUD{
     /**
      * Summary of retrive
      * @param mixed $id
-     * @return void
+     * @return array
      */
     public function retrive($UserID){
      // TODO: Implement retrive() method.
@@ -84,9 +85,9 @@ class ManageHistory implements CRUD{
                 );
                 array_push($theHistory,$arr);
             }
+        }
             $conn->close();
             return $theHistory;
-        }
 
     }
     /**
@@ -94,15 +95,13 @@ class ManageHistory implements CRUD{
      * @param mixed $videoID
      * @return void
      */
-    public function update($History){
+    public function updateH($videoID,$userID){
      // TODO: Implement update() method. 
+    
          $database = new Database();
          $conn = $database->getConn();
-         $userID = $History->getUserID();
-         $videoID = $History->getVideoID();
-         $query= "DELETE FROM History where VideoID  = '$videoID' and UserID = '$userID'";
+         $query= "INSERT INTO `history` (VideoID, UserID, WatchDate,ElapsedTime) VALUES ('$videoID','$userID',current_timestamp(),'300') ON DUPLICATE KEY UPDATE `WatchDate` = current_timestamp()";
          if ($conn->query($query) === TRUE) {
-            echo "Video Deleted successfully";
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
