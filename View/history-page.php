@@ -228,7 +228,7 @@ include ('../Controller/ManageHistory.php');
                 </div>
           <?php endif ?>
          <!-- Loop through the videos and generate HTML markup -->
-         <?php foreach ($theHistory as $a) { ?>
+         <?php foreach ($theHistory as $a): ?>
             <style>button.btn.btn-outline-secondary {
                   /* width: min-content; */
                   display: inherit;
@@ -261,7 +261,7 @@ include ('../Controller/ManageHistory.php');
                      </div>
                  </div>
              </div>
-             <?php }?>
+             <?php endforeach;?>
             </div>
    
 <div>    
