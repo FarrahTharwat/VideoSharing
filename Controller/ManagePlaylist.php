@@ -61,7 +61,7 @@ class ManagePlaylist implements CRUD{
     /**
      * Summary of retrive
      * @param mixed $id
-     * @return void
+     * @return array
      */
     public function retrive($PlaylistID){
         $database = new Database();
