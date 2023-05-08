@@ -280,6 +280,9 @@ include 'nav.php';
    <script src="vendor/owl-carousel/owl.carousel.js"></script>
    <!-- Custom scripts for all pages-->
    <script src="js/custom.js"></script>
+          <script src = "js/ajaxtrying.js">
+              </script>
+
 </body>
 
 
