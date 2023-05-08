@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="857910d7-dceb-4430-bdcd-28c992f24905" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/playlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/playlist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/single-channel.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/single-channel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/ManageSubscribtion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ManageSubscribtion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/ManageVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ManageVideo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/css/osahan.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/css/osahan.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/video-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/video-page.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

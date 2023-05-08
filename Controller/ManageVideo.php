@@ -166,6 +166,27 @@ class ManageVideo implements CRUD
 
         }
     }
+    public function RetriveForVideoPage($Id,$userID){
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $query = "SELECT  Category, Title, Description, Thumbnail, Date, Status, Views, Url
+              FROM video 
+              WHERE ID = '$Id'";
+
+        $result = $conn->query($query);
+        if ($result && mysqli_num_rows($result) > 0) {
+            // Get the video data from the query result
+            $row = mysqli_fetch_assoc($result);
+
+            // Create a new Video object with the data
+            $video = new Video($Id, $row['Title'], $row['Category'], $row['Description'], $row['Thumbnail'], $row['Date'], $row['Status'], $row['Views'], $row['Url'], $userID);
+            return $video;
+        } else {
+            return null;
+        }
+
+    }
   /*  function divide_video_quality($input_file, $output_path)
     {
         // Define the quality versions and their parameters

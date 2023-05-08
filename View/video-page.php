@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+include_once '../Controller/ManageVideo.php';
+
+?>
+<?php
+session_start();
+?>
+<?php
+// Retrieve the video ID and user ID from the URL query parameters
+$videoId = $_GET['video_id'];
+$userId = $_GET['user_id'];
+$video = ManageVideo::getInstance();
+$VideoAttribute=$video->RetriveForVideoPage($videoId,$userId);
+//$title= $VideoAttribute->getTitle();
+//$description=$VideoAttribute->getDescription();
+//$date=$VideoAttribute->getDate();
+//$view=$VideoAttribute->getViews();
+//$category=$VideoAttribute->getCategory();
+//$video1=$VideoAttribute->getUrl();
+
+?>
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +58,7 @@ include 'nav.php';
                <div class="row">
                   <div class="col-md-8">
                      <div class="video-player">
-                        <video src="img/v1.mp4" class="video"></video>
+                        <video src=""class="video"></video>
 
                         <div class="player-controls">
                            <div class="video-progress">
@@ -106,10 +127,12 @@ include 'nav.php';
                      </div>
                   </div>
                   <div class="single-video-author box mb-3" style="margin-bottom:-50%;">
-                     <div class="float-right"><button class="btn btn-danger" type="button">Subscribe
-                           <strong>1.4M</strong></button> <button class="btn btn btn-outline-danger" type="button"><i
-                              class="fas fa-bell"></i></button></div>
-                     <img class="img-fluid" src="img/s4.png" alt="">
+                      <div class="float-right">
+                          <button id="subscribeBtn" class="btn btn-danger" type="button"><span>Subscribe </span><strong>1.4M</strong></button>
+                          <button class="btn btn btn-outline-danger" type="button"><i class="fas fa-bell"></i></button>
+                      </div>
+
+                      <img class="img-fluid" src="img/s4.png" alt="">
                      <p><a href="#"><strong>Osahan Channel</strong></a> <span title="" data-placement="top"
                            data-toggle="tooltip" data-original-title="Verified"><i
                               class="fas fa-check-circle text-success"></i></span></p>
@@ -460,15 +483,25 @@ include 'nav.php';
          </div>
       </div>
    </div>
-   <?php
-   // Retrieve the video ID and user ID from the URL query parameters
-   $videoId = $_GET['video_id'];
-   $userId = $_GET['user_id'];
-   ?>
+
 
    <!-- Display the video and user IDs on the page -->
-   <h1> <?php echo $videoId; ?> <h1>
+<script>
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    subscribeBtn.addEventListener("click", function() {
+        const textSpan = subscribeBtn.querySelector("span");
+        if (textSpan.textContent === "Subscribe ") {
+            textSpan.textContent = "Subscribed ";
+            subscribeBtn.classList.remove("btn-danger");
+            subscribeBtn.classList.add("btn-success");
+        } else {
+            textSpan.textContent = "Subscribe ";
+            subscribeBtn.classList.remove("btn-success");
+            subscribeBtn.classList.add("btn-danger");
+        }
+    });
 
+</script>
    <!-- Bootstrap core JavaScript-->
    <script src="vendor/jquery/jquery.min.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

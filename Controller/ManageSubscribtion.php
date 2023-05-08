@@ -33,5 +33,3 @@ class ManageSubscribtion
         $conn->close();
     }
 }
-$manage=new managesubscribtion;
-$manage->deletesubscription(1,2);
