@@ -169,7 +169,7 @@ let dislikes = 0;
 function like(){
   document.getElementById("li").style.color = "blue"
   document.getElementById("di").style.color = "white"
-
+  
 }
 
 //dislike button
@@ -178,6 +178,13 @@ function dislike(){
   document.getElementById("li").style.color = "white"
 }
 console.log(quality);
+var myButton = document.getElementById("li");
+consle.log(myButton);
+// Add an event listener to the button
+myButton.addEventListener("onclick", function() {
+    triggerWowFunction();
+    console.log("wow");
+});
 quality.addEventListener("change", function () {
   var quality = this.value;
   var vidSrc = video.src;
