@@ -43,7 +43,7 @@ class ManageHistory implements CRUD{
     /**
      * Summary of retrive
      * @param mixed $id
-     * @return void
+     * @return array
      */
     public function retrive($UserID){
      // TODO: Implement retrive() method.
@@ -84,9 +84,9 @@ class ManageHistory implements CRUD{
                 );
                 array_push($theHistory,$arr);
             }
+        }
             $conn->close();
             return $theHistory;
-        }
 
     }
     /**
