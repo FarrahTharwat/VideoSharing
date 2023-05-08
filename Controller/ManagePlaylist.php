@@ -2,7 +2,7 @@
 include 'CRUD.php';
 include 'Database.php';
 include '../Model/Playlist.php';
-include '../Model/user.php';
+include '../Model/User.php';
 include '../Model/Video.php';
 include '../Model/VideoPlaylist.php';
 include '../Controller/AuthController.php';
@@ -109,12 +109,11 @@ class ManagePlaylist implements CRUD{
                 );
 
                 array_push($thePlaylist,$arr);
+                
     }
 }
-
     $conn->close();
     return $thePlaylist;
-
 }  
     /**
      * Summary of update
@@ -154,3 +153,5 @@ public function remove($playlistID,$videoID){
 }
 
 }
+$manage = new ManagePlaylist();
+$manage->retrive(1);

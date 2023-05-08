@@ -187,30 +187,83 @@ include ('../Controller/ManageHistory.php');
                </ul>
             </li>
          </ul>
-<div id="content-wrapper">
-   <div class="container-fluid">
-      <div class="video-block section-padding">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="main-title">
-                  <div class="btn-group float-right right-action">
-                     <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp; Close</a>
+         <div id="content-wrapper">
+            <div class="container-fluid">
+               <div class="video-block section-padding">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="main-title">
+                           <div class="btn-group float-right right-action">
+                              <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                 <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                                 <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
+                                 <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp; Close</a>
+                              </div>
+                           </div>
+                           <h6>Watch History</h6>
+                        </div>
                      </div>
-                  </div>
-                  <h6>Watch History</h6>
-               </div>
-            </div>
-         </div>
+
          <?php
           $h = new ManageHistory();
-          $h -> retrive($result);
+          
+         // Retrieve the videos for the user
+          $theHistory = $h->retrive(1);
+          
          ?>
+         <?php if(empty($theHistory)):?>
+            <div id="content-wrapper">
+                  <div class="container-fluid">
+                   <div class="row">
+                      <div class="col-md-8 mx-auto text-center  pt-4 pb-5">
+                         <h1>Your History is empty.</h1>
+                         <div class="mt-5">
+                            <a class="btn btn-outline-primary" href="index.php"><i class="mdi mdi-home"></i> GO TO HOME PAGE</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+          <?php endif ?>
+         <!-- Loop through the videos and generate HTML markup -->
+         <?php foreach ($theHistory as $a): ?>
+            <style>button.btn.btn-outline-secondary {
+                  /* width: min-content; */
+                  display: inherit;
+                  /* position: initial; */
+                  margin: -9% 4% -2% 89%;
+                  padding: revert;
+                    }</style>
+             <div class="col-xl-3 col-sm-6 mb-3">
+                 <div class="video-card history-video" onclick="goToVideoPage('<?= $a['video']->getID(); ?>', '<?php echo $a['video']->getUserID(); ?>')">
+                     <div class="video-card-image">
+                         <a class="video-close" href="#"><i class="fas fa-times-circle"></i></a>
+                         <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                         <a href="#"><img class="img-fluid" src="<?php echo $a['video']->getThumbnail(); ?>" alt=""></a>
+                         <div class="time">3 </div>
+                     </div>
+                     <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><?php echo $a['history']->getelapsedTime(); ?></div>
+                      </div>
+                     <div class="video-card-body">
+                         <div class="video-title">
+                             <a href="#"><?php echo $a['video']->getTitle(); ?></a>
+                         </div>
+                         <div class="video-page text-success">
+                             <?php echo $a['video']->getCategory(); ?>
+
+                         </div>
+                         <div class="video-view">
+                             <?php echo $a['video']->getViews(); ?> views &nbsp;<i class="fas fa-calendar-alt"></i> <?php echo $a['video']->getdate(); ?>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <?php endforeach; ?>
+            </div>
+   
 <div>    
 <nav aria-label="Page navigation example">
                      <ul class="pagination justify-content-center pagination-sm mb-0">
@@ -227,7 +280,6 @@ include ('../Controller/ManageHistory.php');
                   </nav>
 </div>
             <!-- /.container-fluid -->
-
             <!-- Sticky Footer -->
             <footer class="sticky-footer">
     <div class="container">
