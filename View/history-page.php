@@ -9,6 +9,8 @@ include ('../Controller/ManageHistory.php');
     session_start(); 
     $result = $_SESSION["userID"];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,9 +232,9 @@ include ('../Controller/ManageHistory.php');
          <!-- Loop through the videos and generate HTML markup -->
          <?php foreach ($theHistory as $a): ?>
              <div class="col-xl-3 col-sm-6 mb-3">
-                 <div class="video-card history-video" onclick="goToVideoPage('<?= $a['video']->getID(); ?>', '<?php echo $a['video']->getUserID(); ?>')">
-                     <div class="video-card-image">
-                         <a class="video-close" href="#"><i class="fas fa-times-circle"></i></a>
+                 <div class="video-card history-video">
+                     <div class="video-card-image"  onclick="goToVideoPage('<?= $a['video']->getID(); ?>', '<?php echo $a['video']->getUserID(); ?>')">
+                         <a onclick="triggerWowFunction('<?= $a['video']->getUserID(); ?>', '<?php echo $a['video']->getID(); ?>')" class="video-close" href="#"><i class="fas fa-times-circle"></i></a> </button>
                          <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
                          <a href="#"><img class="img-fluid" src="<?php echo $a['video']->getThumbnail(); ?>" alt=""></a>
                          <div class="time">3 </div>
@@ -256,6 +258,7 @@ include ('../Controller/ManageHistory.php');
              </div>
              <?php endforeach;?>
             </div>
+
    
 <div>    
 <nav aria-label="Page navigation example">
@@ -321,6 +324,7 @@ include ('../Controller/ManageHistory.php');
       </div>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
+<script src="yarab.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <!-- Core plugin JavaScript-->
       <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

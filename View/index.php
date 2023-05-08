@@ -207,7 +207,7 @@ session_start();
                       $manageVideo = ManageVideo::getInstance();
 
                       // Set the user ID for which to retrieve videos
-                      $userId = 2;
+                      $userId = 1;
 
                       // Retrieve the videos for the user
                       $videos = $manageVideo->retrive($userId);
@@ -281,7 +281,7 @@ session_start();
                         <div class="video-card">
                            <div class="video-card-image">
                               <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
-                              <a href="#"><img class="img-fluid" src="img/v5.png" alt=""></a>
+                              <a href="#"><img class="img-fluid" src="/Users/farrahtharwat/Desktop/Me/MOI/IMG_2368.JPGAS" alt=""></a>
                               <div class="time">3:50</div>
                            </div>
                            <div class="video-card-body">
