@@ -4,6 +4,7 @@ Author: Askbootstrap
 Author URI: https://themeforest.net/user/askbootstrap
 Version: 1.0
 */
+console.log("1010");
 (function($) {
   "use strict"; // Start of use strict
 
@@ -92,7 +93,7 @@ const progress = videoPlayer.querySelector('.video-progress')
 const progressBar = videoPlayer.querySelector('.video-progress-filled')
 const mute = videoPlayer.querySelector('.mute')
 const fullscreenButton = document.getElementById('fullscreenButton');
-
+const quality = document.querySelector('#quality');
 
 
 
@@ -176,5 +177,39 @@ function dislike(){
   document.getElementById("di").style.color = "blue"
   document.getElementById("li").style.color = "white"
 }
+console.log(quality);
+quality.addEventListener("change", function () {
+  var quality = this.value;
+  var vidSrc = video.src;
+  var time = Video.currentTime;
+  switch (quality) {
+      case "360p":
+          video.src = vidSrc.replace("240","360");
+          video.src = vidSrc.replace("144","360");
+          
+          console.log(video.src);
+          break;
+      case "240p":
+          video.src = vidSrc.replace("360","240");
+          video.src = vidSrc.replace("144","240");
+          
+          console.log(video.src);
+          break;
+      case "144p":
+          video.src = vidSrc.replace("240","144");
+          video.src = vidSrc.replace("360","144");
+        
+          console.log(video.src);
+          break;
+      default:
+          video.src = "video.mp4";
+          break;
+  }
+      video.currentTime = time;
+
+  video.load();
+  video.play();
+
+});
 
 

@@ -8,7 +8,7 @@ var duration = document.getElementById("duration");
 var fullscreenButton = document.getElementById("fullscreen-button");
 var video = document.getElementById("my-video");
 var qualitySelect = document.getElementById("quality-select");
-
+console.log("wowowowowowowow ya3m please work ");
 function togglePlay() {
     if (video.paused) {
         video.play();
@@ -100,24 +100,32 @@ video.addEventListener("loadedmetadata", function () {
 });
 fullscreenButton.addEventListener("click", toggleFullscreen);
 document.addEventListener("fullscreenchange", updateFullscreenButton);
-
+console.log("wowwowowo");
 qualitySelect.addEventListener("change", function () {
     var quality = this.value;
+    var vidSrc = video.src;
+    
     switch (quality) {
-        case "720p":
-            video.src = "video-720p.mp4";
-            break;
-        case "480p":
-            video.src = "video-480p.mp4";
-            break;
         case "360p":
-            video.src = "video-360p.mp4";
+            video.src = vidSrc.replace("240","360");
+            video.src = vidSrc.replace("144","360");
+            console.log(video.src);
+            break;
+        case "240p":
+            video.src = vidSrc.replace("360","240");
+            video.src = vidSrc.replace("144","240");
+            console.log(video.src);
+            break;
+        case "144p":
+            video.src = vidSrc.replace("240","144");
+            video.src = vidSrc.replace("360","144");
+            console.log(video.src);
             break;
         default:
             video.src = "video.mp4";
             break;
     }
-
+        
 
     video.load();
     video.play();
