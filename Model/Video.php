@@ -24,7 +24,7 @@ class Video
      * @param $url
      * @param $userID
      */
-    public function __construct($id, $title, $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
+    public function __construct($id=null, $title=null, $category=null, $description=null, $thumbnail=null, $date=null, $state=null, $views=null, $url=null, $userID=null)
     {
         $this->id = $id;
         $this->title = $title;

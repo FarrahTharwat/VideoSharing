@@ -44,7 +44,49 @@ class ManageVideo implements CRUD
             echo "Error: " . $query . "<br>" . $conn->error;
         }
 
-// Close the database connection
+        //hamed part
+
+        $query = "SELECT MAX(id) as max_id FROM video";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $maxId = $row['max_id'];
+
+        //$video_id = mysqli_insert_id($conn);
+
+        // Get the list of subscribers for the uploaded video's channel
+
+        //$subscribersQuery = "SELECT subscriberID FROM subscribed WHERE ChannelID = {$_SESSION['userID']}";
+        $subscribersQuery = "SELECT subscriberID FROM subscribed WHERE channelID = {$_SESSION['userID']}
+                                      AND bell = 1";
+
+
+        $subscribersResult = $conn->query($subscribersQuery);
+        // var_dump($subscribersResult);
+
+        if ($subscribersResult->num_rows > 0) {
+            while ($row = $subscribersResult->fetch_assoc()) {
+                $subscriberID = $row['subscriberID'];
+                //var_dump($subscriberID);
+                //var_dump($url);
+                $message = "<a href=\"video-page.php?video=$maxId\">A new video ($title) uploaded to a channel </a>";
+
+
+                // Insert a new notification for the subscriber
+                $notificationQuery = "INSERT INTO notification (UserID, Content ) VALUES ('$subscriberID', '$message')";
+                if ($conn->query($notificationQuery) === TRUE) {
+                    echo "New notification created successfully";
+                } else {
+                    echo "Error: " . $notificationQuery . "<br>" . $conn->error;
+                }
+            }
+        }
+
+
+
+
+
+
+        // Close the database connection
         $conn->close();
     }
 
@@ -186,50 +228,9 @@ class ManageVideo implements CRUD
             return null;
         }
 
+
+
     }
-  /*  function divide_video_quality($input_file, $output_path)
-    {
-        // Define the quality versions and their parameters
-        $qualities = [
-            [
-                'width' => 640,
-                'height' => 360,
-                'bitrate' => '500k',
-            ],
-            [
-                'width' => 256,
-                'height' => 144,
-                'bitrate' => '100k',
-            ],
-            [
-                'width' => 426,
-                'height' => 240,
-                'bitrate' => '250k',
-            ],
-        ];
-
-        // Loop through the quality versions and generate the output files
-        foreach ($qualities as $quality) {
-            $output_file = $output_path . '/' . 'output_' . $quality['width'] . 'x' . $quality['height'] . '_' . $quality['bitrate'] . '.mp4';
-
-            $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
-
-            exec($cmd);
-        }
-    }
-    */
-
 
 
 }
-
-
-
-
-
-
-/*$manageVideo = ManageVideo::getInstance();
-$outputDir = 'F:\XAMPP\htdocs\VideoSharing\View\Videos';
-$inputFile = 'F:\XAMPP\htdocs\VideoSharing/View\Videos\Sample.mp4';
-$manageVideo->divide_video_quality($inputFile,$outputDir);
-*/

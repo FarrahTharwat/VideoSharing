@@ -26,7 +26,7 @@
 <!--header-->
 
 <?php
-include 'header.php';
+include 'headers.php';
 ?>
 <!--nav-->
 <?php
@@ -382,7 +382,7 @@ include 'nav.php';
 <!--header-->
 
 <?php
-include 'header.php';
+include 'headers.php';
 ?>
 <!--nav-->
 <?php
