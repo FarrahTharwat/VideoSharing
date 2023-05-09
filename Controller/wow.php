@@ -60,6 +60,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'subscribe') {
 function toggleSubscribe($userID,$channelID)
 {
     $manage = new  ManageSubscribtion();
-    $manage->addsubscription($userID,$channelID);
+    $manage->toggleSubscription($userID,$channelID);
 }
 

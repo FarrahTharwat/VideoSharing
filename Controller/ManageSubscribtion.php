@@ -2,7 +2,7 @@
 require_once 'Database.php';
 class ManageSubscribtion
 {
-    public function addsubscription($SubscriberID,$ChannelID)
+  /*  public function addsubscription($SubscriberID,$ChannelID)
     {
         $database = new Database();
         $conn = $database->getConn();
@@ -61,5 +61,55 @@ class ManageSubscribtion
 
         // Close the database connection
         $conn->close();
+    } */
+    public function deleteSubscription($subscriberID, $channelID) {
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $deleteQuery = "DELETE FROM subscribed WHERE SubscriberID='$subscriberID' AND ChannelID='$channelID'";
+        if ($conn->query($deleteQuery) === TRUE) {
+            echo "Subscription cancelled successfully";
+        } else {
+            echo "Error: " . $deleteQuery . "<br>" . $conn->error;
+        }
+
+        $conn->close();
     }
+
+    public function addNewSubscription($subscriberID, $channelID) {
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $addQuery = "INSERT INTO subscribed VALUES ('$subscriberID','$channelID',0)";
+        if ($conn->query($addQuery) === TRUE) {
+            echo "Subscription added successfully";
+        } else {
+            echo "Error: " . $addQuery . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    }
+
+    public function checkIfSubscribed($subscriberID, $channelID) {
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $checkQuery = "SELECT * FROM subscribed WHERE SubscriberID='$subscriberID' AND ChannelID='$channelID'";
+        $result = $conn->query($checkQuery);
+
+        $conn->close();
+
+        return $result->num_rows > 0;
+    }
+
+    public function toggleSubscription($subscriberID, $channelID) {
+        $isSubscribed = $this->checkIfSubscribed($subscriberID, $channelID);
+
+        if ($isSubscribed) {
+            $this->deleteSubscription($subscriberID, $channelID);
+        } else {
+            $this->addNewSubscription($subscriberID, $channelID);
+        }
+    }
+
 }
