@@ -1,6 +1,6 @@
 <?php
 include 'CRUD.php';
-include 'Database.php';
+require_once 'Database.php';
 include '../Model/Playlist.php';
 include '../Model/User.php';
 include '../Model/Video.php';
