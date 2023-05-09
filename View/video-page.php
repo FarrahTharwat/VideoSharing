@@ -122,7 +122,7 @@ include 'nav.php';
                         <h2><a href="#"><?php echo $VideoAttribute->getTitle(); ?></a></h2>
                         <p class="mb-0"><i class="fas fa-eye"></i> <?php echo $VideoAttribute->getViews(); ?> views</p>
 
-                        <div class="wrrapper">
+                        <div class="wrrapper" >
                             <div class="like">
                                 <i onclick="triggerLikeFunction('<?php echo $watcher; ?>','<?php echo $videoId; ?>',1)" id="li" id="wi" class="fas fa-thumbs-up fa-2xl"></i>
                             </div>
@@ -131,7 +131,7 @@ include 'nav.php';
                                 <i onclick="triggerLikeFunction('<?php echo $watcher; ?>','<?php echo $videoId; ?>',2)" id="di" class="fas fa-thumbs-down"></i>
                             </div>
                         </div>
-                        <div class="wrraapper" style="margin-bottom: 10%; margin-left: 23%; margin-top:-5%;">
+                        <div class="wrraapper" style="margin-bottom: 10%; margin-left: 27%; margin-top:-5%;">
                             <p style="font-size: large; color: white; font-weight: 400;">+Save</p>
                             </select>
                         </div>
