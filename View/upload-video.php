@@ -6,7 +6,7 @@
 //include_once '../Model/Video.php';
 include_once '../Controller/VideoUploaderFacade.php';
 
-session_start();
+//session_start();
 ?>
 <head>
    <meta charset="utf-8">
@@ -23,7 +23,7 @@ session_start();
    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    <!-- Custom styles for this template-->
     <link rel="stylesheet" type="text/css" href="css/uploadVideoButtonVideo.css">
-    <
+    
     <link rel="stylesheet" type="text/css" href="css/upload%20video.css">
    <link href="css/osahan.css" rel="stylesheet">
    <!-- Owl Carousel -->

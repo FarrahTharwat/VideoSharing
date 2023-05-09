@@ -1,4 +1,8 @@
+
 <?php
+
+require_once '../Controller/Database.php';
+
 class Video
 {
     private  $id;
@@ -24,20 +28,21 @@ class Video
      * @param $url
      * @param $userID
      */
-    public function __construct($id, $title, $category, $description, $thumbnail, $date, $state, $views, $url, $userID)
-    {
-        $this->id = $id;
-        $this->title = $title;
-        $this->category = $category;
-        $this->description = $description;
-        $this->thumbnail = $thumbnail;
-        $this->date = $date;
-        $this->state = $state;
-        $this->views = $views;
-        $this->url = $url;
-        $this->userID = $userID;
-    }
+    public function __construct($id=null, $title=null, $category=null, $description=null, $thumbnail=null, $date=null, $state=null, $views=null, $url=null, $userID=null)
+{
+    $this->id = $id;
+    $this->title = $title;
+    $this->category = $category;
+    $this->description = $description;
+    $this->thumbnail = $thumbnail;
+    $this->date = $date;
+    $this->state = $state;
+    $this->views = $views;
+    $this->url = $url;
+    $this->userID = $userID;
+}
 
+    
 
     /**
      * @param $id
@@ -226,3 +231,4 @@ class Video
         return $this;
     }
 }
+

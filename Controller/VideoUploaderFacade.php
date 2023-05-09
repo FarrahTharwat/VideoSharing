@@ -86,7 +86,7 @@ class VideoUploaderFacade
             $this->manage->divide_video_quality($videoFile['name']);
 
             //remove the video and keep qualities only
-            unlink($uploadVideoPath);
+            //unlink($uploadVideoPath);
             $uploadThumbnailPath = $uploadDir . '/' . $_FILES['thumbnail']['name'];
             move_uploaded_file($_FILES['thumbnail']['tmp_name'], $uploadThumbnailPath);
 

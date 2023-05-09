@@ -1,7 +1,13 @@
 <?php
+<<<<<<< Updated upstream
 require_once 'CRUD.php';
 require_once 'Database.php';
 require_once '../Model/Video.php';
+=======
+include 'CRUD.php';
+include 'Database.php';
+include '../Model/Video.php';
+>>>>>>> Stashed changes
 
 
 class ManageVideo implements CRUD
@@ -15,9 +21,10 @@ class ManageVideo implements CRUD
      * @return null
      */
     public static function getInstance()
-    {       if(self::$instance==null) {
-        self::$instance = new ManageVideo();
-    }
+    {
+        if (self::$instance == null) {
+            self::$instance = new ManageVideo();
+        }
         return self::$instance;
     }
     public function create($video)
@@ -35,16 +42,56 @@ class ManageVideo implements CRUD
         $views = $video->getViews();
         $url = $video->getUrl();
         $userID = $video->getUserID();
-        $query = "INSERT INTO video (Category, Title, Description, ThumbNail, Date, Status, Views, URL, UserID) VALUES ('$category', '$title', '$description', '$thumbnail', '$date', '$status', '$views', '$url', '$userID')";
+        $query = "INSERT INTO video (Category, Title, Description, ThumbNail, Date, Status, Views, URL, UserID) 
+        VALUES ('$category', '$title', '$description', '$thumbnail', '$date', '$status', '$views', '$url', '$userID')";
 
-// Execute the query
+        // Execute the query
         if ($conn->query($query) === TRUE) {
             echo "New record created successfully";
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
 
-// Close the database connection
+        $query = "SELECT MAX(id) as max_id FROM video";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $maxId = $row['max_id'];
+
+        //$video_id = mysqli_insert_id($conn);
+
+        // Get the list of subscribers for the uploaded video's channel
+
+        //$subscribersQuery = "SELECT subscriberID FROM subscribed WHERE ChannelID = {$_SESSION['userID']}";
+        $subscribersQuery = "SELECT subscriberID FROM subscribed WHERE channelID = {$_SESSION['userID']}";
+
+
+        $subscribersResult = $conn->query($subscribersQuery);
+        // var_dump($subscribersResult);
+
+        if ($subscribersResult->num_rows > 0) {
+            while ($row = $subscribersResult->fetch_assoc()) {
+                $subscriberID = $row['subscriberID'];
+                //var_dump($subscriberID);
+                //var_dump($url);
+                $message = "<a href=\"video-page.php?video=$maxId\">A new video ($title) uploaded to a channel </a>";
+
+
+                // Insert a new notification for the subscriber
+                $notificationQuery = "INSERT INTO notification (UserID, Content ) VALUES ('$subscriberID', '$message')";
+                if ($conn->query($notificationQuery) === TRUE) {
+                    echo "New notification created successfully";
+                } else {
+                    echo "Error: " . $notificationQuery . "<br>" . $conn->error;
+                }
+            }
+        }
+
+
+
+
+
+
+        // Close the database connection
         $conn->close();
     }
 
@@ -53,7 +100,7 @@ class ManageVideo implements CRUD
         $database = new Database();
         $conn = $database->getConn();
 
-        $query="DELETE FROM video where ID = '$id'";
+        $query = "DELETE FROM video where ID = '$id'";
 
         if ($conn->query($query) === TRUE) {
             echo "Record Deleted successfully";
@@ -100,7 +147,8 @@ class ManageVideo implements CRUD
 
 
     public function update($video)
-    {   $database = new Database();
+    {
+        $database = new Database();
         $conn = $database->getConn();
 
 
@@ -123,20 +171,21 @@ class ManageVideo implements CRUD
         }
     }
 
-    public function checkExtension ($extenstion)
-    {  $allowedExtenstion = array("wmv","avi","mp4");
+    public function checkExtension($extenstion)
+    {
+        $allowedExtenstion = array("wmv", "avi", "mp4");
         //Search in the allowed extenstion
-        if(in_array($extenstion,$allowedExtenstion) )
+        if (in_array($extenstion, $allowedExtenstion))
             return true;
         else
             return false;
-
     }
     function divide_video_quality($videoName)
-    {   $dirName = pathinfo($videoName,PATHINFO_FILENAME);
-        $dirName=basename($dirName);
-        $input_file='../View/Videos/'.$dirName.'/'.$videoName;
-        $output_path='../View/Videos/'.$dirName;
+    {
+        $dirName = pathinfo($videoName, PATHINFO_FILENAME);
+        $dirName = basename($dirName);
+        $input_file = '../View/Videos/' . $dirName . '/' . $videoName;
+        $output_path = '../View/Videos/' . $dirName;
         // Define the quality versions and their parameters
         $qualities = [
             [
@@ -163,9 +212,9 @@ class ManageVideo implements CRUD
             $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
 
             exec($cmd);
-
         }
     }
+<<<<<<< Updated upstream
     public function RetriveForVideoPage($Id,$userID){
         $database = new Database();
         $conn = $database->getConn();
@@ -188,6 +237,9 @@ class ManageVideo implements CRUD
 
     }
   /*  function divide_video_quality($input_file, $output_path)
+=======
+    /*  function divide_video_quality($input_file, $output_path)
+>>>>>>> Stashed changes
     {
         // Define the quality versions and their parameters
         $qualities = [
@@ -218,9 +270,6 @@ class ManageVideo implements CRUD
         }
     }
     */
-
-
-
 }
 
 
