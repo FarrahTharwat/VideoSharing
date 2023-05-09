@@ -1,6 +1,6 @@
 <<<<<<< Updated upstream
     <?php
-    include 'Database.php';
+    require_once 'Database.php';
     class ManageReact
     {
         public function addReact($videoID, $userID, $reactType)

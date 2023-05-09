@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Database.php';
 require_once 'ManageReact.php';
 require_once 'ManageHistory.php';
 require_once 'ManageSubscribtion.php';
@@ -28,7 +28,7 @@ require_once 'ManageSubscribtion.php';
  echo "Wow, the wow function was called with name ".$_POST['userID']." and age ".$_POST['videoID']."!";
  }
  
- echo $uid;
+
  function weew($userID)
  {
      $kk = new ManageHistory();
