@@ -1,7 +1,10 @@
 <<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
-   
+<?php
+session_start();
+$watcher = $_SESSION['userID'];
+?>
 <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,7 +59,7 @@
                            <a class="nav-link" href="#">Videos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="playlist.php">Playlist</a>
+                           <a onclick="" class="nav-link" href="playlist.php">Playlist</a>
                         </li>
 
                      </ul>

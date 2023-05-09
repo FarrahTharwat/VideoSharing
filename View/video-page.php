@@ -4,7 +4,7 @@
 <?php
 
 include_once '../Controller/ManageVideo.php';
-//include_once '../Controller/Database.php';
+include_once '../Controller/ManageHistory.php';
 ?>
 <<?php
 session_start();
@@ -25,6 +25,8 @@ $VideoAttribute = $video->RetriveForVideoPage($videoId, $userId);
 //$category=$VideoAttribute->getCategory();
 
 $video1 = $VideoAttribute->getUrl();
+$theHistory = new ManageHistory();
+$theHistory->updateH($videoId, $userId);
 $video1 = pathinfo($video1, PATHINFO_FILENAME);
 $video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
 echo $video1;
