@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 php function :
 <?php
 include '../Controller/ManageReact.php';
@@ -39,4 +40,47 @@ function triggerWowFunction() {
 
   // Send the AJAX request with the form data
   xhr.send(formData);
+=======
+php function :
+<?php
+include '../Controller/ManageReact.php';
+
+if (isset($_POST['action']) && $_POST['action'] == 'wow') {
+    // Call the wow function and echo a message
+wow($_POST['userID'], $_POST['videoID']);
+echo "Wow, the wow function was called with name ".$_POST['userID']." and age ".$_POST['videoID']."!";
+}
+
+
+function wow($userID, $videoID)
+{
+    $kk = new ManageReact();
+    $kk->addReact($videoID, $userID, 1);
+    echo "wooooooooow";
+}
+javascript fucntion:
+
+function triggerWowFunction() {
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Open a new AJAX request
+  xhr.open("POST", "../../Controller/wow.php", true);
+
+  // Define the callback function for when the AJAX request completes
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      // Handle the response from the PHP function
+      console.log(xhr.responseText);
+    }
+  };
+
+  // Create a new FormData object and append the data you want to send
+  var formData = new FormData();
+  formData.append("userID", 2);
+  formData.append("videoID", 9);
+
+  // Send the AJAX request with the form data
+  xhr.send(formData);
+>>>>>>> Stashed changes
 }
