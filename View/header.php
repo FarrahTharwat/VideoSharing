@@ -1,9 +1,4 @@
-<?php
-//include '/Applications/XAMPP/xamppfiles/htdocs/web/VideoSharing/Controller/Database.php';
-//include '/Applications/XAMPP/xamppfiles/htdocs/web/VideoSharing/Model/Video.php';
-// include '../Model/User.php';
-// include '../Model/History.php';
-require_once 'Controller/Database.php';
+<?php require_once '../Controller/Database.php';
 ?>
 <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
     &nbsp;&nbsp;
