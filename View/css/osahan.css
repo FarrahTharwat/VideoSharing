@@ -2105,8 +2105,8 @@ h6 {
     display: flex;
   }
 
-  
-  .wrrapper{
+
+.wrrapper{
     display: flex;
     width: 170px;
     height: 43px;
@@ -2116,40 +2116,40 @@ h6 {
     box-sizing: 1px 1px ;
     background-color:rgb(146, 142, 142);
     border-radius: 20px;
-  }
- 
-  
-  .like{
+}
+
+
+.like{
     margin-top: 10px;
     margin-right: 19px;
-  }
+}
 
-  .like i{
+.like i{
     font-size: 25px;
     color: white;
     cursor: pointer;
 
-  }
+}
 
 
-  .dislike{
+.dislike{
     margin-top: 15px;
     margin-left: 19px;  }
 
-  .dislike i{
+.dislike i{
     font-size: 25px;
     color: white;
     cursor: pointer;
-  }
+}
 
-  .wrraapper{
+.wrraapper{
     display: flex;
     width: 80px;
     height: 30px;
     background-color: white;
     justify-content: center;
     text-align: center;
-    box-sizing: 1px 1px ;
+    box-sizing: 1px ,1px ;
     background-color:rgb(146, 142, 142);
     border-radius: 20px;
-  }
+}

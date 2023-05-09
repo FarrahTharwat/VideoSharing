@@ -56,39 +56,14 @@ include 'nav.php';
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                      <li class="nav-item ">
-                        <a class="nav-link" href="single-channel.html">Videos <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="single-channel.php">Videos <span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item active">
                         <a class="nav-link" href="#">Playlist <span class="sr-only">(current)</span></a>
                      </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Channels</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Discussion</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                     </li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Donate
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                           <a class="dropdown-item" href="#">Action</a>
-                           <a class="dropdown-item" href="#">Another action</a>
-                           <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                     </li>
+
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                     <input class="form-control form-control-sm mr-sm-1" type="search" placeholder="Search"
-                        aria-label="Search"><button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit"><i
-                           class="fas fa-search"></i></button> &nbsp;&nbsp;&nbsp; <button
-                        class="btn btn-outline-danger btn-sm" type="button">Subscribe <strong>1.4M</strong></button>
-                  </form>
+
                </div>
             </nav>
          </div>
