@@ -30,22 +30,20 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
 
-              
-               <?php
+
+                <?php
                 $db=new DataBase();
-                $no = $db->getNotificationsForCurrentUser();
-                //var_dump($no);
+               $no = $db->getNotificationsForCurrentUser();
+$no = array_reverse($no); // reverse the order of the notifications array
 
-                if (count($no) > 0) {
-                    foreach ($no as $notification) {
-                
-                        echo "<i class='fas fa-fw fa-bell'></i> {$notification['content']}<br>";
+if (count($no) > 0) {
+    foreach ($no as $notification) {
+        echo "<i class='fas fa-fw fa-bell'></i> {$notification['content']}<br>";
+    }
+} else {
+    echo "<a class='dropdown-item' href='#'><i class='fas fa-fw fa-bell'></i> No new notifications</a>";
+}
 
-                        
-                    }
-                  } else {
-                    echo "<a class='dropdown-item' href='#'><i class='fas fa-fw fa-bell'></i> No new notifications</a>";
-                  }
 
                 ?>
 

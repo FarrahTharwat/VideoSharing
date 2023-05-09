@@ -17,8 +17,7 @@ class ManageHistory implements CRUD{
      */
     //Till we finish the front, dont forget the add and remove (can implement the function multiple times?)
     function create($History){
-        //Get database connection
-        //theres no creation of history
+
     }
     function update($History){
 

@@ -82,7 +82,7 @@ class Database
 
      function searchVideos($searchQuery) {
         // Define the MySQL SELECT statement to retrieve the relevant videos
-        $query = "SELECT ThumbNail, Title, URL , Category , Description , Date ,Views ,UserID FROM video WHERE Title LIKE '%$searchQuery%'";
+        $query = "SELECT ID, ThumbNail, Title, URL , Category , Description , Date ,Views ,UserID FROM video WHERE Title LIKE '%$searchQuery%'";
         
         // Execute the query and retrieve the results as an array
         $result = $this->conn->query($query);
@@ -94,7 +94,7 @@ class Database
 
      public function getNotificationsForCurrentUser() {
         $userID = $_SESSION['userID'];
-        $notificationsQuery = "SELECT * FROM notification WHERE UserID = $userID ORDER BY ID DESC LIMIT 5";
+        $notificationsQuery = "SELECT * FROM notification WHERE UserID = $userID ORDER BY ID desc LIMIT 5";
         $notificationsResult = $this->conn->query($notificationsQuery);
     
         $notifications = [];

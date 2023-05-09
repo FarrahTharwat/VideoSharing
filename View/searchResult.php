@@ -90,20 +90,22 @@ include 'nav.php';
             // Close the previous row and open a new row every 2 videos
                    $html .= '</div><div class="row">';
                   }
-        $html .= '<div class="col-sm-6">';
-        $html .= '<div class="video">';
-        $html .= '<a href="' . $video['URL'] . '">';
-        $html .= '<img src="' . $video['ThumbNail'] . '" alt="' . $video['Title'] . '">';
-        $html .= '<h2>' . $video['Title'] . '</h2>';
-        $html .= '</a>';
-        $html .= '<p>' . $video['Description'] . '</p>';
-        $html .= '<p>Date: ' . $video['Date'] . '</p>';
-        // Call the getUserById() function to get the user name by ID
-        $controller = new VideoController(new View(), new Database());
-        //$user = $controller->getUserById($video['UserID']);
-       // $html .= '<p>User: ' . $user['Username'] . '</p>';
-        $html .= '</div>';
-        $html .= '</div>';
+                      $html .= '<div class="col-sm-6">';
+                      $html .= '<div class="video">';
+                      $html .= '<a href="http://localhost/VideoSharing/View/video-page.php?video_id=' . $video['ID'] . '">';
+                      $html .= '<img src="' . $video['ThumbNail'] . '" alt="' . $video['Title'] . '">';
+                      $html .= '</a>';
+                      $html .= '<h2>' . $video['Title'] . '</h2>';
+                      $html .= '<p>' . $video['Description'] . '</p>';
+                      $html .= '<p>Date: ' . $video['Date'] . '</p>';
+// Call the getUserById() function to get the user name by ID
+                      $controller = new VideoController(new View(), new Database());
+//$user = $controller->getUserById($video['UserID']);
+//$html .= '<p>User: ' . $user['Username'] . '</p>';
+                      $html .= '</div>';
+                      $html .= '</div>';
+
+        
         $count++;
     }
     // Close the last row and the container

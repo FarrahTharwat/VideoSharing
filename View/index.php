@@ -39,14 +39,16 @@ $watcher = $_SESSION['userID']
    ?>
 
 
-
-         <div id="content-wrapper">
-            <div class="container-fluid pb-0">
-
+   <div id="content-wrapper">
+       <div class="container-fluid">
+           <div class="video-block section-padding">
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="main-title">
 
                            <h6>Featured Videos</h6>
-
-
+                       </div>
+                   </div>
                       <?php
                       // Get an instance of the ManageVideo class
                       $manageVideo = ManageVideo::getInstance();
@@ -61,7 +63,7 @@ $watcher = $_SESSION['userID']
                       <!-- Loop through the videos and generate HTML markup -->
                       <?php foreach ($videos as $video): ?>
                           <div class="col-xl-3 col-sm-6 mb-3">
-                              <div class="video-card" onclick="goToVideoPage('<?php echo $video->getID(); ?>', '<?php echo $video->getUserID(); ?>')">
+                              <div class="video-card" onclick="goToVideoPage('<?php echo $video->getID(); ?>')">
                                   <div class="video-card-image">
                                       <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
                                       <a href="#"><img class="img-fluid" src="<?php echo $video->getThumbnail(); ?>" alt=""></a>
@@ -129,8 +131,8 @@ $watcher = $_SESSION['userID']
          </div>
       </div>
              <script>
-                 function goToVideoPage(videoId, userId) {
-                     window.location.href = 'video-page.php?video_id=' + videoId + '&user_id=' + userId;
+                 function goToVideoPage(videoId) {
+                     window.location.href = 'video-page.php?video_id=' + videoId;
                  }
              </script>
       <!-- Bootstrap core JavaScript-->

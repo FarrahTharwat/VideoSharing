@@ -68,8 +68,8 @@ class ManageVideo implements CRUD
                 $subscriberID = $row['subscriberID'];
                 //var_dump($subscriberID);
                 //var_dump($url);
-                $message = "<a href=\"video-page.php?video=$maxId\">A new video ($title) uploaded to a channel </a>";
 
+                $message = "<a href=\"http://localhost/VideoSharing/View/video-page.php?video_id=$maxId\">A new video ($title) uploaded to a channel </a>";
 
                 // Insert a new notification for the subscriber
                 $notificationQuery = "INSERT INTO notification (UserID, Content ) VALUES ('$subscriberID', '$message')";
@@ -208,11 +208,11 @@ class ManageVideo implements CRUD
 
         }
     }
-    public function RetriveForVideoPage($Id,$userID){
+    public function RetriveForVideoPage($Id){
         $database = new Database();
         $conn = $database->getConn();
 
-        $query = "SELECT  Category, Title, Description, Thumbnail, Date, Status, Views, Url
+        $query = "SELECT  Category, Title, Description, Thumbnail, Date, Status, Views, Url,UserID
               FROM video 
               WHERE ID = '$Id'";
 
@@ -222,7 +222,7 @@ class ManageVideo implements CRUD
             $row = mysqli_fetch_assoc($result);
 
             // Create a new Video object with the data
-            $video = new Video($Id, $row['Title'], $row['Category'], $row['Description'], $row['Thumbnail'], $row['Date'], $row['Status'], $row['Views'], $row['Url'], $userID);
+            $video = new Video($Id, $row['Title'], $row['Category'], $row['Description'], $row['Thumbnail'], $row['Date'], $row['Status'], $row['Views'], $row['Url'], $row['UserID']);
             return $video;
         } else {
             return null;

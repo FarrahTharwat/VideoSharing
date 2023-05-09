@@ -13,18 +13,19 @@ $watcher = $_SESSION['userID'];
 <?php
 // Retrieve the video ID and user ID from the URL query parameters
 $videoId = $_GET['video_id'];
-$userId = $_GET['user_id'];
+
 $theHistory = new ManageHistory();
 $theHistory->updateH($videoId, $watcher);
 
 $video = ManageVideo::getInstance();
-$VideoAttribute = $video->RetriveForVideoPage($videoId, $userId);
+$VideoAttribute = $video->RetriveForVideoPage($videoId);
 //$title= $VideoAttribute->getTitle();
 //$description=$VideoAttribute->getDescription();
 //$date=$VideoAttribute->getDate();
 //$view=$VideoAttribute->getViews();
 //$category=$VideoAttribute->getCategory();
 $video1 = $VideoAttribute->getUrl();
+$userId =$VideoAttribute->getUserID();
 $video1 = pathinfo($video1, PATHINFO_FILENAME);
 $video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
 
