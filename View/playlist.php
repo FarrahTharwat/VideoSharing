@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -355,6 +356,8 @@ include 'nav.php';
                   <script src="js/custom.js"></script>
 </body>
 =======
+=======
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 
@@ -382,11 +385,21 @@ include 'nav.php';
 <!--header-->
 
 <?php
+<<<<<<< Updated upstream
 include 'headers.php';
+=======
+session_start(); 
+$watcher = $_SESSION["userID"];
+require_once '../Controller/ManagePlaylist.php';
+require_once '../Model/Playlist.php';
+include 'header.php';
+>>>>>>> Stashed changes
 ?>
 <!--nav-->
 <?php
 include 'nav.php';
+$theUser = new Database();
+   
 ?>
       <div class="single-channel-page" id="content-wrapper">
          <div class="single-channel-image">
@@ -403,7 +416,7 @@ include 'nav.php';
          </div>
          <div class="single-channel-nav">
             <nav class="navbar navbar-expand-lg navbar-light">
-               <a class="channel-brand" href="#">Osahan Channel <span title="" data-placement="top"
+               <a class="channel-brand" href="#"><?php echo $theUser->name($watcher) ; ?> <span title="" data-placement="top"
                      data-toggle="tooltip" data-original-title="Verified"><i
                         class="fas fa-check-circle text-success"></i></span></a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -430,274 +443,78 @@ include 'nav.php';
                <div class="row">
                   <div class="col-md-12">
                      <div class="main-title">
-                        <div class="btn-group float-right right-action">
+                     <div class="btn-group float-right right-action">
                            <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true"
                               aria-expanded="false">
-                              Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                              + Create Playlist <i class="fa fa-caret-down" aria-hidden="true"></i>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp;
-                                 Close</a>
+                              <form style="color: rgb(248, 18, 18); font-size: x-small;">
+                                 <label for="name"> Playlist Name:</label><br>
+                                 <input type="text" id="name" name="name"><br>
+                                 <label for="setvideo">Set Video:</label><br>
+                                 <input type="text" id="name" name="setvideo"><br>
+                              </form>
+                              <button  style="margin-left: 125px; margin-top: 10px; border: 2px; border-radius: 4px; color:rgb(238, 42, 42) ; background-color: bisque;">
+                                 <h> Submit </h><br>
+                              </button>
                            </div>
-                        </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
+         <?php
+         // Set the user ID for which to retrieve videos
+         $userId = $watcher;
+         $theplaylist = new ManagePlaylist();
+          // Retrieve the videos for the user
+         $playlist = $theplaylist->retriveUserPlaylist($userId);
+         ?>
+
+         <?php if(empty($playlist)):?>
+            <div id="content-wrapper">
+                  <div class="container-fluid">
+                   <div class="row">
+                      <div class="col-md-8 mx-auto text-center  pt-4 pb-5">
+                         <h1>Your History is empty.</h1>
+                         <div class="mt-5">
+                            <a class="btn btn-outline-primary" href="index.php"><i class="mdi mdi-home"></i> GO TO HOME PAGE</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+          <?php endif ?>
+         <?php foreach ($playlist as $a): ?>
          <div class="container-fluid">
             <div class="video-block section-padding">
                <div class="row">
-                  <div class="col-md-12">
-                     <div class="main-title">
-                        <div class="btn-group float-left right-action">
-                           <a style="font-size: 30px; margin-bottom:30px ; margin-top:-40px; text-align: left;" href="#"
-                              class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true"
-                              aria-expanded="false">
-                              All Playlists<i class="fa fa-caret-down" aria-hidden="true"></i>
-                           </a>
-                           <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="playlist.html" style="color: rgb(54, 53, 53);"> <i class="fa fa-list"></i> &nbsp; Created playlists </a>
-                              <a class="dropdown-item" href="v1.html"> &nbsp; Education </a>
-                              <a class="dropdown-item" href="v2.html"> &nbsp; Soprt </a>
-                              <a class="dropdown-item" href="v3.html"> &nbsp; Food </a>
-                              <a class="dropdown-item" href="v4.html"> &nbsp; Dance </a>
-                              <a class="dropdown-item" href="v5.html"> &nbsp; Healthy </a>
-                              <a class="dropdown-item" href="v6.html"> &nbsp; Short Films </a>
-                              <a class="dropdown-item" href="v7.html"> &nbsp; Music </a>
-                              <a class="dropdown-item" href="v8.html"> &nbsp; Podcast </a>
-
-
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
                         <div class="video-card-image">
-                           <a class="play-icon" href="v1.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v1.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 5 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Education <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v2.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v2.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 3 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Soprt <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                  </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v3.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v3.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 4 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-danger">
-                              Food <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v4.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v4.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 5 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Davce <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v5.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v5.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 6 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Healthy <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v6.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v6.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 4 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-danger">
-                              Short Films <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v7.html"><i class="fas fa-play-circle"></i></a>
-                           <a href="#"><img class="img-fluid" src="img/v7.png" alt=""></a>
-                           <div class="time">3:50</div>
-                        </div>
-                        <div class="hover-element">
-                           <a style="font-size:19px;"> 3 </a>
-                           <a> 
-                           <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
-                           </a>
-                        </div>
-                        <div class="video-card-body">
-                           <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Music <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                           </div>
-                           <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-xl-3 col-sm-6 mb-3">
-                     <div class="video-card">
-                        <div class="video-card-image">
-                           <a class="play-icon" href="v8.html"><i class="fas fa-play-circle"></i></a>
+                        <?php $_SESSION['playlistID']=$a->getPlaylistID();?>
+                           <a class="play-icon" href="v1.php"><i class="fas fa-play-circle"></i></a>
                            <a href="#"><img class="img-fluid" src="img/v8.png" alt=""></a>
-                           <div class="time">3:50</div>
                         </div>
                         <div class="hover-element">
-                           <a style="font-size:19px;"> 5 </a>
+                           <a style="font-size:19px;"><?php $num =$theplaylist->NumOfVideos($a->getPlaylistID());
+                           echo $num ?></a>
                            <a> 
                            <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
                            </a>
                         </div>
                         <div class="video-card-body">
                            <div class="video-title">
-                              <a href="#">There are many variations of passages of Lorem</a>
-                           </div>
-                           <div class="video-page text-success">
-                              Podcast <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                 data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                              <a href="#"><?php echo $a->getPlaylistName(); ?></a>
                            </div>
                            <div class="video-view">
-                              1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                           <?php echo $a->getDescription(); ?>
                            </div>
                         </div>
                      </div>
                   </div>
-
+               </div>
+                  <?php endforeach;?>
 
 
                   <!-- Bootstrap core JavaScript-->
@@ -710,5 +527,4 @@ include 'nav.php';
                   <!-- Custom scripts for all pages-->
                   <script src="js/custom.js"></script>
 </body>
->>>>>>> Stashed changes
 </html>

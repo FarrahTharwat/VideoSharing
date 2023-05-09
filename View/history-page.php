@@ -170,6 +170,11 @@ require_once '../Controller/ManageHistory.php';
          </div>
       </div>
 <!-- Bootstrap core JavaScript-->
+<script>
+                 function goToVideoPage(videoId, userId) {
+                     window.location.href = 'video-page.php?video_id=' + videoId + '&user_id=' + userId;
+                 }
+             </script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="js/yarab.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

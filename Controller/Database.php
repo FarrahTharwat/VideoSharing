@@ -70,6 +70,14 @@ class Database
         }
     
     }
+    function name($userID){
+        $database = new Database();
+        $conn = $database->getConn();
+        $query = "SELECT Name FROM user WHERE ID ='$userID'";
+        $result = $conn->query($query);
+        $result = mysqli_fetch_assoc($result);
+        return $result['Name'];
+     }
 
 
      function searchVideos($searchQuery) {

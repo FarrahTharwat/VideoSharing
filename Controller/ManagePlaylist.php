@@ -94,6 +94,7 @@ class ManagePlaylist implements CRUD{
                     $row['ID'],
                    $row['numOfVideos'],
                    $row['name'],
+                   $row['Description'],
                    $row['UserID'],
                 );
 
@@ -114,6 +115,30 @@ class ManagePlaylist implements CRUD{
 }
     $conn->close();
     return $thePlaylist;
+}  
+public function retriveUserPlaylist($userID){
+    $database = new Database();
+    $conn = $database->getConn();
+    $query = "SELECT*
+    FROM playlist
+    where UserID = '$userID'";
+    $result = $conn->query($query);
+    $thePlaylist = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $playlist = new Playlist(
+                $row['ID'],
+               $row['numOfVideos'],
+               $row['name'],
+               $row['Description'],
+               $userID,
+            );
+            $thePlaylist[] = $playlist;
+            
+}
+}
+$conn->close();
+return $thePlaylist;
 }  
     /**
      * Summary of update
@@ -152,6 +177,12 @@ public function remove($playlistID,$videoID){
     $conn->close();
 }
 
+
+public function NumOfVideos($PlaylistID){
+    $database = new Database();
+    $conn = $database->getConn();
+    $query = "SELECT COUNT(VideoID) FROM `videoplaylist` WHERE PlaylistID = '$PlaylistID'";
+    $result = $conn->query($query);
+    return $result->num_rows >0;
 }
-$manage = new ManagePlaylist();
-$manage->retrive(1);
+}

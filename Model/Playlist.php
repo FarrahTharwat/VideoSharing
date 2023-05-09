@@ -15,12 +15,13 @@ class Playlist
      * @param $description
      * @param $userID
      */
-    public function __construct($PlaylistID, $numOfVideosPlaylist, $PlaylistName, $description)
+    public function __construct($PlaylistID, $numOfVideosPlaylist, $PlaylistName, $description,$userID)
     {
         $this->PlaylistID = $PlaylistID;
         $this->numOfVideosPlaylist = $numOfVideosPlaylist;
         $this->PlaylistName = $PlaylistName;
         $this->description = $description;
+        $this->userID = $userID;
     }
 
     /**

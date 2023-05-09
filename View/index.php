@@ -8,6 +8,7 @@ require_once '../Controller/Database.php';
 ?>
 <?php
 session_start();
+$watcher = $_SESSION['userID']
 ?>
 <head>
       <meta charset="utf-8">
@@ -51,7 +52,7 @@ session_start();
                       $manageVideo = ManageVideo::getInstance();
 
                       // Set the user ID for which to retrieve videos
-                      $userId = 2;
+                      $userId = $watcher;
 
                       // Retrieve the videos for the user
                       $videos = $manageVideo->retrive($userId);
