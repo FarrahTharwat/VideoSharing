@@ -28,7 +28,7 @@ require_once 'ManageSubscribtion.php';
  echo "Wow, the wow function was called with name ".$_POST['userID']." and age ".$_POST['videoID']."!";
  }
  
-
+ echo $uid;
  function weew($userID)
  {
      $kk = new ManageHistory();
@@ -48,7 +48,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'addReacts') {
 function addReacts($userID, $videoID, $react)
 {
     $manage = new ManageReact();
-    $manage->addReact($videoID, $userID, $react);
+    $manage->toggleReact($videoID, $userID, $react);
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'subscribe') {
