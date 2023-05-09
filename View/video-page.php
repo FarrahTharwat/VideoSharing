@@ -150,7 +150,7 @@ include 'nav.php';
                                 <p><?php echo $VideoAttribute->getCategory(); ?> </p>
                                 <h6>Description :</h6>
                                 <p><?php echo $VideoAttribute->getDescription(); ?>  </p>
-                                
+
                             </div>
                         </div>
                     </div>
