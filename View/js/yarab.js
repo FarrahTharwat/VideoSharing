@@ -43,7 +43,7 @@ function triggerWeewFunction(userID) {
     formData.append("userID", userID);
     formData.append("action", 'weew');
     // Send the AJAX request with the form data
-    console.log(userID);
+
     xhr.send(formData);
 
 }

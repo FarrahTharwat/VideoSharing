@@ -197,7 +197,7 @@ require_once '../Controller/ManageHistory.php';
                      <div class="col-md-12">
                         <div class="main-title">
                            <div class="btn-group float-right right-action">
-                           <button onclick="triggerWeewFunction('<?= $result ?>')" type="button" class="btn btn-outline-danger">Clear History</button>
+                           <button onclick="triggerWeewFunction('<?= $result ?>'); location.reload();" type="button" class="btn btn-outline-danger">Clear History</button>
                            </div>
                            <h6>Watch History</h6>
                         </div>
@@ -228,7 +228,7 @@ require_once '../Controller/ManageHistory.php';
              <div class="col-xl-3 col-sm-6 mb-3">
                  <div class="video-card history-video">
                      <div class="video-card-image"  onclick="goToVideoPage('<?= $a['video']->getID(); ?>', '<?php echo $a['video']->getUserID(); ?>')">
-                         <a onclick="triggerWowFunction('<?= $a['video']->getUserID(); ?>', '<?php echo $a['video']->getID(); ?>')" class="video-close" href="#"><i class="fas fa-times-circle"></i></a> </button>
+                         <a onclick="triggerWowFunction('<?= $a['video']->getUserID();  ?>', '<?php echo $a['video']->getID(); ?>'); location.reload(); " class="video-close" href="#"><i class="fas fa-times-circle"></i></a> </button>
                          <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
                          <a href="#"><img class="img-fluid" src="<?php echo $a['video']->getThumbnail(); ?>" alt=""></a>
                          <div class="time">3 </div>
