@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +10,112 @@ include_once '../Controller/ManageHistory.php';
 session_start();
 
 ?>
+
+<style>
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  min-height: 100px;
+  width: 80%; 
+  height: 80px;
+  display: inline-block; 
+  vertical-align: top; 
+}
+
+.form-container input[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff6161;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block; 
+  vertical-align: top; 
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #2c3e50;
+}
+
+.form-container input[type="submit"]:active {
+  background-color: #ff6161;
+  transform: translateY(2px);
+}
+
+</style>
+<?php
+
+include_once '../Controller/ManageVideo.php';
+
+?>
+
+<?php
+
+require_once '../Controller/Database.php';
+// Retrieve the video ID and user ID from the URL query parameters
+$videoId = $_GET['video_id'];
+$userId = $_GET['user_id'];
+$video = ManageVideo::getInstance();
+// $VideoAttribute=$video->RetriveForVideoPage($videoId,$userId);
+//$title= $VideoAttribute->getTitle();
+//$description=$VideoAttribute->getDescription();
+//$date=$VideoAttribute->getDate();
+//$view=$VideoAttribute->getViews();
+//$category=$VideoAttribute->getCategory();
+//$video1=$VideoAttribute->getUrl();
+if(isset($_POST['addcomment']))
+{
+   $db = new Database ;
+   $fields["UserID"] = $userId ;
+   $username = $db->select("Select * from user where ID = $userId");
+   foreach($username as $val){
+      $fields["to_channel_name"] = $val['Name'] ;
+   }  
+
+   $fields["from_channel_id"] = $_SESSION['userID'] ;
+   $fields["from_channel_name"] = $_SESSION['userName'] ;
+   $fields["video_id"] = $videoId ;
+   // $fields["Content"] ;
+   // $fields["Seen"] ;
+   // $fields["CreatedAt"] ;
+   $_SESSION["videoID"] = $videoId ;
+   $_SESSION["channelID"] = $userId ;
+   
+   $svideo = $db->select("Select * from video where ID = $videoId");
+   foreach($svideo as $vall){
+      $fields["video_name"] = $vall['Title'] ;
+   }
+   
+   $fields["n_type"] = 2 ;
+
+   // echo $fields["to_channel_id"];
+   // echo $fields["to_channel_name"];
+   // echo $fields["from_channel_id"];
+   // echo $fields["from_channel_name"];
+   // echo $fields["video_id"];
+   // echo $fields["Content"];
+   // echo $fields["Seen"];
+   // echo $fields["CreatedAt"];
+   // echo $fields["video_name"];
+   // echo $fields["n_type"];
+   
+   // $dbb = new Database ;
+   $db->insert_2("notification",$fields);
+   // $dbb->insert("INSERT INTO `video_sharing`.`notification` (`to_channel_id`, `from_channel_id`, `from_channel_name`, `video_id`, `video_name`, `n_type`) VALUES ('1', '5', 'Kiroloss', '1', 'PHP', '2')");
+
+}
+?>
+
 <?php
 // Retrieve the video ID and user ID from the URL query parameters
 $videoId = $_GET['video_id'];
@@ -65,6 +172,7 @@ $h->updateH($videoId,$userId);
                </button>
             </div>
          </div>
+<<<<<<< Updated upstream
       </form>
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
@@ -211,6 +319,18 @@ $h->updateH($videoId,$userId);
       <div id="content-wrapper">
          <div class="container-fluid pb-0">
             <div class="video-block section-padding">
+=======
+
+         <div class="form-container">
+              <form method="post">
+               <textarea name="comment_content"></textarea>
+                 <input type="submit" name="addcomment" value="Add Comment">
+              </form>
+         </div>
+
+         <div class="col-md-4">
+            <div class="single-video-right">
+>>>>>>> Stashed changes
                <div class="row">
                   <div class="col-md-8">
                      <div class="single-video-left">
