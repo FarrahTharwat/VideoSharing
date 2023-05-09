@@ -207,7 +207,7 @@ class ManageVideo implements CRUD
 
         // Loop through the quality versions and generate the output files
         foreach ($qualities as $quality) {
-            $output_file = $output_path . '/' . $dirName .  '_' .$quality['height'] .  '.mp4';
+            $output_file = $output_path . '/' . $dirName .  '_' . $quality['height'] .  '.mp4';
 
             $cmd = 'ffmpeg -i ' . $input_file . ' -c:v libx264 -preset medium -crf 23 -b:v ' . $quality['bitrate'] . ' -maxrate ' . $quality['bitrate'] . ' -bufsize ' . (2 * (int)$quality['bitrate']) . ' -vf scale=w=' . $quality['width'] . ':h=\'(iw/2)*2\' -c:a aac -b:a 128k ' . $output_file;
 
