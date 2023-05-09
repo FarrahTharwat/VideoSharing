@@ -63,4 +63,16 @@ function toggleSubscribe($userID,$channelID)
     $manage = new  ManageSubscribtion();
     $manage->toggleSubscription($userID,$channelID);
 }
+if (isset($_POST['action']) && $_POST['action'] == 'bell') {
+    // Call the addReact function and echo a message
+
+    toggleBill($_POST['userID'],$_POST['channelID'] );
+
+}
+function toggleBill($userID,$channelID)
+{
+    $manage = new ManageSubscribtion();
+    $manage->toggleBell($userID,$channelID);
+
+}
 

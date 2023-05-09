@@ -112,4 +112,26 @@ class ManageSubscribtion
         }
     }
 
+        public function toggleBell($subscriberID, $channelID) {
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $checkQuery = "SELECT * FROM subscribed WHERE SubscriberID='$subscriberID' AND ChannelID='$channelID'";
+        $result = $conn->query($checkQuery);
+
+        if ($result->num_rows > 0) {
+            $subscription = $result->fetch_assoc();
+            $bell = $subscription['bell'] == 1 ? 0 : 1;
+
+            $updateQuery = "UPDATE subscribed SET bell='$bell' WHERE SubscriberID='$subscriberID' AND ChannelID='$channelID'";
+            $conn->query($updateQuery);
+        } else {
+            $bell = 1;
+            $insertQuery = "INSERT INTO subscribed (SubscriberID, ChannelID, bell) VALUES ('$subscriberID', '$channelID', '$bell')";
+            $conn->query($insertQuery);
+        }
+
+        $conn->close();
+    }
+
 }

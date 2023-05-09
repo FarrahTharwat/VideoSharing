@@ -32,7 +32,7 @@ session_start();
 <body id="page-top">
 <!--header-->
 <?php
-include 'header.php';
+include 'headers.php';
 ?>
 <!--nav-->
 <?php

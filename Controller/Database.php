@@ -1,5 +1,6 @@
 <?php
 
+
 class Database
 {
     private $host;
@@ -71,7 +72,39 @@ class Database
     }
 
 
+     function searchVideos($searchQuery) {
+        // Define the MySQL SELECT statement to retrieve the relevant videos
+        $query = "SELECT ThumbNail, Title, URL , Category , Description , Date ,Views ,UserID FROM video WHERE Title LIKE '%$searchQuery%'";
+        
+        // Execute the query and retrieve the results as an array
+        $result = $this->conn->query($query);
+        $videos = $result->fetch_all(MYSQLI_ASSOC);
+        
+        // Return the search results
+        return $videos;
+     }
+
+     public function getNotificationsForCurrentUser() {
+        $userID = $_SESSION['userID'];
+        $notificationsQuery = "SELECT * FROM notification WHERE UserID = $userID ORDER BY ID DESC LIMIT 5";
+        $notificationsResult = $this->conn->query($notificationsQuery);
+    
+        $notifications = [];
+        if ($notificationsResult->num_rows > 0) {
+          while ($row = $notificationsResult->fetch_assoc()) {
+            $notificationID = $row['ID'];
+            $notificationContent = $row['Content'];
+            $notificationURL = "notification.php?id=$notificationID";
+            $notifications[] = [
+              'id' => $notificationID,
+              'content' => $notificationContent,
+              'url' => $notificationURL,
+            ];
+          }
+        }
+        return $notifications;
+      }
+    }
+     
 
 
-
-}

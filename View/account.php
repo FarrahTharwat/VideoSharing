@@ -31,7 +31,7 @@ $userId =  $_SESSION['userID'];
    <!--header-->
 
    <?php
-   include 'header.php';
+   include 'headers.php';
    ?>
    <!--nav-->
    <?php
