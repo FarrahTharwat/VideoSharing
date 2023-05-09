@@ -30,7 +30,7 @@ class ManageVideo implements CRUD
         $title = $video->getTitle();
         $description = $video->getDescription();
         $thumbnail = $video->getThumbnail();
-        $date = $video->getDate();
+        $date =date("Y-m-d");
         $status = $video->getState();
         $views = $video->getViews();
         $url = $video->getUrl();
