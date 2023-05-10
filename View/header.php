@@ -1,4 +1,5 @@
-<?php require_once '../Controller/Database.php';
+<?php
+ require_once '../Controller/Database.php';
 ?>
 <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
     &nbsp;&nbsp;

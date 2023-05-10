@@ -30,12 +30,14 @@ $watcher = $_SESSION['userID']
       <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css">
    </head>
    <body id="page-top">
-   <?php
-   include 'header.php';
-   ?>
+
+<?php include 'header.php';?>
+
+
    <!--nav-->
    <?php
    include 'nav.php';
+   echo 'wow';
    ?>
 
 

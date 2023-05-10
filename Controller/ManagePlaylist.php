@@ -1,11 +1,11 @@
 <?php
-include 'CRUD.php';
+require_once 'CRUD.php';
 require_once 'Database.php';
-include '../Model/Playlist.php';
-include '../Model/User.php';
-include '../Model/Video.php';
-include '../Model/VideoPlaylist.php';
-include '../Controller/AuthController.php';
+require_once '../Model/Playlist.php';
+require_once '../Model/User.php';
+require_once '../Model/Video.php';
+require_once '../Model/VideoPlaylist.php';
+require_once '../Controller/AuthController.php';
 /**
  * Summary of ManagePlaylist
  */
@@ -15,15 +15,17 @@ class ManagePlaylist implements CRUD{
      * @param mixed $Playlist
      * @return void
      */
+    function create($playlist){
+
+    }
     //Till we finish the front, dont forget the add and remove (can implement the function multiple times?)
-    function create($Playlist){
+    function createp($Playlist,$videoID){
         //Get database connection
         $database = new Database();
         $conn = $database->getConn();
        
         $PlaylistName = $Playlist->getPlaylistName();
         $userID = $Playlist->getuserID();
-        $videoID = $Playlist->getvideoID();
         $numOfVideosPlaylist = 1;
         $description = $Playlist->getDescription();
         $query = "INSERT INTO playlist (name, UserID, numOfVideos,Description) VALUES ('$PlaylistName', '$userID', '$numOfVideosPlaylist','$description')";
@@ -38,6 +40,7 @@ class ManagePlaylist implements CRUD{
 
         // Close the database connection
         $conn->close();
+        return true;
     }
     /**
      * Summary of delete
@@ -181,8 +184,9 @@ public function remove($playlistID,$videoID){
 public function NumOfVideos($PlaylistID){
     $database = new Database();
     $conn = $database->getConn();
-    $query = "SELECT COUNT(VideoID) FROM `videoplaylist` WHERE PlaylistID = '$PlaylistID'";
+    $query = "SELECT COUNT(VideoID) FROM videoplaylist WHERE PlaylistID = '$PlaylistID'";
     $result = $conn->query($query);
-    return $result->num_rows >0;
+    $result = mysqli_fetch_assoc($result);
+    return $result['COUNT(VideoID)'];
 }
 }
