@@ -48,10 +48,24 @@ include_once '../Controller/ManageHistory.php';
   transform: translateY(2px);
 }
 
+<<<<<<< Updated upstream
+=======
+    
+
+>>>>>>> Stashed changes
 </style>
 
 <?php
 session_start();
+<<<<<<< Updated upstream
+=======
+if(isset($_SESSION['userID'])){
+    $watcher = $_SESSION['userID'];
+}
+else{
+    $watcher = 1;
+}
+>>>>>>> Stashed changes
 
 ?>
 
@@ -108,14 +122,24 @@ include_once '../Controller/ManageVideo.php';
 require_once '../Controller/Database.php';
 // Retrieve the video ID and user ID from the URL query parameters
 $videoId = $_GET['video_id'];
+<<<<<<< Updated upstream
 $userId = $_GET['user_id'];
+=======
+
+
+$theHistory = new ManageHistory();
+$theHistory->updateH($videoId, $watcher);
+
+>>>>>>> Stashed changes
 $video = ManageVideo::getInstance();
 // $VideoAttribute=$video->RetriveForVideoPage($videoId,$userId);
+//$title= $VideoAttribute->getTitle();
 //$title= $VideoAttribute->getTitle();
 //$description=$VideoAttribute->getDescription();
 //$date=$VideoAttribute->getDate();
 //$view=$VideoAttribute->getViews();
 //$category=$VideoAttribute->getCategory();
+<<<<<<< Updated upstream
 //$video1=$VideoAttribute->getUrl();
 if(isset($_POST['addcomment']))
 {
@@ -126,6 +150,42 @@ if(isset($_POST['addcomment']))
       $fields["to_channel_name"] = $val['Name'] ;
    }  
 
+=======
+$userId= $VideoAttribute->getUserID();
+$video1 = $VideoAttribute->getUrl();
+$userId =$VideoAttribute->getUserID();
+$video1 = pathinfo($video1, PATHINFO_FILENAME);
+$video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
+
+
+if(isset($_POST['addcomment']))
+{
+   $db = new Database ;
+
+   $comm['Content'] = $_POST['comment_content'];
+   
+   $db->insert_2("comment",$comm);
+   
+   //    SELECT * FROM comment ORDER BY ID DESC LIMIT 1;
+   
+   $comment = $db->select("Select * from comment ORDER BY ID DESC LIMIT 1");
+   foreach($comment as $val4){
+       $usercomm['CommentID'] = $val4['ID'] ;
+    } 
+    
+    $usercomm['UserID'] = $_SESSION['userID'];
+    $usercomm['VideoID'] = $videoId;
+    
+    $db->insert_2("usercomment",$usercomm);
+    
+
+   $fields["UserID"] = $userId ;
+   $username = $db->select("Select * from user where ID = $userId");
+   foreach($username as $val){
+      $fields["to_channel_name"] = $val['Name'] ;
+   }  
+
+>>>>>>> Stashed changes
    $fields["from_channel_id"] = $_SESSION['userID'] ;
    $fields["from_channel_name"] = $_SESSION['userName'] ;
    $fields["video_id"] = $videoId ;
@@ -567,18 +627,42 @@ if(isset($_POST['addcomment']))
                         </form>
                         </div>
 
+<<<<<<< Updated upstream
+=======
+                        <br>
+
+>>>>>>> Stashed changes
                         <div>
                         <!-- Retreive Comments -->
                         <?php 
                             $comment = $db->select("Select * from usercomment where VideoID = $videoId");
+<<<<<<< Updated upstream
+=======
+                            ?>
+                            <div class="single-video-info-content box" style="box-sizing: 20%;">
+                                <h6>Comments :</h6>
+                                <p><?php
+>>>>>>> Stashed changes
                             foreach($comment as $val){
                                 $commentid = $val['CommentID'];
                                 $comment2 = $db->select("Select * from comment where ID = $commentid");
                                 foreach($comment2 as $val2){
+<<<<<<< Updated upstream
                                     echo $val2['Content'];
                                 }
                             }
                         ?>
+=======
+                                    ?> <div class="my-dropdown-item2">
+                                            <?php echo $val2['Content'];
+                                    ?> </div> <?php
+                                }
+                            }
+                        ?> </p>
+
+                            </div>
+                            
+>>>>>>> Stashed changes
 
                         </div>
 

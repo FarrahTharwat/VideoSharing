@@ -92,8 +92,13 @@ class Subscriber implements Observer
      
         $sel2 = $db->select_data('user','ID',$from_channel_id);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         foreach($sel2 as $see_noti22)
             $from_channel_name = $see_noti22['Name'];
+=======
+        foreach($sel2 as $see_noti23)
+            $from_channel_name = $see_noti23['Name'];
+>>>>>>> Stashed changes
 =======
         foreach($sel2 as $see_noti23)
             $from_channel_name = $see_noti23['Name'];
