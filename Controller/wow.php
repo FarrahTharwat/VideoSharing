@@ -3,6 +3,7 @@ require_once 'Database.php';
 require_once 'ManageReact.php';
 require_once 'ManageHistory.php';
 require_once 'ManageSubscribtion.php';
+require_once 'ManagePlaylist.php';
 
 
  if (isset($_POST['action']) && $_POST['action'] == 'wow') {
@@ -37,6 +38,33 @@ require_once 'ManageSubscribtion.php';
 
  }
 ///////////
+function RemoveFromPlaylits($pID,$uID)
+ {
+     $kk = new ManagePlaylist();
+     $kk->remove($pID,$uID);
+     echo 'wowwow'.$pID,$uID;
+ }
+if (isset($_POST['action']) && $_POST['action'] == 'RemoveFromPlaylits') {
+    // Call the addReact function and echo a message
+
+    RemoveFromPlaylits($_POST['PlaylistID'], $_POST['VideoID']);
+   echo 'yallawy'.$pID,$uID;
+
+}
+
+function RemovePlaylits($pID)
+ {
+     $kk = new ManagePlaylist();
+     $kk->delete($pID);
+     echo 'wowwow'.$pID;
+ }
+if (isset($_POST['action']) && $_POST['action'] == 'RemovePlaylits') {
+    // Call the addReact function and echo a message
+
+    RemovePlaylits($_POST['PlaylistID']);
+   echo 'yallawy'.$pID;
+
+}
 
 if (isset($_POST['action']) && $_POST['action'] == 'addReacts') {
     // Call the addReact function and echo a message

@@ -26,7 +26,7 @@ function triggerWowFunction(userID, videoID) {
 function triggerWeewFunction(userID) {
     // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
-        console.log(userID);
+    console.log(userID);
     // Open a new AJAX request
     xhr.open("POST", "../Controller/wow.php", true);
 
@@ -42,6 +42,57 @@ function triggerWeewFunction(userID) {
     var formData = new FormData();
     formData.append("userID", userID);
     formData.append("action", 'weew');
+    // Send the AJAX request with the form data
+
+    xhr.send(formData);
+
+}
+
+function triggerREMOVEFunction(pID, uID) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    console.log(pID, uID);
+    // Open a new AJAX request
+    xhr.open("POST", "../Controller/wow.php", true);
+
+    // Define the callback function for when the AJAX request completes
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the PHP function
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Create a new FormData object and append the data you want to send
+    var formData = new FormData();
+    formData.append("PlaylistID", pID);
+    formData.append("VideoID", uID);
+    formData.append("action", 'RemoveFromPlaylists');
+    // Send the AJAX request with the form data
+
+    xhr.send(formData);
+
+}
+
+function triggerDELETEPLAYLISTFunction(pID) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    console.log(pID);
+    // Open a new AJAX request
+    xhr.open("POST", "../Controller/wow.php", true);
+
+    // Define the callback function for when the AJAX request completes
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the PHP function
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Create a new FormData object and append the data you want to send
+    var formData = new FormData();
+    formData.append("PlaylistID", pID);
+    formData.append("action", 'RemovePlaylits');
     // Send the AJAX request with the form data
 
     xhr.send(formData);

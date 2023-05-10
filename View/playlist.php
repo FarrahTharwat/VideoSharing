@@ -74,7 +74,21 @@ $theUser = new Database();
                </div>
             </nav>
          </div>
+         <?php
 
+//echo $_FILES['video-file']['name'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $playlist = new ManagePlaylist();
+    $zplaylist = new Playlist(' ',0,$_POST['PlaylistName'],' ',$watcher);
+    $result = $playlist->createp($zplaylist, $_POST['VideoID']);
+    if ($result === true) {
+        echo "kkkk";
+        exit;
+    } else {
+
+    }
+}
+?>
          <div class="container-fluid">
             <div class="video-block section-padding">
                <div class="row">
@@ -86,13 +100,13 @@ $theUser = new Database();
                               + Create Playlist <i class="fa fa-caret-down" aria-hidden="true"></i>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right">
-                              <form style="color: rgb(248, 18, 18); font-size: x-small;">
+                              <form style="color: rgb(248, 18, 18); font-size: x-small;"  method="post" action="playlist.php">
                                  <label for="name"> Playlist Name:</label><br>
-                                 <input type="text" id="name" name="name"><br>
+                                 <input type="text" id="name" name="PlaylistName"><br>
                                  <label for="setvideo">Set Video:</label><br>
-                                 <input type="text" id="name" name="setvideo"><br>
+                                 <input type="text" id="name" name="VideoID"><br>
                               </form>
-                              <button  style="margin-left: 125px; margin-top: 10px; border: 2px; border-radius: 4px; color:rgb(238, 42, 42) ; background-color: bisque;">
+                              <button  type="submit" style="margin-left: 125px; margin-top: 10px; border: 2px; border-radius: 4px; color:rgb(238, 42, 42) ; background-color: bisque;">
                                  <h> Submit </h><br>
                               </button>
                            </div>
@@ -114,7 +128,7 @@ $theUser = new Database();
                   <div class="container-fluid">
                    <div class="row">
                       <div class="col-md-8 mx-auto text-center  pt-4 pb-5">
-                         <h1>Your History is empty.</h1>
+                         <h1>You got no playlist.</h1>
                          <div class="mt-5">
                             <a class="btn btn-outline-primary" href="index.php"><i class="mdi mdi-home"></i> GO TO HOME PAGE</a>
                          </div>
@@ -122,20 +136,22 @@ $theUser = new Database();
                    </div>
                 </div>
           <?php endif ?>
-         <?php foreach ($playlist as $a): ?>
-         <div class="container-fluid">
+          <div class="container-fluid">
             <div class="video-block section-padding">
-               <div class="row">
+              
+         <?php foreach ($playlist as $a): ?>
+            <div class="video-block section-padding">
+            <div class="row">
                   <div class="col-xl-3 col-sm-6 mb-3">
                      <div class="video-card">
-                        <div class="video-card-image">
-                        <?php $_SESSION['playlistID']=$a->getPlaylistID();?>
+                        <div class="video-card-image ">
+                        <i><a class="video-close" onclick="triggerDELETEPLAYLISTFunction(<?=$a->getPlaylistID()?>); location.reload();" ><i class="fas fa-times-circle"></i></a>
+                         <?php $_SESSION['playlistID']=$a->getPlaylistID();?>
                            <a class="play-icon" href="v1.php"><i class="fas fa-play-circle"></i></a>
                            <a href="#"><img class="img-fluid" src="img/v8.png" alt=""></a>
                         </div>
                         <div class="hover-element">
-                           <a style="font-size:19px;"><?php $num =$theplaylist->NumOfVideos($a->getPlaylistID());
-                           echo $num ?></a>
+                           <a style="font-size:19px;"><?php echo $theplaylist->NumOfVideos( $a->getPlaylistID() ); ?></a>
                            <a> 
                            <i class="fa fa-list" style="margin-top:100%; margin-left: 25%; font-size: larger;"></i> 
                            </a>
@@ -150,12 +166,13 @@ $theUser = new Database();
                         </div>
                      </div>
                   </div>
-               </div>
+            </div>
                   <?php endforeach;?>
 
 
                   <!-- Bootstrap core JavaScript-->
                   <script src="vendor/jquery/jquery.min.js"></script>
+                  <script src="js/yarab.js"></script>
                   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
                   <!-- Core plugin JavaScript-->
                   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
