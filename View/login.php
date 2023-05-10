@@ -45,6 +45,28 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
 ?>
 
+<style>
+   .login-icons i{
+    position: absolute;
+}
+  
+.login-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+.login-icon {
+    padding: 13px;
+    color:#17a2b8;
+    min-width: 50px;
+    text-align: center;
+}
+
+#login-formm {
+    padding-left: 42px;
+}
+
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +117,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
                            <label>Email</label>
                            <div class="login-icons">
                               <i class="fas fa-regular fa-envelope login-icon"></i>
-                              <input type="text" name="email" class="form-control login-form" placeholder="Enter your email">
+                              <input type="text" name="email" id="login-formm" class="login-form form-control " placeholder="Enter your email">
                            </div>
                         </div>
 
@@ -113,7 +135,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
                            <label>Password</label>
                            <div class="login-icons">
                               <i class="fas fa-solid fa-lock login-icon"></i>
-                              <input type="password" name="password" class="form-control login-form" placeholder="Enter your password">
+                              <input type="password" name="password" id="login-formm" class="login-form form-control " placeholder="Enter your password">
                            </div>
                         </div>
                         <div class="mt-4">

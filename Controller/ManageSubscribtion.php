@@ -1,5 +1,6 @@
 <?php
 require_once 'Database.php';
+require_once '../Model/Subscriber.php';
 class ManageSubscribtion
 {
   /*  public function addsubscription($SubscriberID,$ChannelID)
@@ -90,6 +91,17 @@ class ManageSubscribtion
         $conn->close();
     }
 
+    public function addNewNotification($subscriberID, $channelID) {
+        $database = new Database();
+        $conn = $database->getConn();
+
+        $sub = new Subscriber ;
+        
+        $sub->subs3($channelID,$subscriberID);
+
+        $conn->close();
+    }
+
     public function checkIfSubscribed($subscriberID, $channelID) {
         $database = new Database();
         $conn = $database->getConn();
@@ -109,6 +121,7 @@ class ManageSubscribtion
             $this->deleteSubscription($subscriberID, $channelID);
         } else {
             $this->addNewSubscription($subscriberID, $channelID);
+            $this->addNewNotification($subscriberID, $channelID);
         }
     }
 

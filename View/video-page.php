@@ -5,14 +5,66 @@ include_once '../Controller/ManageVideo.php';
 require_once '../Controller/ManageHistory.php';
 
 ?>
+
+<style>
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  min-height: 100px;
+  width: 80%; 
+  height: 80px;
+  display: inline-block; 
+  vertical-align: top; 
+}
+
+.form-container input[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff6161;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block; 
+  vertical-align: top; 
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #2c3e50;
+}
+
+.form-container input[type="submit"]:active {
+  background-color: #ff6161;
+  transform: translateY(2px);
+}
+
+    
+
+</style>
+
 <?php
 session_start();
-$watcher = $_SESSION['userID'];
+if(isset($_SESSION['userID'])){
+    $watcher = $_SESSION['userID'];
+}
+else{
+    $watcher = 1;
+}
 
 ?>
 <?php
 // Retrieve the video ID and user ID from the URL query parameters
 $videoId = $_GET['video_id'];
+
 
 $theHistory = new ManageHistory();
 $theHistory->updateH($videoId, $watcher);
@@ -20,15 +72,77 @@ $theHistory->updateH($videoId, $watcher);
 $video = ManageVideo::getInstance();
 $VideoAttribute = $video->RetriveForVideoPage($videoId);
 //$title= $VideoAttribute->getTitle();
+//$title= $VideoAttribute->getTitle();
 //$description=$VideoAttribute->getDescription();
 //$date=$VideoAttribute->getDate();
 //$view=$VideoAttribute->getViews();
 //$category=$VideoAttribute->getCategory();
+$userId= $VideoAttribute->getUserID();
 $video1 = $VideoAttribute->getUrl();
 $userId =$VideoAttribute->getUserID();
 $video1 = pathinfo($video1, PATHINFO_FILENAME);
 $video1 = "../View/Videos/" . $video1 . "/" . $video1 . "_360.mp4";
 
+
+if(isset($_POST['addcomment']))
+{
+   $db = new Database ;
+
+   $comm['Content'] = $_POST['comment_content'];
+   
+   $db->insert_2("comment",$comm);
+   
+   //    SELECT * FROM comment ORDER BY ID DESC LIMIT 1;
+   
+   $comment = $db->select("Select * from comment ORDER BY ID DESC LIMIT 1");
+   foreach($comment as $val4){
+       $usercomm['CommentID'] = $val4['ID'] ;
+    } 
+    
+    $usercomm['UserID'] = $_SESSION['userID'];
+    $usercomm['VideoID'] = $videoId;
+    
+    $db->insert_2("usercomment",$usercomm);
+    
+
+   $fields["UserID"] = $userId ;
+   $username = $db->select("Select * from user where ID = $userId");
+   foreach($username as $val){
+      $fields["to_channel_name"] = $val['Name'] ;
+   }  
+
+   $fields["from_channel_id"] = $_SESSION['userID'] ;
+   $fields["from_channel_name"] = $_SESSION['userName'] ;
+   $fields["video_id"] = $videoId ;
+   // $fields["Content"] ;
+   // $fields["Seen"] ;
+   // $fields["CreatedAt"] ;
+   $_SESSION["videoID"] = $videoId ;
+   $_SESSION["channelID"] = $userId ;
+   
+   $svideo = $db->select("Select * from video where ID = $videoId");
+   foreach($svideo as $vall){
+      $fields["video_name"] = $vall['Title'] ;
+   }
+   
+   $fields["n_type"] = 2 ;
+
+   // echo $fields["to_channel_id"];
+   // echo $fields["to_channel_name"];
+   // echo $fields["from_channel_id"];
+   // echo $fields["from_channel_name"];
+   // echo $fields["video_id"];
+   // echo $fields["Content"];
+   // echo $fields["Seen"];
+   // echo $fields["CreatedAt"];
+   // echo $fields["video_name"];
+   // echo $fields["n_type"];
+   
+   // $dbb = new Database ;
+   $db->insert_2("notification",$fields);
+   // $dbb->insert("INSERT INTO `video_sharing`.`notification` (`to_channel_id`, `from_channel_id`, `from_channel_name`, `video_id`, `video_name`, `n_type`) VALUES ('1', '5', 'Kiroloss', '1', 'PHP', '2')");
+
+}
 ?>
 
 
@@ -140,8 +254,16 @@ include 'nav.php';
                                         <i class="fas fa-bell"></i>
                                     </button>
                                 </div>
-                                <img class="img-fluid" src="img/s4.png" alt="">
-                                <p><a href="#"><strong>Osahan Channel</strong></a> <span title="" data-placement="top"
+
+                                <?php
+                                    $select = $db->select_where('user','ID',$userId);
+                                    foreach($select as $see_noti){
+                                        $ownername = $see_noti['Name'];
+                                    }
+                                ?>
+
+                                <img class="img-fluid" src="img/acc.png" alt="">
+                                <p><a href="#"><strong> <?php echo $ownername ?> </strong></a> <span title="" data-placement="top"
                                                                                          data-toggle="tooltip" data-original-title="Verified"><i
                                                 class="fas fa-check-circle text-success"></i></span></p>
                                 <small>Published on Aug <?php echo $VideoAttribute->getDate(); ?> </small>
@@ -153,8 +275,46 @@ include 'nav.php';
                                 <p><?php echo $VideoAttribute->getDescription(); ?>  </p>
 
                             </div>
+                            
                         </div>
+                                      
+                        <!-- Add Comment -->
+                        <div class="form-container">
+                        <form method="post">
+                        <textarea name="comment_content"></textarea>
+                            <input type="submit" name="addcomment" value="Add Comment">
+                        </form>
+                        </div>
+
+                        <br>
+
+                        <div>
+                        <!-- Retreive Comments -->
+                        <?php 
+                            $comment = $db->select("Select * from usercomment where VideoID = $videoId");
+                            ?>
+                            <div class="single-video-info-content box" style="box-sizing: 20%;">
+                                <h6>Comments :</h6>
+                                <p><?php
+                            foreach($comment as $val){
+                                $commentid = $val['CommentID'];
+                                $comment2 = $db->select("Select * from comment where ID = $commentid");
+                                foreach($comment2 as $val2){
+                                    ?> <div class="my-dropdown-item2">
+                                            <?php echo $val2['Content'];
+                                    ?> </div> <?php
+                                }
+                            }
+                        ?> </p>
+
+                            </div>
+                            
+
+                        </div>
+
                     </div>
+
+
                     <div class="col-md-4">
                         <div class="single-video-right">
                             <div class="row">
