@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="857910d7-dceb-4430-bdcd-28c992f24905" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/js/controlls.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/js/controlls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/js/custom.js" afterDir="false" />
-=======
-    <list default="true" id="c49e364c-45aa-4027-a247-89b6dff0e097" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/ManageSubscribtion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ManageSubscribtion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/Videos/wow/wow_360.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/View/Videos/wow/wow_360.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/css/osahan.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/css/osahan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/js/controlls.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/js/controlls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/register.php" afterDir="false" />
->>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/View/video-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/video-page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/wow.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/wow.php" afterDir="false" />
     </list>
@@ -38,7 +21,6 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-<<<<<<< Updated upstream
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -46,58 +28,42 @@
       </list>
     </option>
   </component>
-=======
->>>>>>> Stashed changes
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-<<<<<<< Updated upstream
   <component name="ProjectId" id="2P5rYnIu9MZfHpXhPtShpI42Dwa" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-=======
-  <component name="ProjectId" id="2Pkh1HYGuFJSQFlN6R9eKqoLNAM" />
->>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-<<<<<<< Updated upstream
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-=======
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
->>>>>>> Stashed changes
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-<<<<<<< Updated upstream
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
       &quot;PHP&quot;
     ]
-=======
->>>>>>> Stashed changes
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< Updated upstream
       <changelist id="857910d7-dceb-4430-bdcd-28c992f24905" name="Changes" comment="" />
       <created>1682757833961</created>
       <option name="number" value="Default" />
@@ -112,15 +78,6 @@
       <workItem from="1683116757555" duration="2180000" />
       <workItem from="1683537977736" duration="195000" />
       <workItem from="1683538388354" duration="4490000" />
-=======
-      <changelist id="c49e364c-45aa-4027-a247-89b6dff0e097" name="Changes" comment="" />
-      <created>1684006769992</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1684006769992</updated>
-      <workItem from="1684006772829" duration="1683000" />
-      <workItem from="1684009154035" duration="1597000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>
